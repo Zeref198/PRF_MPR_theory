@@ -1,0 +1,519 @@
+%apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{42}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{https://doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Davidson}(2001)}]{Davidson2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont
+  {Davidson}},\ }\href {https://doi.org/10.1017/CBO9780511626333} {\emph
+  {\bibinfo {title} {An {{Introduction}} to {{Magnetohydrodynamics}}}}},\
+  Cambridge {{Texts}} in {{Applied Mathematics}}\ (\bibinfo  {publisher}
+  {Cambridge University Press},\ \bibinfo {address} {Cambridge},\ \bibinfo
+  {year} {2001})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gerbeau}\ \emph {et~al.}(2006)\citenamefont
+  {Gerbeau}, \citenamefont {Bris},\ and\ \citenamefont
+  {Leli{\`e}vre}}]{gerbeau2006a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.-F.}\ \bibnamefont
+  {Gerbeau}}, \bibinfo {author} {\bibfnamefont {C.~L.}\ \bibnamefont {Bris}},\
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Leli{\`e}vre}},\
+  }\href@noop {} {\emph {\bibinfo {title} {Mathematical {{Methods}} for the
+  {{Magnetohydrodynamics}} of {{Liquid Metals}}}}}\ (\bibinfo  {publisher}
+  {Clarendon Press},\ \bibinfo {year} {2006})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Seetharaman}(2024)}]{seetharaman2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Seetharaman}},\ }\href@noop {} {\emph {\bibinfo {title} {Treatise on process
+  metallurgy: volume 3: industrial processes}}}\ (\bibinfo  {publisher}
+  {Elsevier},\ \bibinfo {year} {2024})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kermeli}\ \emph {et~al.}(2015)\citenamefont
+  {Kermeli}, \citenamefont {{ter Weer}}, \citenamefont {{Crijns-Graus}},\ and\
+  \citenamefont {Worrell}}]{Kermeli2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Kermeli}}, \bibinfo {author} {\bibfnamefont {P.-H.}\ \bibnamefont {{ter
+  Weer}}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {{Crijns-Graus}}},\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Worrell}},\ }\bibfield  {title} {\bibinfo {title} {Energy efficiency
+  improvement and {{GHG}} abatement in the global production of primary
+  aluminium},\ }\href {https://doi.org/10.1007/s12053-014-9301-7} {\bibfield
+  {journal} {\bibinfo  {journal} {Energ Effic.}\ }\textbf {\bibinfo {volume}
+  {8}},\ \bibinfo {pages} {629} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Urata}(1985)}]{Urata1985}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Urata}},\ }\bibfield  {title} {\bibinfo {title} {Magnetics and {{Metal Pad
+  Instability}}},\ }in\ \href {https://doi.org/10.1007/978-3-319-48156-2_47}
+  {\emph {\bibinfo {booktitle} {Essential {{Readings}} in {{Light Metals}}:
+  {{Volume}} 2 {{Aluminum Reduction Technology}}}}},\ \bibinfo {editor} {edited
+  by\ \bibinfo {editor} {\bibfnamefont {G.}~\bibnamefont {Bearne}}, \bibinfo
+  {editor} {\bibfnamefont {M.}~\bibnamefont {Dupuis}},\ and\ \bibinfo {editor}
+  {\bibfnamefont {G.}~\bibnamefont {Tarcy}}}\ (\bibinfo  {publisher} {Springer
+  International Publishing},\ \bibinfo {address} {Cham},\ \bibinfo {year}
+  {1985})\ pp.\ \bibinfo {pages} {330--335}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sele}(1977)}]{Sele1977}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Sele}},\ }\bibfield  {title} {\bibinfo {title} {Instabilities of the metal
+  surface in electrolytic alumina reduction cells},\ }\href
+  {https://doi.org/10.1007/BF02669338} {\bibfield  {journal} {\bibinfo
+  {journal} {Metall. Trans. B}\ }\textbf {\bibinfo {volume} {8}},\ \bibinfo
+  {pages} {613} (\bibinfo {year} {1977})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sneyd}\ and\ \citenamefont {Wang}(1994)}]{Sneyd1994}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~D.}\ \bibnamefont
+  {Sneyd}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Wang}},\
+  }\bibfield  {title} {\bibinfo {title} {Interfacial instability due to {{MHD}}
+  mode coupling in aluminium reduction cells},\ }\href
+  {https://doi.org/10.1017/S0022112094004143} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Fluid. Mech.}\ }\textbf {\bibinfo {volume} {263}},\ \bibinfo
+  {pages} {343} (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bojarevics}\ and\ \citenamefont
+  {Romerio}(1994)}]{Bojarevics1994}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Bojarevics}}\ and\ \bibinfo {author} {\bibfnamefont {M.~V.}\ \bibnamefont
+  {Romerio}},\ }\bibfield  {title} {\bibinfo {title} {Long waves instability of
+  liquid metal-electrolyte interface in aluminium electrolysis cells: {{A}}
+  generalization of {{Sele}}'s criterion},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Eur. J. Mech. - B/Fluids}\ }\textbf {\bibinfo
+  {volume} {13}} (\bibinfo {year} {1994})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Davidson}\ and\ \citenamefont
+  {Lindsay}(1998)}]{Davidson1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont
+  {Davidson}}\ and\ \bibinfo {author} {\bibfnamefont {R.~I.}\ \bibnamefont
+  {Lindsay}},\ }\bibfield  {title} {\bibinfo {title} {Stability of interfacial
+  waves in aluminium reduction cells},\ }\href
+  {https://doi.org/10.1017/S0022112098001025} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Fluid. Mech.}\ }\textbf {\bibinfo {volume} {362}},\ \bibinfo
+  {pages} {273} (\bibinfo {year} {1998})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lukyanov}\ \emph {et~al.}(2001)\citenamefont
+  {Lukyanov}, \citenamefont {El},\ and\ \citenamefont
+  {Molokov}}]{Lukyanov2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Lukyanov}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {El}},\ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Molokov}},\ }\bibfield
+  {title} {\bibinfo {title} {Instability of {{MHD-modified}} interfacial
+  gravity waves revisited},\ }\href
+  {https://doi.org/10.1016/S0375-9601(01)00653-3} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett. A}\ }\textbf {\bibinfo {volume} {290}},\
+  \bibinfo {pages} {165} (\bibinfo {year} {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Molokov}\ \emph {et~al.}(2011)\citenamefont
+  {Molokov}, \citenamefont {El},\ and\ \citenamefont {Lukyanov}}]{Molokov2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Molokov}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {El}},\ and\
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Lukyanov}},\ }\bibfield
+  {title} {\bibinfo {title} {Classification of instability modes in a model of
+  aluminium reduction cells with a uniform magnetic field},\ }\href
+  {https://doi.org/10.1007/s00162-010-0201-y} {\bibfield  {journal} {\bibinfo
+  {journal} {Theor. Comput. Fluid Dyn.}\ }\textbf {\bibinfo {volume} {25}},\
+  \bibinfo {pages} {261} (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zikanov}\ \emph {et~al.}(2000)\citenamefont
+  {Zikanov}, \citenamefont {Thess}, \citenamefont {Davidson},\ and\
+  \citenamefont {Ziegler}}]{Zikanov2000}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Zikanov}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Thess}},
+  \bibinfo {author} {\bibfnamefont {P.~A.}\ \bibnamefont {Davidson}},\ and\
+  \bibinfo {author} {\bibfnamefont {D.~P.}\ \bibnamefont {Ziegler}},\
+  }\bibfield  {title} {\bibinfo {title} {A new approach to numerical simulation
+  of melt flows and interface instability in hall-h{\'e}roult cells},\ }\href
+  {https://doi.org/10.1007/s11663-000-0039-6} {\bibfield  {journal} {\bibinfo
+  {journal} {Metall. Mater. Trans. B}\ }\textbf {\bibinfo {volume} {31}},\
+  \bibinfo {pages} {1541} (\bibinfo {year} {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zikanov}\ \emph {et~al.}(2004)\citenamefont
+  {Zikanov}, \citenamefont {Sun},\ and\ \citenamefont {Ziegler}}]{Zikanov2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Zikanov}}, \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Sun}},\ and\
+  \bibinfo {author} {\bibfnamefont {D.~P.}\ \bibnamefont {Ziegler}},\
+  }\bibfield  {title} {\bibinfo {title} {Shallow {{Water Model}} of {{Flows}}
+  in {{Hall-Heroult Cells}}.},\ }in\ \href@noop {} {\emph {\bibinfo {booktitle}
+  {Light {{Met}}.}}}\ (\bibinfo {year} {2004})\ pp.\ \bibinfo {pages}
+  {445--451}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bojarevics}\ and\ \citenamefont
+  {Pericleous}(2006)}]{Bojarevics2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Bojarevics}}\ and\ \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Pericleous}},\ }\bibfield  {title} {\bibinfo {title} {Comparison of {{MHD}}
+  models for aluminium reduction cells.},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Proc. TMS Light Met.}\ ,\ \bibinfo {pages} {347}}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bojarevics}\ and\ \citenamefont
+  {Evans}(2015)}]{bojarevics2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Bojarevics}}\ and\ \bibinfo {author} {\bibfnamefont {J.~W.}\ \bibnamefont
+  {Evans}},\ }\bibfield  {title} {\bibinfo {title} {Mathematical {{Modelling}}
+  of {{Hall-H{\'e}roult Pot Instability}} and {{Verification}} by
+  {{Measurements}} of {{Anode Current Distribution}}},\ }in\ \href
+  {https://doi.org/10.1007/978-3-319-48248-4_132} {\emph {\bibinfo {booktitle}
+  {Light {{Metals}} 2015}}},\ \bibinfo {editor} {edited by\ \bibinfo {editor}
+  {\bibfnamefont {M.}~\bibnamefont {Hyland}}}\ (\bibinfo  {publisher} {Springer
+  International Publishing},\ \bibinfo {address} {Cham},\ \bibinfo {year}
+  {2015})\ pp.\ \bibinfo {pages} {783--788}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pedcenko}\ \emph {et~al.}(2009)\citenamefont
+  {Pedcenko}, \citenamefont {Molokov}, \citenamefont {Priede}, \citenamefont
+  {Lukyanov},\ and\ \citenamefont {Thomas}}]{Pedcenko2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Pedcenko}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Molokov}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Priede}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Lukyanov}},\ and\ \bibinfo
+  {author} {\bibfnamefont {P.~J.}\ \bibnamefont {Thomas}},\ }\bibfield  {title}
+  {\bibinfo {title} {Experimental model of the interfacial instability in
+  aluminium reduction cells},\ }\href
+  {https://doi.org/10.1209/0295-5075/88/24001} {\bibfield  {journal} {\bibinfo
+  {journal} {EPL}\ }\textbf {\bibinfo {volume} {88}},\ \bibinfo {pages} {24001}
+  (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pedcenko}\ \emph {et~al.}(2017)\citenamefont
+  {Pedcenko}, \citenamefont {Molokov},\ and\ \citenamefont
+  {Bardet}}]{Pedcenko2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Pedcenko}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Molokov}},\
+  and\ \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Bardet}},\
+  }\bibfield  {title} {\bibinfo {title} {The {{Effect}} of ``{{Wave
+  Breakers}}'' on the {{Magnetohydrodynamic~Instability}} in {{Aluminum
+  Reduction Cells}}},\ }\href {https://doi.org/10.1007/s11663-016-0840-5}
+  {\bibfield  {journal} {\bibinfo  {journal} {Metall. Mater. Trans. B}\
+  }\textbf {\bibinfo {volume} {48}},\ \bibinfo {pages} {6} (\bibinfo {year}
+  {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Borisov}\ \emph {et~al.}(2010)\citenamefont
+  {Borisov}, \citenamefont {Poslavsky},\ and\ \citenamefont
+  {Rudnev}}]{Borisov2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~D.}\ \bibnamefont
+  {Borisov}}, \bibinfo {author} {\bibfnamefont {S.~A.}\ \bibnamefont
+  {Poslavsky}},\ and\ \bibinfo {author} {\bibfnamefont {Y.~I.}\ \bibnamefont
+  {Rudnev}},\ }\bibfield  {title} {\bibinfo {title} {{Experimental study of
+  wave processes in a two-layer system of immiscible current-carrying
+  fluids.}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Appl.
+  Hydromechanics}\ }\textbf {\bibinfo {volume} {12}},\ \bibinfo {pages} {3}
+  (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nore}\ \emph {et~al.}(2021)\citenamefont {Nore},
+  \citenamefont {Cappanera}, \citenamefont {Guermond}, \citenamefont {Weier},\
+  and\ \citenamefont {Herreman}}]{Nore2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Nore}}, \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Cappanera}},
+  \bibinfo {author} {\bibfnamefont {J.-L.}\ \bibnamefont {Guermond}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Weier}},\ and\ \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {Herreman}},\ }\bibfield  {title} {\bibinfo
+  {title} {Feasibility of {{Metal Pad Roll Instability Experiments}} at {{Room
+  Temperature}}},\ }\href {https://doi.org/10.1103/PhysRevLett.126.184501}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf
+  {\bibinfo {volume} {126}},\ \bibinfo {pages} {184501} (\bibinfo {year}
+  {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hegde}\ \emph {et~al.}(2025)\citenamefont {Hegde},
+  \citenamefont {Gundrum},\ and\ \citenamefont {Horstmann}}]{Hegde2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Hegde}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Gundrum}},\
+  and\ \bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont {Horstmann}},\
+  }\bibfield  {title} {\bibinfo {title} {A model experiment to study the metal
+  pad roll instability under ambient conditions},\ }\href
+  {https://doi.org/10.1007/s00348-025-03973-7} {\bibfield  {journal} {\bibinfo
+  {journal} {Exp. Fluids}\ }\textbf {\bibinfo {volume} {66}},\ \bibinfo {pages}
+  {76} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Eltishchev}\ \emph {et~al.}(2022)\citenamefont
+  {Eltishchev}, \citenamefont {Losev}, \citenamefont {Kolesnichenko},\ and\
+  \citenamefont {Frick}}]{Eltishchev2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Eltishchev}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Losev}},
+  \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont {Kolesnichenko}},\ and\
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Frick}},\ }\bibfield
+  {title} {\bibinfo {title} {Circular surface wave in a cylindrical {{MHD}}
+  cell},\ }\href {https://doi.org/10.1007/s00348-022-03469-8} {\bibfield
+  {journal} {\bibinfo  {journal} {Exp. Fluids}\ }\textbf {\bibinfo {volume}
+  {63}},\ \bibinfo {pages} {127} (\bibinfo {year} {2022})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Eltishchev}\ \emph {et~al.}(2024)\citenamefont
+  {Eltishchev}, \citenamefont {Losev},\ and\ \citenamefont
+  {Frick}}]{Eltishchev2024}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Eltishchev}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Losev}},\
+  and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Frick}},\ }\bibfield
+   {title} {\bibinfo {title} {Maintenance mechanism of a circular surface wave
+  in a magnetohydrodynamic cell and limits of its existence},\ }\href
+  {https://doi.org/10.1103/PhysRevFluids.9.083702} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Fluids}\ }\textbf {\bibinfo {volume} {9}},\
+  \bibinfo {pages} {083702} (\bibinfo {year} {2024})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Herreman}\ \emph {et~al.}(2019)\citenamefont
+  {Herreman}, \citenamefont {Nore}, \citenamefont {Guermond}, \citenamefont
+  {Cappanera}, \citenamefont {Weber},\ and\ \citenamefont
+  {Horstmann}}]{Herreman2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {W.}~\bibnamefont
+  {Herreman}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Nore}},
+  \bibinfo {author} {\bibfnamefont {J.-L.}\ \bibnamefont {Guermond}}, \bibinfo
+  {author} {\bibfnamefont {L.}~\bibnamefont {Cappanera}}, \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Weber}},\ and\ \bibinfo {author}
+  {\bibfnamefont {G.~M.}\ \bibnamefont {Horstmann}},\ }\bibfield  {title}
+  {\bibinfo {title} {Perturbation theory for metal pad roll instability in
+  cylindrical reduction cells},\ }\href {https://doi.org/10.1017/jfm.2019.642}
+  {\bibfield  {journal} {\bibinfo  {journal} {J. Fluid. Mech.}\ }\textbf
+  {\bibinfo {volume} {878}},\ \bibinfo {pages} {598} (\bibinfo {year}
+  {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Politis}\ and\ \citenamefont
+  {Priede}(2021)}]{Politis2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Politis}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Priede}},\ }\bibfield  {title} {\bibinfo {title} {Fractality of metal pad
+  instability threshold in rectangular cells},\ }\href
+  {https://doi.org/10.1017/jfm.2021.100} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Fluid. Mech.}\ }\textbf {\bibinfo {volume} {915}},\ \bibinfo
+  {pages} {A101} (\bibinfo {year} {2021})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Keulegan}(1959)}]{Keulegan1959}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~H.}\ \bibnamefont
+  {Keulegan}},\ }\bibfield  {title} {\bibinfo {title} {Energy dissipation in
+  standing waves in rectangular basins},\ }\href
+  {https://doi.org/10.1017/S0022112059000489} {\bibfield  {journal} {\bibinfo
+  {journal} {J. Fluid. Mech.}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo
+  {pages} {33} (\bibinfo {year} {1959})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {La~Rocca}\ \emph {et~al.}(2002)\citenamefont
+  {La~Rocca}, \citenamefont {Sciortino},\ and\ \citenamefont
+  {Boniforti}}]{LaRocca2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {La~Rocca}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Sciortino}},\ and\ \bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Boniforti}},\ }\bibfield  {title} {\bibinfo {title} {Interfacial gravity
+  waves in a two-fluid system},\ }\href
+  {https://doi.org/10.1016/S0169-5983(01)00039-9} {\bibfield  {journal}
+  {\bibinfo  {journal} {Fluid Dyn. Res.}\ }\textbf {\bibinfo {volume} {30}},\
+  \bibinfo {pages} {31} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {M{\'e}nard}\ \emph {et~al.}(2007)\citenamefont
+  {M{\'e}nard}, \citenamefont {Tanguy},\ and\ \citenamefont
+  {Berlemont}}]{Menard2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {M{\'e}nard}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tanguy}},\
+  and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Berlemont}},\
+  }\bibfield  {title} {\bibinfo {title} {Coupling level set/{{VOF}}/ghost fluid
+  methods: {{Validation}} and application to {{3D}} simulation of the primary
+  break-up of a liquid jet},\ }\href
+  {https://doi.org/10.1016/j.ijmultiphaseflow.2006.11.001} {\bibfield
+  {journal} {\bibinfo  {journal} {Int. J. Multiphase Flow}\ }\textbf {\bibinfo
+  {volume} {33}},\ \bibinfo {pages} {510} (\bibinfo {year} {2007})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Vaudor}\ \emph {et~al.}(2017)\citenamefont {Vaudor},
+  \citenamefont {M{\'e}nard}, \citenamefont {Aniszewski}, \citenamefont
+  {Doring},\ and\ \citenamefont {Berlemont}}]{Vaudor2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Vaudor}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {M{\'e}nard}},
+  \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Aniszewski}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Doring}},\ and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Berlemont}},\ }\bibfield  {title} {\bibinfo
+  {title} {A consistent mass and momentum flux computation method for two phase
+  flows. {{Application}} to atomization process},\ }\href
+  {https://doi.org/10.1016/j.compfluid.2017.04.023} {\bibfield  {journal}
+  {\bibinfo  {journal} {Comput. Fluids}\ }\textbf {\bibinfo {volume} {152}},\
+  \bibinfo {pages} {204} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Munger}\ and\ \citenamefont
+  {Vincent}(2006)}]{Munger2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Munger}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Vincent}},\ }\bibfield  {title} {\bibinfo {title} {Direct simulations of
+  {{MHD}} instabilities in aluminum reduction cells},\ }\href
+  {https://doi.org/10.22364/mhd.42.4.9} {\bibfield  {journal} {\bibinfo
+  {journal} {MHD}\ }\textbf {\bibinfo {volume} {42}},\ \bibinfo {pages} {417}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mikaelian}(1990)}]{mikaelian1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.~O.}\ \bibnamefont
+  {Mikaelian}},\ }\bibfield  {title} {\bibinfo {title} {Rayleigh-taylor and
+  richtmyer-meshkov instabilities in multilayer fluids with surface tension},\
+  }\href {https://doi.org/10.1103/PhysRevA.42.7211} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {42}},\
+  \bibinfo {pages} {7211} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horstmann}\ \emph {et~al.}(2018)\citenamefont
+  {Horstmann}, \citenamefont {Weber},\ and\ \citenamefont
+  {Weier}}]{Horstmann2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont
+  {Horstmann}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Weber}},\
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Weier}},\ }\bibfield
+   {title} {\bibinfo {title} {Coupling and stability of interfacial waves in
+  liquid metal batteries},\ }\href {https://doi.org/10.1017/jfm.2018.223}
+  {\bibfield  {journal} {\bibinfo  {journal} {J. Fluid. Mech.}\ }\textbf
+  {\bibinfo {volume} {845}},\ \bibinfo {pages} {1} (\bibinfo {year}
+  {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Grants}\ and\ \citenamefont
+  {Baranovskis}(2021)}]{Grants2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Grants}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Baranovskis}},\ }\bibfield  {title} {\bibinfo {title} {Experimental
+  observation of metal-electrolyte interface stability in a model of liquid
+  metal battery},\ }\href {https://doi.org/10.22364/mhd.57.2.3} {\bibfield
+  {journal} {\bibinfo  {journal} {Magnetohydrodynamics}\ }\textbf {\bibinfo
+  {volume} {57}},\ \bibinfo {pages} {171} (\bibinfo {year} {2021})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Lamb}(1945)}]{Lamb1945}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Lamb}},\ }\href@noop {} {\emph {\bibinfo {title} {Hydrodynamics}}}\
+  (\bibinfo  {publisher} {New York,: Dover publications},\ \bibinfo {year}
+  {1945})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Faltinsen}\ and\ \citenamefont
+  {Timokha}(2009)}]{Faltinsen2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.~M.}\ \bibnamefont
+  {Faltinsen}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Timokha}},\ }\href@noop {} {\emph {\bibinfo {title} {Sloshing}}},\ \bibinfo
+  {edition} {1st}\ ed.\ (\bibinfo  {publisher} {Cambridge University Press},\
+  \bibinfo {year} {2009})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Joseph}(2006)}]{Joseph2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~D.}\ \bibnamefont
+  {Joseph}},\ }\bibfield  {title} {\bibinfo {title} {Potential flow of viscous
+  fluids: {{Historical}} notes},\ }\href
+  {https://doi.org/10.1016/j.ijmultiphaseflow.2005.09.004} {\bibfield
+  {journal} {\bibinfo  {journal} {Int. J. Multiph. Flow}\ }\textbf {\bibinfo
+  {volume} {32}},\ \bibinfo {pages} {285} (\bibinfo {year} {2006})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Huang}\ \emph {et~al.}(2025)\citenamefont {Huang},
+  \citenamefont {Lyu}, \citenamefont {Yang},\ and\ \citenamefont
+  {Ni}}]{Huang2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Huang}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont {Lyu}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Yang}},\ and\ \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Ni}},\ }\bibfield  {title} {\bibinfo
+  {title} {Interfacial wave coupling in an orbitally rotating cylinder},\
+  }\href {https://doi.org/10.1017/jfm.2025.10562} {\bibfield  {journal}
+  {\bibinfo  {journal} {J. Fluid. Mech.}\ }\textbf {\bibinfo {volume} {1019}},\
+  \bibinfo {pages} {A20} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horstmann}\ \emph {et~al.}(2019)\citenamefont
+  {Horstmann}, \citenamefont {Wylega},\ and\ \citenamefont
+  {Weier}}]{Horstmann2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont
+  {Horstmann}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Wylega}},\
+  and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Weier}},\ }\bibfield
+   {title} {\bibinfo {title} {Measurement of interfacial wave dynamics in
+  orbitally shaken cylindrical containers using ultrasound pulse-echo
+  techniques},\ }\href {https://doi.org/10.1007/s00348-019-2699-0} {\bibfield
+  {journal} {\bibinfo  {journal} {Exp. Fluids}\ }\textbf {\bibinfo {volume}
+  {60}},\ \bibinfo {pages} {56} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ \emph {et~al.}(2011)\citenamefont {Zhang},
+  \citenamefont {Li}, \citenamefont {Lai}, \citenamefont {Liu}, \citenamefont
+  {Xu}, \citenamefont {Wang},\ and\ \citenamefont {Zhang}}]{Zhang2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Zhang}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Li}}, \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Lai}}, \bibinfo {author}
+  {\bibfnamefont {W.}~\bibnamefont {Liu}}, \bibinfo {author} {\bibfnamefont
+  {Y.}~\bibnamefont {Xu}}, \bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Wang}},\ and\ \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Zhang}},\
+  }\bibfield  {title} {\bibinfo {title} {The relationship between the aspect
+  ratio and multi-physical fields in aluminium reduction cells},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {J. South. Afr. Inst. Min.
+  Metall.}\ }\textbf {\bibinfo {volume} {111}},\ \bibinfo {pages} {787}
+  (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Munger}\ and\ \citenamefont
+  {Vincent}(2008)}]{Munger2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Munger}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Vincent}},\ }\bibfield  {title} {\bibinfo {title} {A cylindrical model for
+  rotational {{MHD}} instabilities in aluminum reduction cells},\ }\href
+  {https://doi.org/10.1007/s00162-008-0082-5} {\bibfield  {journal} {\bibinfo
+  {journal} {Theor. Comput. Fluid Dyn.}\ }\textbf {\bibinfo {volume} {22}},\
+  \bibinfo {pages} {363} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Borisov}\ \emph {et~al.}(2008)\citenamefont
+  {Borisov}, \citenamefont {Poslavsky},\ and\ \citenamefont
+  {Rudnev}}]{Borisov2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~D.}\ \bibnamefont
+  {Borisov}}, \bibinfo {author} {\bibfnamefont {S.~A.}\ \bibnamefont
+  {Poslavsky}},\ and\ \bibinfo {author} {\bibfnamefont {Y.~I.}\ \bibnamefont
+  {Rudnev}},\ }\bibfield  {title} {\bibinfo {title} {{Wave processes in a
+  two-layer system of immiscible conductive liquids}},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {Adv. Appl. Math. Mech.}\ ,\
+  \bibinfo {pages} {165}} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mohammad}\ \emph {et~al.}(2022)\citenamefont
+  {Mohammad}, \citenamefont {Dupuis}, \citenamefont {Funkenbusch},\ and\
+  \citenamefont {Kelley}}]{Mohammad2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Mohammad}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Dupuis}},
+  \bibinfo {author} {\bibfnamefont {P.~D.}\ \bibnamefont {Funkenbusch}},\ and\
+  \bibinfo {author} {\bibfnamefont {D.~H.}\ \bibnamefont {Kelley}},\ }\bibfield
+   {title} {\bibinfo {title} {Oscillating {{Currents Stabilize Aluminum Cells}}
+  for {{Efficient}}, {{Low Carbon Production}}},\ }\href
+  {https://doi.org/10.1007/s11837-022-05254-8} {\bibfield  {journal} {\bibinfo
+  {journal} {JOM}\ }\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {1908}
+  (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Horstmann}\ \emph {et~al.}(2025)\citenamefont
+  {Horstmann}, \citenamefont {Kuhn},\ and\ \citenamefont
+  {Dohnal}}]{Horstmann2025}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont
+  {Horstmann}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Kuhn}},\
+  and\ \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Dohnal}},\
+  }\bibfield  {title} {\bibinfo {title} {Suppression of magnetohydrodynamic
+  interfacial wave instabilities by means of parametric anti-resonance},\
+  }\href {https://doi.org/10.1007/s11071-025-10941-7} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nonlinear Dyn.}\ }\textbf {\bibinfo {volume} {113}},\
+  \bibinfo {pages} {14449} (\bibinfo {year} {2025})}\BibitemShut {NoStop}%
+\end{thebibliography}%
