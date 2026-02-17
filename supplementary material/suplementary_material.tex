@@ -91,10 +91,227 @@ bookmarksnumbered=true]{hyperref}
 
 \begin{document}
 
+\section{Supplementary material: Derivation of time independent velocity potential for a two-layer system in a rectangular domain}
+\label{supplA}
+
+To derive the velocity potential ($\phi$) for each medium $i$, we need to solve the Laplace equation which goes by:
+\begin{equation}
+	\Delta \widehat\phi_i = \pdv[2]{\widehat\phi_i}{x} + \pdv[2]{\widehat\phi_i}{y} + \pdv[2]{\widehat\phi_i}{z}.
+\end{equation}
+
+Using separation of variables, we get
+\begin{equation}
+	\widehat\phi_i (x, y, z) = X_i(x) Y_i(y) Z_i(z),
+	\label{eq:vel_pot_separation-ansatz}
+\end{equation}
+
+leading to
+\begin{equation}
+\dfrac{1}{X_i}\dv[2]{X_i}{x} + \dfrac{1}{Y_i}\dv[2]{Y_i}{y} = - \dfrac{1}{Z_i}\dv[2]{Z_i}{z} = -k_z^2 ,
+\end{equation}
+
+where $k_z^2 = k_x^2 + k_y^2$. We write the function $Z_i(z)$ as
+\begin{equation}
+Z_i(z) = Z^1_i e^{k_z} + Z^2_i e^{-k_z}.
+\end{equation}
+
+The boundary conditions pertaining to the z-plane include,
+\begin{equation}
+	\left.\pdv{\phi_1}{z}\right\vert_{z=h_1} = \left.\pdv{\phi_2}{z}\right\vert_{z=-h_2} = 0 ,
+\end{equation}
+
+\begin{equation}
+\begin{split}
+	\therefore
+	Z_1(z) = Z_1\cosh{[k_z(z-h_1)]},
+	\\
+	Z_2(z) = Z_2\cosh{[k_z(z+h_2)]}.
+\end{split}
+\end{equation}
+
+Normalizing the above equation to get,
+\begin{equation}
+	\begin{split}
+		Z_1=\frac{\omega}{k_z}\frac{\text{cosh}[k_z(z-h_1)]}{\text{sinh}[k_zh_1]},
+		\\
+		Z_2=-\frac{\omega}{k_z}\frac{\text{cosh}[k_z(z+h_2)]}{\text{sinh}[k_zh_2]}.
+	\end{split}
+	\label{eq:vel_pot_Z_soln}
+\end{equation}
+
+The boundary conditions with respect to the $x$ and $y$ plane are,
+\begin{equation}
+	\begin{split}
+		\left.\pdv{X_1}{x}\right\vert_{x=\frac{L_x}{2}} = \left.\pdv{X_2}{x}\right\vert_{x=-\frac{L_x}{2}} = 0,
+		\\
+		\left.\pdv{Y_1}{y}\right\vert_{y=\frac{L_y}{2}} = \left.\pdv{Y_2}{y}\right\vert_{y=-\frac{L_y}{2}} = 0.
+	\end{split}
+\end{equation}
+
+Concerning the present coordinate system with the origin present at the center of the quadrilateral system, cosine functions are introduced so that the conditions at the frontal and the sagittal surfaces are met. To make the potential zero in planes $x=(\pm L_x/2)$ and $y=(\pm L_y/2)$, it is necessary that
+
+\begin{equation}
+	\begin{split}
+	X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
+	\\
+	Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
+	\end{split}
+	\label{eq:vel_pot_XY_soln}
+\end{equation}
+
+Inserting Eq.\,\eqref{eq:vel_pot_Z_soln} and Eq.\,\eqref{eq:vel_pot_XY_soln} in Eq.\,\eqref{eq:vel_pot_separation-ansatz}, we get the following equation for the time independent velocity potential in a two layer stratified system:
+
+\begin{equation}
+	\begin{bmatrix}
+		\widehat\phi_1 \\[10pt]
+		\widehat\phi_2
+	\end{bmatrix} = A_{mn}
+	\begin{bmatrix}
+		\dfrac{\omega}{k}\dfrac{\text{cosh}[k(z-h_1)]}{\text{sinh}[kh_1]}
+		\\[10pt]
+		-\dfrac{\omega}{k}\dfrac{\text{cosh}[k(z+h_2)]}{\text{sinh}[kh_2]}
+	\end{bmatrix} \text{cos}\left[ \dfrac{m\pi}{L_x} \left( x+\dfrac{L_x}{2}\right)\right] \text{cos}\left[ \dfrac{n\pi}{L_y} \left( y+\dfrac{L_y}{2}\right)\right],
+\end{equation}
+
+where $k=k_z$, the mode dependent wave number. The the rate of change of interface elevation is dependent on the normal derivative of the velocity potential such that,
+
+\begin{equation}	
+	\left.\pdv{\phi_1}{z}\right\vert_{z=0}
+	=
+	\left. \pdv{\phi_2}{z}\right\vert_{z=0}
+	=
+	\left.\pdv{\eta}{t}\right\vert_{z=0}.
+\end{equation}
+
+Therefore, the time independent interface elevation $\widehat\eta$ is
+
+\begin{equation}
+\widehat\eta = \ii{i} A_{mn}  \text{cos}\left[ \dfrac{m\pi}{L_x} \left( x+\dfrac{L_x}{2}\right)\right] \text{cos}\left[ \dfrac{n\pi}{L_y} \left( y+\dfrac{L_y}{2}\right)\right].
+\end{equation}
+
+
+
+\section{Supplementary material: Derivation of time independent electric potential for a two-layer system in a rectangular domain}
+
+The Laplace equation for the electric potential reads:
+\begin{equation}
+\Delta \widehat\varphi = \pdv[2]{\widehat\varphi}{x} + \pdv[2]{\widehat\varphi}{y} + \pdv[2]{\widehat\varphi}{z}.
+\end{equation}
+
+We write the separation ansatz,
+\begin{equation}
+	\widehat\varphi_i (x, y, z) = X_i(x) Y_i(y) Z_i(z) H,
+	\label{eq:elec_pot_separation_ansatz}
+\end{equation}
+
+where, $H$ is the dependence of the electrical potential on the elevation of the interface $\eta$. Similar to the steps involved for the velocity potential in Sec.\,\ref{supplA}, we solve for $Z_i(z)$, $X_i(x)$ and $Y_i(y)$ as follows:
+
+\begin{gather}
+	\underbrace{\frac{1}{X_i}\dv[2]{X_i}{x}}_{-k_x^2} 
+	+ 
+	\underbrace{\frac{1}{Y_i}\dv[2]{Y_i}{y}}_{-k_y^2} 
+	+ 
+	\underbrace{\frac{1}{Z_i}\dv[2]{Z_i}{z}}_{k_z^2} = 0,
+\intertext{Applying the boundary conditions pertaining to the top and bottom surfaces are}
+\begin{split}
+	\widehat\varphi_1 = 0|_{z=h_1}, \\    
+	J_{2,z} = 0|_{z=-h_2} = 0,
+\end{split}
+\intertext{we get the solution to $Z_i(z)$ to be}
+\begin{split}
+	Z_1(z) = -Z_1 \text{sinh}[k_z (z-h_1)],
+	\\
+	Z_2(z) = Z_2 \text{cosh}[k_z (z+h_2)].
+	\label{eq:elec_pot_Z}
+\end{split}
+\intertext{After normalization:}
+\begin{split}
+	Z_1(z) = -\frac{\text{sinh}[k_z (z-h_1)]}{\sigma_1 \:\text{cosh}[k_zh_1]}\\
+	Z_2(z) = -\frac{\text{cosh}[k_z (z+h_2)]}{\sigma_2 \:\text{sinh}[k_zh_2]}
+\end{split}
+\intertext{Similarly, $X_i(x)$ and $Y_i(y)$ amount to}
+\begin{split}
+	X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
+	\\
+	Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
+\end{split}
+\label{eq:elec_pot_XY}
+\end{gather}
+
+Inserting Eq.\,\eqref{eq:elec_pot_Z} and Eq.\,\eqref{eq:elec_pot_XY} in Eq.\,\eqref{eq:elec_pot_separation_ansatz}, we get the formulation
+
+
+\begin{equation}
+	\begin{split}
+		\widehat\varphi_1 = -A_{mn}\frac{\text{sinh}[k (z-h_1)]}{\sigma_1 \:\text{cosh}[kh_1]} \:\text{cos}\left[ \frac{m\pi}{L_x} \left( x+\frac{L_x}{2}\right)\right] \text{cos}\left[ \frac{n\pi}{L_y} \left( y+\frac{L_y}{2}\right)\right] H,
+		\\ 
+		\widehat\varphi_2 = -A_{mn}\frac{\text{cosh}[k (z+h_2)]}{\sigma_2 \:\text{sinh}[kh_2]} \:\text{cos}\left[ \frac{m\pi}{L_x} \left( x+\frac{L_x}{2}\right)\right] \text{cos}\left[ \frac{n\pi}{L_y} \left( y+\frac{L_y}{2}\right)\right] H.
+	\end{split}
+	\label{eq:elec_pot_incomplete}
+\end{equation}
+
+Here, $k = k_z$. The jump condition at the interface reads
+\begin{equation}
+	J_0(\sigma_2^{-1}-\sigma_1^{-1})\widehat\eta = \widehat\varphi_2|_{z=0}
+	- \widehat\varphi_1|_{z=0}.
+	\label{eq:jump_condition_elec_pot}
+\end{equation}
+
+Solving for $H$ by substituting Eq.\,\eqref{eq:elec_pot_incomplete} in Eq.\,\eqref{eq:jump_condition_elec_pot} gives
+
+\begin{equation}
+	H = \frac{\ii{i} J_0(\sigma_1^{-1} - \sigma_2^{-1})}{\sigma_1^{-1} \:\text{tanh}[kh_1] + \sigma_2^{-1} \:\text{coth}[kh_2]}
+\end{equation}
+
+The equation of the time independent electric potential for a two-layer stratified system reads
+
+\begin{equation}
+	\begin{bmatrix}
+		\widehat{\varphi}_1 \\[12pt]
+		\widehat{\varphi}_2 
+	\end{bmatrix} = 
+	\frac{A_{mn}J_0(\sigma_1^{-1} - \sigma_2^{-1})\widehat{\eta}}
+	{\sigma_1^{-1} \:\text{tanh}[kh_1] + \sigma_2^{-1} \:\text{coth}[kh_2]}
+	\left[
+	\begin{array}{cc}
+		-\dfrac{\sinh[k (z-h_1)]}{\sigma_1 \cosh[kh_1]} &
+		\\[10pt]
+		-\dfrac{\cosh[k (z+h_2)]}{\sigma_2 \sinh[kh_2]} & 
+	\end{array} 
+	\right]
+\end{equation}
+
+
+
+
+
+
+
 
 
 \section{Supplementary material: Formulation of the Fredholm alternative} 
 \label{appA}
+To recap, the two-wave perturbation ansatz reads
+\begin{equation}
+	\fontsize{10.5pt}{10.5pt}
+	[\textbf{\textit{u}}_i, p_i, \eta, \textbf{\textit{j}}_i ]= 
+	\biggl( 
+	C 
+	\left[ 
+	\widehat{\h{u}}_{i}, \widehat{p}_{i}, \widehat{\eta}, \widehat{\h{j}}_{i} \right] 
+	+ 
+	C' 
+	\left[ 
+	\widehat{\h{u}}'_{i}, \widehat{p}'_{i}, \widehat{\eta}', \widehat{\h{j}}'_{i} \right] 
+	+\left[
+	\widetilde{\h{u}}_i, \widetilde{p}_{i}, \widetilde{\eta}, \widetilde{\h{j}}_{i} \right] 
+	\biggr) 
+	\;
+	\ii e^{ \bigl(\alpha -\overbar\lambda 
+		\,+\, \ii{i}\overbar{\omega}
+		\bigr)t} .
+	\label{eq:perturb_method_ansatz}
+\end{equation}
 
 The balance equations considering only leading order terms, for a given wave mode $(m,n)$ are
 %%%%%%%%%%%%%%%%%%%%
@@ -113,7 +330,7 @@ The balance equations considering only leading order terms, for a given wave mod
 		\label{eq:static_ohmslaw}
 	\end{equation}
 \end{subequations}
-The complete expression when we input the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the momentum Eq.\,\eqref{eq:gov_momentum} is given as
+The complete expression when we input the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the momentum balance equation is given as
 \begin{align}
 	\nn
 		&C\bigl(\ii i\overbar\omega + \alpha - \overbar\lambda \bigr)\rho \widehat{\h{u}} 
@@ -237,7 +454,13 @@ Therefore, from the leading order balance Eqs.\,\eqref{eq:lead_balance_1} and \e
 	\end{array}
 	\label{eq:mode1_alpha-C-K}
 \end{equation}
-From the boundary condition in Eq.\,\eqref{eq:int_bc2}, the surface integral of the pressure jump gives
+
+The dynamic boundary condition for gravity capillary waves is given by:
+\begin{equation}
+	-\gamma_{\ii{int}} \nabla^2\eta + (\rho_2-\rho_1)g\eta = p_2 \,\bigl|_{z=0} - p_1 \,\bigl|_{z=0}.
+\end{equation}
+
+Incorporating the above equation in the surface integral of the pressure jump gives
 \begin{equation}
 	\begin{array}{rcl}
 		\oint_{S} 
@@ -273,7 +496,7 @@ On the right-hand side of the Eq.\,\eqref{eq:fredholm_step1}, we can write the n
 	\int_{V_i} \rho_i |\widehat{\h u_i}|^2 \ii dV  .
 	\label{eq:fredholm_rhs}
 \end{equation}
-Integration by parts on Eq.\,\eqref{eq:fredholm_rhs} considering the potential wave solution of $\widehat p \;$ in Eq.\,\eqref{eq:pot_wave_soln} gives
+Integration by parts on Eq.\,\eqref{eq:fredholm_rhs} considering the potential wave solution of $\widehat p = -\rho_i(\ii i\omega)\widehat{\phi}_i$ gives
 \begin{align}
 	\nn
 	\sum_{i=1,2} \int_{V_i} \rho_i |\widehat{\h u_i}|^2 \ii dV
@@ -291,7 +514,8 @@ Integration by parts on Eq.\,\eqref{eq:fredholm_rhs} considering the potential w
 	\Longrightarrow K_{\eta\eta} .
 	\label{eq:ke-mode1_K11-eq}
 \end{align}
-The Eqs.\,\eqref{eq:alpha-C-K_all}, \eqref{eq:fredholm_rhs}, \eqref{eq:A_11} and \eqref{eq:A_22}) gives the matrix equations given below:
+
+Solving Eqs.\,\eqref{eq:alpha-C-K_all} and \eqref{eq:fredholm_rhs} gives the matrix equations given below:
 \begin{align}
 	&\bigl( \alpha - [\ii i\delta\omega - \delta\lambda] \bigr) C^2  K_{\eta\eta} = C^2 I_{\eta\eta} + CC' I_{\eta\eta'} + C^2\bigl ( [\ii{i} \delta\omega - \delta\lambda] - \alpha \bigr) K_{\eta\eta} , 
 	\label{eq:balance_eq-post_fred_alt1}
