@@ -1,30 +1,17 @@
 import os
 import numpy as np
+from numpy import pi, sin, cos, tan, sinh, cosh, tanh, sqrt
 import cmath as cmth
 from dataclasses import dataclass
 from itertools import product
 
 np.set_printoptions(legacy='1.25')
-
-##### MATH FUNCTION ##############
-pi=np.pi
+##### PHYSICAL PARAMETERS ########
 g = 9.81
-def sin(x):
-    return np.sin(x)
-def cos(x):
-    return np.cos(x)
-def tan(x):
-    return np.tan(x)
-def sinh(x):
-    return np.sinh(x)
-def cosh(x):
-    return np.cosh(x)
-def tanh(x):
-    return np.tanh(x)
+###################################
+##### MATH FUNCTION ##############
 def coth(x):
     return 1/np.tanh(x)
-def sqrt(x):
-    return np.sqrt(x)
 def csqrt(x):
     return cmth.sqrt(x)
 ###################################
@@ -67,13 +54,13 @@ class power:
 
 @dataclass
 class wavemode1:
-    # wave mode (m1,n1) as in the manuscript
+    # wave mode (m1, n1) as in the manuscript
     m: int 
     n: int   
     
 @dataclass
 class wavemode2:
-    # wave mode (m2,n2) as in the manuscript
+    # wave mode (m2, n2) as in the manuscript
     m: int 
     n: int 
 
@@ -86,20 +73,22 @@ def deltaFunc(x):
     return val
 
 # wave number
-def kmn(m,n,Lx,Ly):
+def kmn(m, n, Lx, Ly):
     if m<=0 and n<=0:
         raise ValueError('Incorrect wave modes')
     else:
         return pi*sqrt(pow(m/Lx,2)+pow(n/Ly,2))
 
-# wave frequency
-def wmn(rho1,rho2,gamma, k, h1,h2):
+def wmn(rho1, rho2, gamma, k, h1, h2):
+    """
+    Gravity-capillary wave frequency. Equation (14).
+    """
     num = (rho2-rho1)*g*k + gamma*k**3
     den = rho1*coth(k*h1) + rho2*coth(k*h2)
     return sqrt(num/den)
 
 # viscous dissipation due to the bounding walls
-def visc_damp_wall(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
+def visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     k=kmn(m, n, Lx, Ly)
     w=wmn(rho1, rho2, gamma, k, h1, h2)
     
@@ -126,7 +115,7 @@ def visc_damp_wall(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
     return summation
 
 # viscous dissipation due to the liquid-liquid interface
-def visc_damp_interface(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
+def visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     k=kmn(m, n, Lx, Ly)
     w=wmn(rho1, rho2, gamma, k, h1, h2)
     
@@ -140,7 +129,7 @@ def visc_damp_interface(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
     return fac*num/den
 
 # viscous dissipation due to bulk irrotational stresses
-def visc_damp_irrotational(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
+def visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     k=kmn(m, n, Lx, Ly)
     
     fac = 2*pow(k,2)/ (
@@ -153,27 +142,27 @@ def visc_damp_irrotational(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
     term3 = (coth(k*h1)+coth(k*h2))*(sqrt(nu1)+sqrt(nu2))
     return fac*(term1+term2-term3)
 
-def visc_damp_total(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2):
+def visc_damp_total(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     wall=visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     sidewall=visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     bulk=visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     return wall+sidewall+bulk
 
 # conductivity jump parameter
-def Lambda(rho1,rho2, sig1,sig2, h1,h2, k):
+def Lambda(rho1, rho2, sig1, sig2, h1, h2, k):
     num = pow(sig1,-1) + pow(sig2,-1)
     den = pow(sig1,-1)*tanh(k*h1) + pow(sig2,-1)*coth(k*h2)
     return num/den
 
 # form function for the wave modes
-def ThetaFunc(m1,n1,m2,n2):
+def ThetaFunc(m1, n1, m2, n2):
     fac = sqrt(deltaFunc(m1*m2)*deltaFunc(n1*n2))
-    num = (pow(-1,m1+m2)-1)*(pow(-1,n1+n2)-1)*(pow(m1*n2,2) - pow(m2*n1,2) )
+    num = (pow(-1, m1+m2)-1)*(pow(-1, n1+n2)-1)*(pow(m1*n2,2) - pow(m2*n1,2) )
     den = (pow(m1,2)-pow(m2,2))*(pow(n1,2)-pow(n2,2))
     return fac*num/den
 
 # Terms which arise when we remove the shallow water approximation
-def T_func(rho1,rho2, sig1,sig2, h1,h2, k1,k2):
+def T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2):
     Lambda1 = Lambda(rho1, rho2, sig1, sig2, h1, h2, k1)
     Lambda2 = Lambda(rho1, rho2, sig1, sig2, h1, h2, k2)
     
@@ -207,26 +196,27 @@ def T_func(rho1,rho2, sig1,sig2, h1,h2, k1,k2):
 
 
 # formula for growth rate
-def growth_rate(rho1,rho2,nu1,nu2,sig1,sig2, gamma, m1,n1,m2,n2, Lx,Ly, h1,h2, 
-                I0,Bz, damp1, damp2):
+def growth_rate(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+                m1, n1, m2, n2, Lx, Ly, h1, h2, 
+                I0, Bz, damp1, damp2):
     k1=kmn(m1, n1, Lx, Ly)
     w1=wmn(rho1, rho2, gamma, k1, h1, h2)
     k2=kmn(m2, n2, Lx, Ly)
     w2=wmn(rho1, rho2, gamma, k2, h1, h2)
     
-    w_avg = np.mean([w1,w2])
+    w_avg = np.mean([w1, w2])
     w_del = (w1-w2)/2
     
     J0 = I0/(Lx*Ly)
     
     Theta = ThetaFunc(m1, n1, m2, n2)
 
-    T1,T2 = T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2)
+    T1, T2 = T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2)
     
     U1 = Lx*Ly*(gamma*k1**2 + (rho2-rho1)*g)
     U2 = Lx*Ly*(gamma*k2**2 + (rho2-rho1)*g)
     
-    damp_avg = np.mean([damp1,damp2])
+    damp_avg = np.mean([damp1, damp2])
     damp_del = (damp1-damp2)/2
     
     term1 = pow(J0*Bz*Theta,2)*(pow(w_avg,2)-pow(w_del,2))*T1*T2/(U1*U2)
@@ -235,21 +225,22 @@ def growth_rate(rho1,rho2,nu1,nu2,sig1,sig2, gamma, m1,n1,m2,n2, Lx,Ly, h1,h2,
     return csqrt(term1+term2) - damp_avg
 
 # formula to calculate the instability onset
-def betaCrit_func(rho1,rho2,nu1,nu2,sig1,sig2, gamma, m1,n1,m2,n2, 
-                  Lx,Ly, h1,h2, damp1, damp2):
+def betaCrit_func(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+                  m1, n1, m2, n2, 
+                  Lx, Ly, h1, h2, damp1, damp2):
     k1=kmn(m1, n1, Lx, Ly)
     w1=wmn(rho1, rho2, gamma, k1, h1, h2)
     k2=kmn(m2, n2, Lx, Ly)
     w2=wmn(rho1, rho2, gamma, k2, h1, h2)
     
-    w_avg = np.mean([w1,w2])
+    w_avg = np.mean([w1, w2])
     w_del = (w1-w2)/2
     
-    damp_avg = np.mean([damp1,damp2])
+    damp_avg = np.mean([damp1, damp2])
     damp_del = (damp1-damp2)/2
     
     Theta = ThetaFunc(m1, n1, m2, n2)
-    T1,T2 = T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2)
+    T1, T2 = T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2)
 
     fac = pow(Lx*Ly,2)/(h1*h2*np.abs(Theta))
     num = damp_avg**2 - pow(w_del*1j-damp_del,2)
@@ -260,9 +251,10 @@ def betaCrit_func(rho1,rho2,nu1,nu2,sig1,sig2, gamma, m1,n1,m2,n2,
 # %%
 
 # parameter check
-def parameter_check(electrolyte, metal, 
-                    geometry):
-    
+def parameter_check(electrolyte, metal, geometry):
+    """
+    Validate physical and geometrical parameters of a two-layer system.
+    """
     #initiate variables
     rho1=electrolyte.density; rho2=metal.density
     nu1=electrolyte.kinematic_viscosity; nu2=metal.kinematic_viscosity
@@ -281,8 +273,12 @@ def parameter_check(electrolyte, metal,
         raise ValueError('Incorrect geometry')
     elif h1<=0 or h2<=0:
         raise ValueError('Incorrect layer heights')
-    else:
-        print('parameter check: OK \n')
+    
+    if max(Lx, Ly) < min(h1, h2):
+        print("WARING: Lx and Ly should be layer than the layer height to account.")
+    
+    
+    print('parameter check: OK \n')
 
         
 # %%
@@ -299,19 +295,19 @@ def calculate_viscous_damping(electrolyte, metal,
     
     gamma=surface_tension.gamma
         
-    m1,n1 = wavemode1.m, wavemode1.n
-    m2,n2 = wavemode2.m, wavemode2.n
+    m1, n1 = wavemode1.m, wavemode1.n
+    m2, n2 = wavemode2.m, wavemode2.n
     Lx, Ly = geometry.length, geometry.width
     h1, h2 = geometry.electrolyte_height, geometry.metal_height
     
     for i in ([1,2]):
-        m,n = locals()['m'+str(i)], locals()['n'+str(i)]
+        m, n = locals()['m'+str(i)], locals()['n'+str(i)]
         locals()['mode'+str(i)+'_damp'] = (
-            visc_damp_wall(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2)
+            visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
             +
-            visc_damp_interface(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2)
+            visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
             +
-            visc_damp_irrotational(rho1,rho2,nu1,nu2,gamma, m,n, Lx,Ly, h1,h2)
+            visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
             )
     
     return locals()['mode'+str(1)+'_damp'], locals()['mode'+str(2)+'_damp']
@@ -325,14 +321,14 @@ def calculate_SeleParameter(electrolyte, metal,
     #initiate variables
     rho1=electrolyte.density; rho2=metal.density    
     gamma=surface_tension.gamma
-    m1,n1 = wavemode1.m, wavemode1.n
-    m2,n2 = wavemode2.m, wavemode2.n
+    m1, n1 = wavemode1.m, wavemode1.n
+    m2, n2 = wavemode2.m, wavemode2.n
     I0, Bz = power.const_current, power.const_mag
     Lx, Ly = geometry.length, geometry.width
     h1, h2 = geometry.electrolyte_height, geometry.metal_height
     
     k1, k2 = kmn(m1, n1, Lx, Ly), kmn(m2, n2, Lx, Ly)
-    k_bar = np.mean([k1,k2])
+    k_bar = np.mean([k1, k2])
     
     den = ((rho2-rho1)*g + gamma*pow(k_bar,2) )*h1*h2
     
@@ -351,8 +347,8 @@ def calculate_GrowthRate(electrolyte, metal,
     
     gamma=surface_tension.gamma
     
-    m1,n1 = wavemode1.m, wavemode1.n
-    m2,n2 = wavemode2.m, wavemode2.n
+    m1, n1 = wavemode1.m, wavemode1.n
+    m2, n2 = wavemode2.m, wavemode2.n
     
     I0, Bz = power.const_current, power.const_mag
     
@@ -390,14 +386,14 @@ def calculate_instability_onset(electrolyte, metal,
     
     # function to generate list of all possible wave mode combinations
     def genWaveNo(wavenumber_limit):
-        num = np.arange(0,wavenumber_limit,1)
+        num = np.arange(0, wavenumber_limit, 1)
         comb_set = [p for p in product(num, repeat=4)]
         
         #cleansing of list to remove unrealistic wave modes
         i = 0
         while i < len(comb_set):
             pi = np.pi
-            m1,n1,m2,n2 = comb_set[i]
+            m1, n1, m2, n2 = comb_set[i]
             cond1 = m1**2 - m2**2
             cond2 = n2**2 - n1**2
             cond3 = pow(m1*n2,2)-pow(m2*n1,2)
@@ -432,7 +428,7 @@ def calculate_instability_onset(electrolyte, metal,
 
     result_array=[]
     for j in range(len(comb)):
-        m1,n1,m2,n2 = comb[j][:]
+        m1, n1, m2, n2 = comb[j][:]
         
         damp1 = visc_damp_total(rho1, rho2, nu1, nu2, gamma, m1, n1, Lx, Ly, h1, h2)
         damp2 = visc_damp_total(rho1, rho2, nu1, nu2, gamma, m2, n2, Lx, Ly, h1, h2)
