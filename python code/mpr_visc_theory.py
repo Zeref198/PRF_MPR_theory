@@ -235,26 +235,10 @@ def T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2):
 
 
 # formula for growth rate
-def growth_rate(
-    rho1,
-    rho2,
-    nu1,
-    nu2,
-    sig1,
-    sig2,
-    gamma,
-    m1,
-    n1,
-    m2,
-    n2,
-    Lx,
-    Ly,
-    h1,
-    h2,
-    I0,
-    Bz,
-    damp1,
-    damp2,
+def growth_rate(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+    m1, n1, m2, n2,
+    Lx, Ly, h1, h2,
+    I0, Bz, damp1, damp2,
 ):
     k1 = kmn(m1, n1, Lx, Ly)
     w1 = wmn(rho1, rho2, gamma, k1, h1, h2)
@@ -285,24 +269,10 @@ def growth_rate(
 
 
 # formula to calculate the instability onset
-def betaCrit_func(
-    rho1,
-    rho2,
-    nu1,
-    nu2,
-    sig1,
-    sig2,
-    gamma,
-    m1,
-    n1,
-    m2,
-    n2,
-    Lx,
-    Ly,
-    h1,
-    h2,
-    damp1,
-    damp2,
+def betaCrit_func(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+    m1, n1, m2, n2,
+    Lx, Ly, h1, h2,
+    I0, Bz, damp1, damp2,
 ):
     k1 = kmn(m1, n1, Lx, Ly)
     w1 = wmn(rho1, rho2, gamma, k1, h1, h2)
@@ -365,8 +335,8 @@ def parameter_check(electrolyte, metal, geometry):
 ####### USER FUNCTIONS ######################
 
 
-def calculate_viscous_damping(
-    electrolyte, metal, surface_tension, geometry, wavemode1, wavemode2
+def calculate_viscous_damping(electrolyte, metal, 
+    surface_tension, geometry, wavemode1, wavemode2,
 ):
 
     # initiate variables
@@ -394,8 +364,8 @@ def calculate_viscous_damping(
 
 
 # Sele parameter
-def calculate_SeleParameter(
-    electrolyte, metal, surface_tension, geometry, power, wavemode1, wavemode2
+def calculate_SeleParameter(electrolyte, metal, 
+    surface_tension, geometry, power, wavemode1, wavemode2,
 ):
 
     # initiate variables
@@ -416,8 +386,8 @@ def calculate_SeleParameter(
     return I0 * Bz / den
 
 
-def calculate_GrowthRate(
-    electrolyte, metal, surface_tension, geometry, power, wavemode1, wavemode2
+def calculate_GrowthRate(electrolyte, metal, surface_tension, 
+    geometry, power, wavemode1, wavemode2,
 ):
 
     # initiate variables
@@ -441,26 +411,10 @@ def calculate_GrowthRate(
     damp1 = visc_damp_total(rho1, rho2, nu1, nu2, gamma, m1, n1, Lx, Ly, h1, h2)
     damp2 = visc_damp_total(rho1, rho2, nu1, nu2, gamma, m2, n2, Lx, Ly, h1, h2)
 
-    gr = growth_rate(
-        rho1,
-        rho2,
-        nu1,
-        nu2,
-        sig1,
-        sig2,
-        gamma,
-        m1,
-        n1,
-        m2,
-        n2,
-        Lx,
-        Ly,
-        h1,
-        h2,
-        I0,
-        Bz,
-        damp1,
-        damp2,
+    gr = growth_rate(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+        m1, n1, m2, n2,
+        Lx, Ly, h1, h2,
+        I0, Bz, damp1, damp2,
     )
 
     return gr
@@ -540,23 +494,10 @@ def calculate_instability_onset(
         damp2 = visc_damp_total(rho1, rho2, nu1, nu2, gamma, m2, n2, Lx, Ly, h1, h2)
 
         beta = betaCrit_func(
-            rho1,
-            rho2,
-            nu1,
-            nu2,
-            sig1,
-            sig2,
-            gamma,
-            m1,
-            n1,
-            m2,
-            n2,
-            Lx,
-            Ly,
-            h1,
-            h2,
-            damp1,
-            damp2,
+            rho1, rho2, nu1, nu2, sig1, sig2, gamma,
+            m1, n1, m2, n2,
+            Lx, Ly, h1, h2,
+            I0, Bz, damp1, damp2,
         )
 
         tmp_var = comb[j][:], beta
