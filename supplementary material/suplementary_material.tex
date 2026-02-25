@@ -94,41 +94,41 @@ bookmarksnumbered=true]{hyperref}
 \section{Supplementary material: Derivation of time independent velocity potential for a two-layer system in a rectangular domain}
 \label{supplA}
 
-To derive the velocity potential ($\phi$) for each medium $i$, we need to solve the Laplace equation which goes by:
+\noi To derive the velocity potential ($\phi$) for each medium $i$, we need to solve the Laplace equation which goes by:
 \begin{equation}
 	\Delta \widehat\phi_i = \pdv[2]{\widehat\phi_i}{x} + \pdv[2]{\widehat\phi_i}{y} + \pdv[2]{\widehat\phi_i}{z}.
 \end{equation}
-
+%%%%%%%%%%%
 Using separation of variables, we get
 \begin{equation}
 	\widehat\phi_i (x, y, z) = X_i(x) Y_i(y) Z_i(z),
 	\label{eq:vel_pot_separation-ansatz}
 \end{equation}
-
+%%%%%%%%%%%
 leading to
 \begin{equation}
-\dfrac{1}{X_i}\dv[2]{X_i}{x} + \dfrac{1}{Y_i}\dv[2]{Y_i}{y} = - \dfrac{1}{Z_i}\dv[2]{Z_i}{z} = -k_z^2 ,
+	\dfrac{1}{X_i}\dv[2]{X_i}{x} + \dfrac{1}{Y_i}\dv[2]{Y_i}{y} = - \dfrac{1}{Z_i}\dv[2]{Z_i}{z} = -k_z^2 ,
 \end{equation}
-
+%%%%%%%%%%%
 where $k_z^2 = k_x^2 + k_y^2$. We write the function $Z_i(z)$ as
 \begin{equation}
-Z_i(z) = Z^1_i e^{k_z} + Z^2_i e^{-k_z}.
+	Z_i(z) = Z^1_i e^{k_z} + Z^2_i e^{-k_z}.
 \end{equation}
-
+%%%%%%%%%%%
 The boundary conditions pertaining to the z-plane include,
 \begin{equation}
 	\left.\pdv{\phi_1}{z}\right\vert_{z=h_1} = \left.\pdv{\phi_2}{z}\right\vert_{z=-h_2} = 0 ,
 \end{equation}
-
+%%%%%%%%%%%
 \begin{equation}
-\begin{split}
-	\therefore
-	Z_1(z) = Z_1\cosh{[k_z(z-h_1)]},
-	\\
-	Z_2(z) = Z_2\cosh{[k_z(z+h_2)]}.
-\end{split}
+	\begin{split}
+		\therefore
+		Z_1(z) = Z_1\cosh{[k_z(z-h_1)]},
+		\\
+		Z_2(z) = Z_2\cosh{[k_z(z+h_2)]}.
+	\end{split}
 \end{equation}
-
+%%%%%%%%%%%
 Normalizing the above equation to get,
 \begin{equation}
 	\begin{split}
@@ -138,7 +138,7 @@ Normalizing the above equation to get,
 	\end{split}
 	\label{eq:vel_pot_Z_soln}
 \end{equation}
-
+%%%%%%%%%%%
 The boundary conditions with respect to the $x$ and $y$ plane are,
 \begin{equation}
 	\begin{split}
@@ -147,20 +147,20 @@ The boundary conditions with respect to the $x$ and $y$ plane are,
 		\left.\pdv{Y_1}{y}\right\vert_{y=\frac{L_y}{2}} = \left.\pdv{Y_2}{y}\right\vert_{y=-\frac{L_y}{2}} = 0.
 	\end{split}
 \end{equation}
-
+%%%%%%%%%%%
 Concerning the present coordinate system with the origin present at the center of the quadrilateral system, cosine functions are introduced so that the conditions at the frontal and the sagittal surfaces are met. To make the potential zero in planes $x=(\pm L_x/2)$ and $y=(\pm L_y/2)$, it is necessary that
-
+%%%%%%%%%%%
 \begin{equation}
 	\begin{split}
-	X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
-	\\
-	Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
+		X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
+		\\
+		Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
 	\end{split}
 	\label{eq:vel_pot_XY_soln}
 \end{equation}
-
+%%%%%%%%%%%
 Inserting Eq.\,\eqref{eq:vel_pot_Z_soln} and Eq.\,\eqref{eq:vel_pot_XY_soln} in Eq.\,\eqref{eq:vel_pot_separation-ansatz}, we get the following equation for the time independent velocity potential in a two layer stratified system:
-
+%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
 		\widehat\phi_1 \\[10pt]
@@ -172,9 +172,9 @@ Inserting Eq.\,\eqref{eq:vel_pot_Z_soln} and Eq.\,\eqref{eq:vel_pot_XY_soln} in 
 		-\dfrac{\omega}{k}\dfrac{\text{cosh}[k(z+h_2)]}{\text{sinh}[kh_2]}
 	\end{bmatrix} \text{cos}\left[ \dfrac{m\pi}{L_x} \left( x+\dfrac{L_x}{2}\right)\right] \text{cos}\left[ \dfrac{n\pi}{L_y} \left( y+\dfrac{L_y}{2}\right)\right],
 \end{equation}
-
+%%%%%%%%%%%
 where $k=k_z$, the mode dependent wave number. The the rate of change of interface elevation is dependent on the normal derivative of the velocity potential such that,
-
+%%%%%%%%%%%
 \begin{equation}	
 	\left.\pdv{\phi_1}{z}\right\vert_{z=0}
 	=
@@ -182,65 +182,65 @@ where $k=k_z$, the mode dependent wave number. The the rate of change of interfa
 	=
 	\left.\pdv{\eta}{t}\right\vert_{z=0}.
 \end{equation}
-
+%%%%%%%%%%%
 Therefore, the time independent interface elevation $\widehat\eta$ is
-
+%%%%%%%%%%%
 \begin{equation}
-\widehat\eta = \ii{i} A_{mn}  \text{cos}\left[ \dfrac{m\pi}{L_x} \left( x+\dfrac{L_x}{2}\right)\right] \text{cos}\left[ \dfrac{n\pi}{L_y} \left( y+\dfrac{L_y}{2}\right)\right].
+	\widehat\eta = \ii{i} A_{mn}  \text{cos}\left[ \dfrac{m\pi}{L_x} \left( x+\dfrac{L_x}{2}\right)\right] \text{cos}\left[ \dfrac{n\pi}{L_y} \left( y+\dfrac{L_y}{2}\right)\right].
 \end{equation}
 
 
 
 \section{Supplementary material: Derivation of time independent electric potential for a two-layer system in a rectangular domain}
 
-The Laplace equation for the electric potential reads:
+\noi The Laplace equation for the electric potential reads:
 \begin{equation}
-\Delta \widehat\varphi = \pdv[2]{\widehat\varphi}{x} + \pdv[2]{\widehat\varphi}{y} + \pdv[2]{\widehat\varphi}{z}.
+	\Delta \widehat\varphi = \pdv[2]{\widehat\varphi}{x} + \pdv[2]{\widehat\varphi}{y} + \pdv[2]{\widehat\varphi}{z}.
 \end{equation}
-
+%%%%%%%%%%%
 We write the separation ansatz,
 \begin{equation}
 	\widehat\varphi_i (x, y, z) = X_i(x) Y_i(y) Z_i(z) H,
 	\label{eq:elec_pot_separation_ansatz}
 \end{equation}
-
+%%%%%%%%%%
 where, $H$ is the dependence of the electrical potential on the elevation of the interface $\eta$. Similar to the steps involved for the velocity potential in Sec.\,\ref{supplA}, we solve for $Z_i(z)$, $X_i(x)$ and $Y_i(y)$ as follows:
-
+%%%%%%%%%%
 \begin{gather}
 	\underbrace{\frac{1}{X_i}\dv[2]{X_i}{x}}_{-k_x^2} 
 	+ 
 	\underbrace{\frac{1}{Y_i}\dv[2]{Y_i}{y}}_{-k_y^2} 
 	+ 
 	\underbrace{\frac{1}{Z_i}\dv[2]{Z_i}{z}}_{k_z^2} = 0,
-\intertext{Applying the boundary conditions pertaining to the top and bottom surfaces are}
-\begin{split}
-	\widehat\varphi_1 = 0|_{z=h_1}, \\    
-	J_{2,z} = 0|_{z=-h_2} = 0,
-\end{split}
-\intertext{we get the solution to $Z_i(z)$ to be}
-\begin{split}
-	Z_1(z) = -Z_1 \text{sinh}[k_z (z-h_1)],
-	\\
-	Z_2(z) = Z_2 \text{cosh}[k_z (z+h_2)].
-	\label{eq:elec_pot_Z}
-\end{split}
-\intertext{After normalization:}
-\begin{split}
-	Z_1(z) = -\frac{\text{sinh}[k_z (z-h_1)]}{\sigma_1 \:\text{cosh}[k_zh_1]}\\
-	Z_2(z) = -\frac{\text{cosh}[k_z (z+h_2)]}{\sigma_2 \:\text{sinh}[k_zh_2]}
-\end{split}
-\intertext{Similarly, $X_i(x)$ and $Y_i(y)$ amount to}
-\begin{split}
-	X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
-	\\
-	Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
-\end{split}
-\label{eq:elec_pot_XY}
+	\intertext{Applying the boundary conditions pertaining to the top and bottom surfaces are}
+	\begin{split}
+		\widehat\varphi_1 = 0|_{z=h_1}, \\    
+		J_{2,z} = 0|_{z=-h_2} = 0,
+	\end{split}
+	\intertext{we get the solution to $Z_i(z)$ to be}
+	\begin{split}
+		Z_1(z) = -Z_1 \text{sinh}[k_z (z-h_1)],
+		\\
+		Z_2(z) = Z_2 \text{cosh}[k_z (z+h_2)].
+		\label{eq:elec_pot_Z}
+	\end{split}
+	\intertext{After normalization:}
+	\begin{split}
+		Z_1(z) = -\frac{\text{sinh}[k_z (z-h_1)]}{\sigma_1 \:\text{cosh}[k_zh_1]}\\
+		Z_2(z) = -\frac{\text{cosh}[k_z (z+h_2)]}{\sigma_2 \:\text{sinh}[k_zh_2]}
+	\end{split}
+	\intertext{Similarly, $X_i(x)$ and $Y_i(y)$ amount to}
+	\begin{split}
+		X_1=X_2=\text{cos}\biggl[ k_x\left( x+\frac{L_x}{2}\right)\biggr] , \quad k_x = \frac{m\pi}{L_x},
+		\\
+		Y_1=Y_2=\text{cos}\biggl[ k_y\left( y+\frac{L_y}{2}\right)\biggr] , \quad k_y = \frac{n\pi}{L_y}.
+	\end{split}
+	\label{eq:elec_pot_XY}
 \end{gather}
-
+%%%%%%%%%%%%
 Inserting Eq.\,\eqref{eq:elec_pot_Z} and Eq.\,\eqref{eq:elec_pot_XY} in Eq.\,\eqref{eq:elec_pot_separation_ansatz}, we get the formulation
 
-
+%%%%%%%%%%%%%
 \begin{equation}
 	\begin{split}
 		\widehat\varphi_1 = -A_{mn}\frac{\text{sinh}[k (z-h_1)]}{\sigma_1 \:\text{cosh}[kh_1]} \:\text{cos}\left[ \frac{m\pi}{L_x} \left( x+\frac{L_x}{2}\right)\right] \text{cos}\left[ \frac{n\pi}{L_y} \left( y+\frac{L_y}{2}\right)\right] H,
@@ -249,22 +249,22 @@ Inserting Eq.\,\eqref{eq:elec_pot_Z} and Eq.\,\eqref{eq:elec_pot_XY} in Eq.\,\eq
 	\end{split}
 	\label{eq:elec_pot_incomplete}
 \end{equation}
-
+%%%%%%%%%%
 Here, $k = k_z$. The jump condition at the interface reads
 \begin{equation}
 	J_0(\sigma_2^{-1}-\sigma_1^{-1})\widehat\eta = \widehat\varphi_2|_{z=0}
 	- \widehat\varphi_1|_{z=0}.
 	\label{eq:jump_condition_elec_pot}
 \end{equation}
-
+%%%%%%%%%%%%%%
 Solving for $H$ by substituting Eq.\,\eqref{eq:elec_pot_incomplete} in Eq.\,\eqref{eq:jump_condition_elec_pot} gives
-
+%%%%%%%%%%%%%%
 \begin{equation}
 	H = \frac{\ii{i} J_0(\sigma_1^{-1} - \sigma_2^{-1})}{\sigma_1^{-1} \:\text{tanh}[kh_1] + \sigma_2^{-1} \:\text{coth}[kh_2]}
 \end{equation}
-
+%%%%%%%%%%%%%%
 The equation of the time independent electric potential for a two-layer stratified system reads
-
+%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
 		\widehat{\varphi}_1 \\[12pt]
@@ -288,10 +288,9 @@ The equation of the time independent electric potential for a two-layer stratifi
 
 
 
-
 \section{Supplementary material: Formulation of the Fredholm alternative} 
 \label{appA}
-To recap, the two-wave perturbation ansatz reads
+\noi To recap, the two-wave perturbation ansatz reads
 \begin{equation}
 	\fontsize{10.5pt}{10.5pt}
 	[\textbf{\textit{u}}_i, p_i, \eta, \textbf{\textit{j}}_i ]= 
@@ -307,17 +306,17 @@ To recap, the two-wave perturbation ansatz reads
 	\widetilde{\h{u}}_i, \widetilde{p}_{i}, \widetilde{\eta}, \widetilde{\h{j}}_{i} \right] 
 	\biggr) 
 	\;
-	\ii e^{ \bigl(\alpha -\overbar\lambda 
+	\ii e^{ \bigl(\alpha 
 		\,+\, \ii{i}\overbar{\omega}
 		\bigr)t} .
 	\label{eq:perturb_method_ansatz}
 \end{equation}
-
-The balance equations considering only leading order terms, for a given wave mode $(m,n)$ are
+%%%%%%%%%%%%%%
+The balance equations considering only leading order terms, for a given wave number $(m,n)$ are
 %%%%%%%%%%%%%%%%%%%%
 \begin{subequations}
 	\begin{equation}
-		\rho_i(\ii i\omega - \lambda)\widehat{\h u_i} + \bm\nabla\widehat p_i = 0 ,
+		\rho_i(\ii i\omega)\widehat{\h u_i} + \bm\nabla\widehat p_i = 0 ,
 		\label{eq:lead_balance_1}
 	\end{equation}
 	\begin{equation}
@@ -333,11 +332,11 @@ The balance equations considering only leading order terms, for a given wave mod
 The complete expression when we input the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the momentum balance equation is given as
 \begin{align}
 	\nn
-		&C\bigl(\ii i\overbar\omega + \alpha - \overbar\lambda \bigr)\rho \widehat{\h{u}} 
+		&C\bigl(\ii i\overbar\omega + \alpha  \bigr)\rho \widehat{\h{u}} 
 		+ 
-		C'\bigl(\ii i\overbar\omega + \alpha - \overbar\lambda \bigr)\rho \widehat{\h{u}}'
-		+ (\ii i\overbar\omega + \alpha - \overbar\lambda)\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
-		+ (\ii i\overbar\omega + \alpha - \overbar\lambda)\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}'
+		C'\bigl(\ii i\overbar\omega + \alpha  \bigr)\rho \widehat{\h{u}}'
+		+ (\ii i\overbar\omega + \alpha )\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
+		+ (\ii i\overbar\omega + \alpha )\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}'
 		\\
 		= \;
 		&C \Bigl( \:\widehat{\h{j}} \times B_z\bm{e}_z\Bigr) 
@@ -345,30 +344,30 @@ The complete expression when we input the ansatz [Eq.\,\eqref{eq:perturb_method_
 		C' \Bigl( \:\widehat{\h{j}}' \times B_z\bm{e}_z\Bigr)
 	\label{eq:pre_fredholm_step}
 \end{align}
-On expanding $\overbar\omega$ and $\overbar\lambda$ on the LHS of Eq.\,\eqref{eq:pre_fredholm_step}, we get the following:
+On expanding $\overbar\omega$ on the LHS of Eq.\,\eqref{eq:pre_fredholm_step}, we get the following:
 \begin{align}
 	\nn \Longrightarrow
-		C&\bigl(\ii i\omega - \ii i\delta\omega + \alpha - \lambda + \delta\lambda \bigr)\rho \widehat{\h{u}} 
+		C&\bigl(\ii i\omega - \ii i\delta\omega + \alpha   \bigr)\rho \widehat{\h{u}} 
 		+ 
-		C'\bigl(\ii i\omega - \ii i\delta\omega + \alpha - \lambda + \delta\lambda \bigr)\rho \widehat{\h{u}}'
+		C'\bigl(\ii i\omega - \ii i\delta\omega + \alpha   \bigr)\rho \widehat{\h{u}}'
 		\\
 		+ 
-		&(\ii i\omega - \ii i\delta\omega + \alpha - \lambda + \delta\lambda)\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
+		&(\ii i\omega - \ii i\delta\omega + \alpha)\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
 		+ 
-		(\ii i\omega - \ii i\delta\omega + \alpha - \lambda + \delta\lambda)\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}',
+		(\ii i\omega - \ii i\delta\omega + \alpha )\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}',
 	\label{eq:pre_fredholm_step2}
 \end{align}
 %%%%%%%%%%%%
-We now make certain leading order approximations  $\omega\widetilde{\h u}_i \gg \delta\omega \widetilde{\h u_i}$ and $\lambda\widetilde{\h u}_i \gg \delta\lambda \widetilde{\h u_i}$, to simplify Eq.\,\eqref{eq:pre_fredholm_step2} as
+We now make a certain leading order approximation  $\omega\widetilde{\h u}_i \gg \delta\omega \widetilde{\h u_i}$, to simplify Eq.\,\eqref{eq:pre_fredholm_step2} as
 \begin{align}
 	\nn
-		&C\bigl(-[\ii{i} \delta\omega - \delta\lambda] + \alpha \bigr)\rho \widehat{\h{u}} 
+		&C\bigl(-[\ii{i} \delta\omega ] + \alpha \bigr)\rho \widehat{\h{u}} 
 		+ 
-		C'\bigl([\ii{i} \delta\omega  - \delta\lambda] + \alpha\bigr)\rho \widehat{\h{u}}'
+		C'\bigl([\ii{i} \delta\omega  ] + \alpha \bigr)\rho \widehat{\h{u}}'
 		 + 
-		(\ii{i}\omega - \lambda)\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
+		(\ii{i}\omega )\widetilde{\h{u}} + \bm{\nabla}\widetilde{p} 
 		+ 
-		(\ii{i}\omega' - \lambda')\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}'
+		(\ii{i}\omega')\widetilde{\h{u}}' + \bm{\nabla}\widetilde{p}'
 		\\ = \;
 		&C \Bigl( \:\widehat{\h{j}} \times B_z\bm{e}_z\Bigr) 
 		+ 
@@ -377,20 +376,20 @@ We now make certain leading order approximations  $\omega\widetilde{\h u}_i \gg 
 \begin{align}
 	\nn
 	&\Longrightarrow
-		(\ii{i}\omega - \lambda)\rho\widetilde{\h{u}} + 
+		(\ii{i}\omega)\rho\widetilde{\h{u}} + 
 		\bm{\nabla}\widetilde{p} 
 		+ 
-		(\ii{i}\omega' - \lambda')\rho\widetilde{\h{u}}' + 
+		(\ii{i}\omega')\rho\widetilde{\h{u}}' + 
 		\bm{\nabla}\widetilde{p}'
 		\\
 	&=
 		C \Bigl( \: \widehat{\h{j}} \times B_z\bm{e}_z
 		+
-		\Bigl( [\ii{i} \delta\omega - \delta\lambda] - \alpha \Bigr)\rho \widehat{\h{u}}\Bigr) 
+		\Bigl( [\ii{i} \delta\omega] - \alpha \Bigr)\rho \widehat{\h{u}}\Bigr) 
 		+ 
 		C' \Bigl( \:\widehat{\h{j}}' \times B_z\bm{e}_z
 		+
-		\Bigl( -[\ii{i} \delta\omega - \delta\lambda] - \alpha \Bigr)\rho \widehat{\h{u}}'
+		\Bigl( -[\ii{i} \delta\omega] - \alpha  \Bigr)\rho \widehat{\h{u}}'
 		\Bigr).
 	\label{eq:wavepack_first}
 \end{align}
@@ -398,14 +397,14 @@ Applying the Fredholm alternative to the equations over the two fluid regions as
 \begin{equation}
 	\Sigma_{i=1,2} \int_{V_i} \left[ \widehat{\h u}^*_i \cdot [\ii{Eq.\,\eqref{eq:wavepack_first}}] + \widehat p^*_i(\bm\nabla \cdot \widetilde{\h u}_i) \right] \ii dV,
 \end{equation}
-we can write the inner product (for quantities pertaining to wave mode $(m,n)$) as
+we can write the inner product (for quantities pertaining to wave number $(m,n)$) as
 %%%%%%%%%%%%
 \begin{equation}
 	\begin{array}{rl}
 		&
 		\sum_{i=1,2} \int_{V_i} \Bigl[ C \widehat{\h u}_i^{*} \cdot 
 		\Bigl( 
-		[\ii{i} \omega - \lambda]\rho\widetilde{\h u}_i 
+		[\ii{i} \omega]\rho\widetilde{\h u}_i 
 		+  \bm{\nabla} \widetilde{p}_i  
 		\Bigr) 
 		+
@@ -414,7 +413,7 @@ we can write the inner product (for quantities pertaining to wave mode $(m,n)$) 
 		\\
 		& = \sum_{i=1,2}\int_{V_i} C \widehat{\h u}_i^{*} \cdot 
 		\biggl[ C  \Bigl( \: \widehat{\h{j}}_i \times B_z\bm{e}_z +
-		\bigl( [\ii{i} \delta\omega - \delta\lambda] - \alpha \bigr)\rho \widehat{\h{u}}_i \Bigr) \biggr] .
+		\bigl( [\ii{i} \delta\omega ] - \alpha \bigr)\rho \widehat{\h{u}}_i \Bigr) \biggr] .
 	\end{array}  \label{eq:fredholm_step1}
 \end{equation}
 The left-hand side of the Eq.\,\eqref{eq:fredholm_step1} can be expanded to
@@ -431,14 +430,14 @@ The left-hand side of the Eq.\,\eqref{eq:fredholm_step1} can be expanded to
 	\intertext{where $\widetilde{\h u}\cdot \h n$ can be written as $\widetilde{\h u}_z |_{z=0}$. Also we can write}
 	\partial_t \eta = \widetilde{\h u}_z |_{z=0}
 	\Longrightarrow \ii i\omega_{11}\widetilde{\eta} + C \bigl( \alpha \widehat{\eta}
-	- [\ii i\delta\omega -\delta\lambda] \widehat\eta \:\bigr).
+	- [\ii i\delta\omega] \widehat\eta \:\bigr).
 \end{align}
 Therefore, from the leading order balance Eqs.\,\eqref{eq:lead_balance_1} and \eqref{eq:lead_balance_2}, we deduce
 \begin{equation}
 	\begin{array}{c}
 		\int_{V_i} C \Bigl[
 		\widetilde{\h u}_i 
-		\cancelto{0}{ \bigl( [\ii{i} \omega - \lambda]\rho \widehat{\h u}_i^{*}
+		\cancelto{0}{ \bigl( [\ii{i} \omega ]\rho \widehat{\h u}_i^{*}
 			- \bm{\nabla}\widehat{p}_i^{\:*} \bigr)}
 		-\cancelto{0}{(\bm{\nabla}\cdot \widehat{\h u}_i^{*})}\quad \widehat{p}_i \Bigr]
 		+ C  \oint_{S} 
@@ -447,19 +446,19 @@ Therefore, from the leading order balance Eqs.\,\eqref{eq:lead_balance_1} and \e
 		\cdot \h n \: \ii dS     ,
 		\\
 		\Longrightarrow
-		\bigl( \alpha - [\ii i\delta\omega - \delta\lambda] \bigr) C^2
+		\bigl( \alpha - [\ii i\delta\omega ] \bigr) C^2
 		\underbrace{\oint_{S} 
 			(\widehat{p}_2^{\:*} - \widehat{p}_1^{\:*})
 			|_{z=0}\:\widehat{\eta} \: \ii dS }_{K_{\eta\eta}} .
 	\end{array}
 	\label{eq:mode1_alpha-C-K}
 \end{equation}
-
+%%%%%%%%%%%%%%
 The dynamic boundary condition for gravity capillary waves is given by:
 \begin{equation}
 	-\gamma_{\ii{int}} \nabla^2\eta + (\rho_2-\rho_1)g\eta = p_2 \,\bigl|_{z=0} - p_1 \,\bigl|_{z=0}.
 \end{equation}
-
+%%%%%%%%%%%%%%
 Incorporating the above equation in the surface integral of the pressure jump gives
 \begin{equation}
 	\begin{array}{rcl}
@@ -473,30 +472,36 @@ Incorporating the above equation in the surface integral of the pressure jump gi
 	\end{array} 
 	\label{eq:mode1_K11-eq}
 \end{equation}
+%%%%%%%%%%%%%%
 By substituting Eq.\,\eqref{eq:mode1_K11-eq} in \eqref{eq:mode1_alpha-C-K}, we obtain
+%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{array}{rl}
 		\forall \:(m, n), &
 		C  \oint_{S} (\widehat{p}_i^{\:*}\widetilde{\h u}_i 
 		+ \widetilde{p}_i\widehat{\h u}_i^{*} ) \cdot \h n \: \ii dS
-		\rightarrow  \bigl( \alpha - [\ii i\delta\omega - \delta\lambda] \bigr) C^2 K_{\eta\eta} ,\\[5pt]
+		\rightarrow  \bigl( \alpha - [\ii i\delta\omega ] \bigr) C^2 K_{\eta\eta} ,\\[5pt]
 		\forall \:(m', n'), &
 		C'  \oint_{S} (\widehat{p}'^{*}_i\widetilde{\h u}'_i 
 		+ \widetilde{p}'_i\widehat{\h u}'^{*}_i ) \cdot \h n \: \ii dS
-		\rightarrow  \bigl( \alpha + [\ii i\delta\omega - \delta\lambda] \bigr) {C'}^{2} K_{\eta'\!\eta'} .
+		\rightarrow  \bigl( \alpha + [\ii i\delta\omega ] \bigr) {C'}^{2} K_{\eta'\!\eta'} .
 	\end{array}
 	\label{eq:alpha-C-K_all}
 \end{equation}
+%%%%%%%%%%%%%%
 On the right-hand side of the Eq.\,\eqref{eq:fredholm_step1}, we can write the non-Lorentz force terms as
+%%%%%%%%%%%%%%
 \begin{equation}
 	\int_{V_i} C \widehat{\h u}_i^{*} \cdot 
-	\biggl[ C \bigl( [\ii{i} \delta\omega - \delta\lambda] - \alpha \bigr)\rho \widehat{\h{u}}_i \biggr]
+	\biggl[ C \bigl( [\ii{i} \delta\omega] - \alpha \bigr)\rho \widehat{\h{u}}_i \biggr]
 	=
-	C^2 \bigl( [\ii i \delta\omega - \delta\lambda] -\alpha \bigr) 
+	C^2 \bigl( [\ii i \delta\omega ] -\alpha \bigr) 
 	\int_{V_i} \rho_i |\widehat{\h u_i}|^2 \ii dV  .
 	\label{eq:fredholm_rhs}
 \end{equation}
+%%%%%%%%%%%%%%
 Integration by parts on Eq.\,\eqref{eq:fredholm_rhs} considering the potential wave solution of $\widehat p = -\rho_i(\ii i\omega)\widehat{\phi}_i$ gives
+%%%%%%%%%%%%%%
 \begin{align}
 	\nn
 	\sum_{i=1,2} \int_{V_i} \rho_i |\widehat{\h u_i}|^2 \ii dV
@@ -514,20 +519,21 @@ Integration by parts on Eq.\,\eqref{eq:fredholm_rhs} considering the potential w
 	\Longrightarrow K_{\eta\eta} .
 	\label{eq:ke-mode1_K11-eq}
 \end{align}
-
+%%%%%%%%%%%%%%
 Solving Eqs.\,\eqref{eq:alpha-C-K_all} and \eqref{eq:fredholm_rhs} gives the matrix equations given below:
 \begin{align}
-	&\bigl( \alpha - [\ii i\delta\omega - \delta\lambda] \bigr) C^2  K_{\eta\eta} = C^2 I_{\eta\eta} + CC' I_{\eta\eta'} + C^2\bigl ( [\ii{i} \delta\omega - \delta\lambda] - \alpha \bigr) K_{\eta\eta} , 
+	&\bigl( \alpha - [\ii i\delta\omega ] \bigr) C^2  K_{\eta\eta} = C^2 I_{\eta\eta} + CC' I_{\eta\eta'} + C^2\bigl ( [\ii{i} \delta\omega] - \alpha \bigr) K_{\eta\eta} , 
 	\label{eq:balance_eq-post_fred_alt1}
 	\\[5pt]
-	&\bigl( \alpha + [\ii i\delta\omega - \delta\lambda] \bigr) {C'}^2  K_{\eta'\!\eta'} = CC' I_{\eta'\!\eta} + C'^2 I_{\eta'\!\eta'} + {C'}^2 \bigl( -[\ii{i} \delta\omega - \delta\lambda] - \alpha \bigr) K_{\eta'\!\eta'}  .
+	&\bigl( \alpha + [\ii i\delta\omega ] \bigr) {C'}^2  K_{\eta'\!\eta'} = CC' I_{\eta'\!\eta} + C'^2 I_{\eta'\!\eta'} + {C'}^2 \bigl( -[\ii{i} \delta\omega ] - \alpha \bigr) K_{\eta'\!\eta'}  .
 	\label{eq:balance_eq-post_fred_alt2}
 \end{align}
+%%%%%%%%%%%%%%
 The above two equations form the matrix to solve for $\alpha$.
 
 \newpage
 \section{Supplementary material: Solving the mechanical energy balance equation for viscous decay} \label{appB}
-The energy balance equation is as follows: 
+\noi The energy balance equation is as follows: 
 \begin{align}
 	\dv{}{t} \bigl(E_c + E_p \bigr) &=
 	\dv{}{t}
@@ -543,6 +549,7 @@ The energy balance equation is as follows:
 	\sum_{i=1,2} 2\rho_i\nu_i \int_{V_i} \bm{\varepsilon}_i \bm{:} \bm{\varepsilon}_i \; \ii{d}V  .
 	\label{eq:strain-doubledot}
 \end{align}
+%%%%%%%%%%%%%%
 We write the velocity and the elevation profile of a decaying rotating wave given in Eq.\,\eqref{eq:ke-pe}, ignoring the surface tension terms as
 %%%%%%%%%%%%%%
 \begin{equation}
@@ -642,15 +649,15 @@ $
 	\therefore -\lambda K \ii e^{-2\lambda t} = -\mathcal{D} \; \ii{e}^{-2\lambda t} \Longrightarrow \lambda = \frac{\mathcal{D}}{K} .
 \end{equation}
 
-\section{Determining the critical wave mode and the stability onset}
+\section{Determining the critical wave number and the stability onset}
 \label{appC}
 
 \subsection{Choosing the lateral wave numbers}
-In our formulation it is not directly possible to explicitly obtain the most unstable wave mode which may either refer to the onset of instability ( $\beta_{\rm crit}$) or the largest possible growth rate ($\ii{max}\; \alpha_{\ii{MPR}}$).  We begin with choosing arbitrary, initial wave numbers and calculate the growth rate $\alpha_{\ii{MPR}}$ and the critical instability onset $\beta_{\ii{crit}}$, and iteratively find the wave modes which satisfy the former condition. Though it might seem that there are infinite permutations and combinations of numbers to choose from, there are certain conditions that reduce the sample space. They are:
+In our formulation it is not directly possible to explicitly obtain the most unstable wave number which may either refer to the onset of instability ( $\beta_{\rm crit}$) or the largest possible growth rate ($\ii{max}\; \alpha_{\ii{MPR}}$).  We begin with choosing arbitrary, initial wave numbers and calculate the growth rate $\alpha_{\ii{MPR}}$ and the critical instability onset $\beta_{\ii{crit}}$, and iteratively find the wave numbers which satisfy the former condition. Though it might seem that there are infinite permutations and combinations of numbers to choose from, there are certain conditions that reduce the sample space. They are:
 \begin{enumerate}
 	\item  The mode selection function $\Theta > 0$ only if $m+n = \mathbb{N}_{\ii{odd}}$, 
 	$m'+n' = \mathbb{N}_{\ii{odd}}$
-	\item  Large scale wave modes considerably increase damping and the instability threshold. Therefore wave numbers up to $(m,n), (m',n') \leq 10$ can be taken into consideration
+	\item  Large scale wave numbers considerably increase damping and the instability threshold. Therefore wave numbers up to $(m,n), (m',n') \leq 10$ can be taken into consideration
 \end{enumerate} 
 
 \subsection{Calculating the stability onset}
@@ -726,12 +733,12 @@ In our formulation it is not directly possible to explicitly obtain the most uns
 	\]
 	\item \hspace{1mm} The growth rate
 	\[
-	\alpha_{\ii {MPR}} = \pm \; 
+	\alpha = \pm \; 
 	\sqrt{ J^2{B_z}^2{\Theta}^2
 		\; (\overbar\omega^2 - \delta\omega^2)
 		\;\frac{\mathcal{T}\mathcal{T}'}{\mathcal{U}\mathcal{U}'}
 		+ \bigl[ \ii i{\delta \omega} -\delta\lambda \bigr]^2
-	} \;-\; \overbar\lambda ,	
+	} \;-\; \overbar\lambda ,		
 	\]
 	where
 	\begin{flalign*}
@@ -761,7 +768,7 @@ In our formulation it is not directly possible to explicitly obtain the most uns
 	\Lambda = \frac{(\sigma_1^{-1} - \sigma_2^{-1})}{\sigma_1^{-1} \:\tanh[kh_1] + \sigma_2^{-1} \:\coth[kh_2]}, \qquad 
 	\Lambda' = \frac{(\sigma_1^{-1} - \sigma_2^{-1})}{\sigma_1^{-1} \:\tanh[k'h_1] + \sigma_2^{-1} \:\coth[k'h_2]} .
 	\]
-	\item \hspace{1mm} Repeat step (\ref{step:uno}) to obtain the lowest possible $\beta_{\ii{crit}}$ or the highest possible $\alpha_{\ii{MPR}}$ for all wave mode combinations. 
+	\item \hspace{1mm} Repeat step (\ref{step:uno}) to obtain the lowest possible $\beta_{\ii{crit}}$ or the highest possible $\alpha$ for all wave number combinations. 
 \end{enumerate}
 
 

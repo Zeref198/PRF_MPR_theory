@@ -3,23 +3,28 @@ import numpy as np
 import mpr_visc_theory as mpr
 
 Lx = mpr.sqrt(40)
-Ly = Lx/2
+Ly = Lx / 2
 
 
 # declearing fluid properties
-cryo = mpr.electrolyte(name='cryolite', 
-                    density=2130, 
-                    kinematic_viscosity=8.8e-7,
-                    electric_conductivity=210)
+cryo = mpr.electrolyte(
+    name='cryolite', 
+    density=2130, 
+    kinematic_viscosity=8.8e-7, 
+    electric_conductivity=210
+)
 
-alum = mpr.metal(name="aluminium", 
-             density=2330, 
-             kinematic_viscosity=4.4e-7,
-             electric_conductivity=3.33e6)
+alum = mpr.metal(
+    name="aluminium", 
+    density=2330, 
+    kinematic_viscosity=4.4e-7,
+    electric_conductivity=3.33e6
+)
 
 gamma_int = mpr.surface_tension(0)
 
-dim = mpr.geometry(length=Lx,
+dim = mpr.geometry(
+    length=Lx,
                width=Ly,
                electrolyte_height=0.05,
                metal_height=0.25)
