@@ -336,31 +336,31 @@ to account for viscous effects, we address in Sec.\,\ref{sec:visc_damp}. At the 
 Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} represent the classic kinematic and dynamic boundary conditions for gravity-capillary waves. In Sec.\,\ref{sec:visc_damp}, we state the corrections to Eq.\eqref{eq:int_bc2} incorporating the continuity of the tangential velocities and viscous stresses in order to solve the Stokes velocities (for viscous damping). The electrical boundary conditions are derived from the basic principle that both the normal of the total current density $\h n \cdot \h J$ and the total electric potential $(\Phi_i+\varphi_i)$ must remain continuous. This results in the linearized interfacial conditions [Eq.\,\eqref{eq:int_bc3}] and [Eq.\,\eqref{eq:int_bc4}] for the perturbed quantities \citep{Munger2006}. This jump condition is essential for the MPR instability as it describes how the current density redistributes in both layers as a response to an arbitrary (small) interface elevation $\eta$. 
 
 
-\subsection{Gravity-capillary waves}
+\subsection{Interfacial waves}
 \label{sec:waves}
-We intend to solve the linear stability problem using perturbation theory, supposing the Lorentz force and the viscous forces are small. At lowest order, in the unperturbed problem for $B_z=0$ and $\nu_i=0$, the hydrodynamical problem is decoupled from the electrical problem. We then have free gravity-capillary waves and each different wave creates a deviation of electric current. The solutions for the classical gravity-capillary waves can be obtained by expressing the bulk velocities as gradients of scalar potentials $\widehat{\h u}_i = \bm\nabla \widehat\phi_i$ and solving the Laplace equation $\bm\nabla^2\widehat\phi_i = 0$ together with the no outflow boundary condition [Eq.\,\eqref{eq:no-outflow_bc}] and the interface conditions given in Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} \cite{Lamb1945}. Each wave number is determined by a unique pair of integers $(m,n)$ that count the number of half wavelengths along $x$ and $y$. The spatial structure of the fields is defined as:
+We intend to solve the linear stability problem using perturbation theory, supposing the Lorentz force and the viscous forces are small. At lowest order, in the unperturbed problem for $B_z=0$ and $\nu_i=0$, the hydrodynamical problem is decoupled from the electrical problem. We then have free gravity-capillary waves and each different wave creates a deviation of electric current. The solutions for the classical gravity-capillary waves can be obtained by expressing the bulk velocities as gradients of scalar potentials ${\h u}_i = \bm\nabla \phi_i$ and solving the Laplace equation $\bm\nabla^2\phi_i = 0$ together with the no outflow boundary condition [Eq.\,\eqref{eq:no-outflow_bc}] and the interface conditions given in Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} \cite{Lamb1945}:
 %%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
-		\widehat{\h u}_i \\[5pt]
-		\widehat{p}_i \\[5pt]
-		\widehat{\eta}
+		{\h u}_i \\[5pt]
+		{p}_i \\[5pt]
+		{\eta}
 	\end{bmatrix}
 	=
 	\begin{bmatrix}
-		\bm{\nabla}\widehat{\phi}_i \\[5pt]
-		-\rho_i(\ii i\omega)\widehat{\phi}_i\\[5pt]
-		\partial_z \widehat{\phi}_i/(\ii i\omega )
+		\bm{\nabla}{\phi}_i \\[5pt]
+		-\rho_i(\ii i\omega){\phi}_i\\[5pt]
+		\partial_z {\phi}_i/(\ii i\omega )
 	\end{bmatrix}.
 	\label{eq:pot_wave_soln}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
-Here, $\widehat{\h u}_i, \widehat p_i \widehat\eta$ are the time-independent form of $\h u_i, p_i, \eta$. The flow potentials are now given by
+Here, the flow potential in both layers are given by
 %%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
-		\widehat{\phi}_{1} \\[12pt]
-		\widehat{\phi}_{2} 
+		{\phi}_{1} \\[12pt]
+		{\phi}_{2} 
 	\end{bmatrix} = 
 	A_{mn}
 	\left[
@@ -371,18 +371,20 @@ Here, $\widehat{\h u}_i, \widehat p_i \widehat\eta$ are the time-independent for
 	\end{array} 
 	\right] 
 	\cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
-	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right],
+	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right]
+	\ii e^{\ii i \omega t},
 	\label{eq:vel_potential}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
 along with the interface elevation function reading
 \begin{equation}
-	\widehat\eta = \ii{i}\,A_{mn} \cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
-	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right] .
+	\eta = \ii{i}\,A_{mn} \cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
+	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right] 
+	\ii e^{\ii i \omega t} .
 	\label{eq:eta_eq}
 \end{equation} 
 %%%%%%%%%%%%%%%
-Here, $A_{mn}$ is a mode-dependent wave amplitude, $k$ is a function of the wave numbers $(m,n)$
+Here, $A_{mn}$ is a mode-dependent wave amplitude and $k$, a function of the wave numbers $(m,n)$ that count the number of half wavelengths along $x$ and $y$ is 
 %%%%%%%%%%%%%%%
 \begin{equation}
 	k =  \pi\sqrt{\frac{m^2}{L_x^2} + \frac{n^2}{L_y^2} } .
@@ -400,14 +402,14 @@ The natural frequencies of the gravity-capillary waves are
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
 \\
-\indent The wave perturbs the interface ans causes deviation of the electrical current. We calculate the current perturbations through Ohm's law $\widehat{\h j}_i = -\sigma_i\bm\nabla \widehat\varphi_i$. The electric potentials must also fulfill the Laplace equation $\bm{\nabla}^2\widehat{\varphi} = 0$ with boundary conditions given in Eqs.\,(\ref{eq:bc1} -- \ref{eq:bc4}), \eqref{eq:int_bc3} and \eqref{eq:int_bc4}. We find the solutions to the electrical potential to be
+\indent The wave perturbs the interface ans causes deviation of the electrical current. We calculate the current perturbations through Ohm's law ${\h j}_i = -\sigma_i\bm\nabla \varphi_i$. The electric potentials must also fulfill the Laplace equation $\bm{\nabla}^2{\varphi} = 0$ with boundary conditions given in Eqs.\,(\ref{eq:bc1} -- \ref{eq:bc4}), \eqref{eq:int_bc3} and \eqref{eq:int_bc4}. We find the solutions to the electrical potential to be
 %%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
-		\widehat{\varphi}_1 \\[12pt]
-		\widehat{\varphi}_2 
+		{\varphi}_1 \\[12pt]
+		{\varphi}_2 
 	\end{bmatrix} = 
-	J_0\,\Lambda\,\widehat{\eta}
+	J_0\,\Lambda\,{\eta}
 	\left[
 	\begin{array}{cc}
 		-\dfrac{\sinh[k (z-h_1)]}{\sigma_1 \cosh[kh_1]} &
@@ -455,7 +457,7 @@ The perturbative approach is based on the (inviscid) potential flow solutions of
 	\label{eq:perturb_method_ansatz}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
-In this notation, the tilded variables are small perturbations with respect to the hatted variables representing the basic two-wave state. The bare and the dashed($'$) hatted variables denote the variables corresponding to the two wave number ($m,n$) and $(m',n')$ accordingly. The terms $C$ and $C'$ are to be determined and $\alpha$ is the potentially destabilizing contribution to the inviscid growth rate that we seek to derive. We assume that both waves are magnetohydrodynamically coupled and therefore, both oscillate with the same mean frequency. We represent the average natural frequency of the wave as $\bar{\omega} = (\omega + \omega')/2$ and the average frequency difference as $\delta\omega = (\omega - \omega')/2$.  Considering the wave pair to be in a coupled motion $\omega = \omega' = \bar{\omega}$ is justified by the fact that the wave frequencies are shifted by Lorentz forces ($\bar{\omega} = \omega - \delta \omega$ and $\bar{\omega} = \omega' + \delta \omega$) in such a way that they coincide exactly at the point of marginal stability \cite{Davidson1998}. In the absence of any Lorentz forces, precisely the classic gravity-capillary wave numbers given in Eq.\,(\ref{eq:perturb_method_ansatz}) result as two independent solutions of our system. This rigorously justifies our approach, and our theory is capable of describing the complete transition from purely hydrodynamic waves passing through magnetohydrodynamically modified waves regimes up to the (linear) self-amplifying MPR wave.
+In this notation, the tilded variables are small perturbations with respect to the hatted variables representing the time-independent form of the basic two-wave state. The bare and the dashed($'$) hatted variables denote the variables corresponding to the two wave number ($m,n$) and $(m',n')$ accordingly. The terms $C$ and $C'$ are to be determined and $\alpha$ is the potentially destabilizing contribution to the inviscid growth rate that we seek to derive. We assume that both waves are magnetohydrodynamically coupled and therefore, both oscillate with the same mean frequency. We represent the average natural frequency of the wave as $\bar{\omega} = (\omega + \omega')/2$ and the average frequency difference as $\delta\omega = (\omega - \omega')/2$.  Considering the wave pair to be in a coupled motion $\omega = \omega' = \bar{\omega}$ is justified by the fact that the wave frequencies are shifted by Lorentz forces ($\bar{\omega} = \omega - \delta \omega$ and $\bar{\omega} = \omega' + \delta \omega$) in such a way that they coincide exactly at the point of marginal stability \cite{Davidson1998}. In the absence of any Lorentz forces, precisely the classic gravity-capillary wave numbers given in Eq.\,(\ref{eq:perturb_method_ansatz}) result as two independent solutions of our system. This rigorously justifies our approach, and our theory is capable of describing the complete transition from purely hydrodynamic waves passing through magnetohydrodynamically modified waves regimes up to the (linear) self-amplifying MPR wave.
 \\
 \indent All the preparations have now been made to calculate the inviscid growth rate $\alpha$. By inserting the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont}, and considering only the leading order terms, we can obtain the next order in the perturbation problem through the equations:
 %%%%%%%%%%%%%%%%%%%%
@@ -599,7 +601,7 @@ where
 \end{subequations}
 %%%%%%%%%%%%%%%%%%%%
 \\
-\indent The perturbation analysis results in two distinct solutions for the growth rate $\alpha$. The two solutions correspond to MPR waves that rotate either clockwise or anti-clockwise (when looking at the cell from above), or equivalently, to standing wave pairs ($\eta + \eta'$) with a positive or negative phase shift, as shown in Fig.\,\ref{fig:wave_superposed}. One of the two wave solutions is always suppressed by the Lorentz force (when the induced Lorentz force $\h j\times B_z\h e_z$ opposes the rotating wave motion $\h u$) and the other one is amplified in the unstable situations (when $\h j\times B_z\h e_z$ aligns with $\h u$). In our configuration shown in Fig.\,\ref{fig:cell_schematic}, anti-clockwise rotating waves are destabilized. From the growth rate {Eq.\,\eqref{eq:main_gr}} one can readily derive the inviscid stability onset $\beta_{\ii{crit}}$, which can be represented compactly in a dimensionless form as follows
+\indent The perturbation analysis results in two distinct solutions for the growth rate $\alpha$. The two solutions correspond to MPR waves that rotate either clockwise or anti-clockwise (when looking at the cell from above), or equivalently, to standing wave pairs ($\eta + \eta'$) with a positive or negative phase shift, as shown in Fig.\,\ref{fig:wave_superposed}. One of the two wave solutions in Eq.\,\eqref{eq:main_gr} is always suppressed by the Lorentz force (when the induced Lorentz force $\h j\times B_z\h e_z$ opposes the rotating wave motion $\h u$) and the other one is amplified in the unstable situations (when $\h j\times B_z\h e_z$ aligns with $\h u$). In our configuration shown in Fig.\,\ref{fig:cell_schematic}, anti-clockwise rotating waves are destabilized. From the growth rate {Eq.\,\eqref{eq:main_gr}} one can readily derive the inviscid stability onset $\beta_{\ii{crit}}$, which can be represented compactly in a dimensionless form as follows
 %%%%%%%%%%%%%%%%
 \begin{equation}
 	 \beta_{\ii{crit}} =  \frac{L_x^2 L_y^2}{h_1h_2 \Theta}
@@ -630,7 +632,7 @@ where
 		\end{scope}
 		
 	\end{tikzpicture}
-	\caption{An illustration of a linear gravity-capillary wave in a rectangular system of lateral aspect ratio equal to 2. For example, the superposition of a two standing waves of modes $(2,0)$ and $(1,1)$ to produce of a rotating interfacial wave of mode $(2,0)+(1,1)$.}
+	\caption{An illustration of a linear interfacial wave in a rectangular system of lateral aspect ratio equal to 2. For example, the superposition of a two standing waves of modes $(2,0)$ and $(1,1)$ to produce of a rotating interfacial wave of mode $(2,0)+(1,1)$.}
 	\label{fig:wave_superposed}
 \end{figure}
 %%%%%%%%%%%%%%%
@@ -640,7 +642,7 @@ where
 \subsection{The viscous correction of the growth rate}
 \label{sec:visc_damp}
 
-Up to this point, we have been looking at the MPR instability at the inviscid limit. In reality, viscosity plays a crucial role in dissipating some of the energy injected in the system. To evaluate the stability of industrial ARCs, in which turbulent flows usually prevail, the damping rate due to viscous dissipation must be estimated or determined experimentally. In small-scale models, where flows remain largely laminar (at least in the boundaries or around the point of marginal instability), viscous damping rates can be calculated analytically. Here, viscosity is treated as a perturbation independent of the Lorentz force and the damping rate is subtracted from the inviscid growth rate in the two-wave ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] and solved accordingly. This is a key ingredient for our model to serve as a benchmark. 
+Up to this point, we have been looking at the MPR instability at the inviscid limit. In real cells, viscosity plays a crucial role in dissipating some of the energy injected in the system. To evaluate the stability of industrial ARCs, in which turbulent flows usually prevail, the damping rate due to viscous dissipation must be estimated or determined experimentally. In small-scale models, where flows remain largely laminar (at least in the boundaries or around the point of marginal instability), viscous damping rates can be calculated analytically. Here, viscosity is treated as a perturbation independent of the Lorentz force and the now viscous growth rate $\alpha$ in the two-wave ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}], is solved accordingly. This is a key ingredient for our model to serve as a benchmark. 
 \\
 \indent We start with the viscous damping rate. In the leading order, magnetohydrodynamics effects can be neglected (no consideration of Hartmann layers) and it remains to calculate the total dissipation produced in the Stokes boundary layers, which are created solely by wave motions. We follow the approach by \citet{Keulegan1959}, who has calculated damping rates of free-surface gravity waves in rectangular containers. We extend his formulation to two liquid layers, which is not straightforward as viscous boundary layers are formed above and below the interface in two-liquid systems that do not develop on free surfaces and must be calculated separately. In absence of MHD effects, the linear governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont} reduce to
 %%%%%%%%%%%%
@@ -1045,7 +1047,7 @@ This chapter is dedicated to the validation of our model, which essentially cons
 \end{figure}
 %%%%%%%%%%%%%%
 
-We have already shown that the viscous damping rate $\lambda$ agrees with the established linear damping rate in Eq. \,\eqref{eq:damp_1L_wall} derived by \citet{Keulegan1959} within its single-layer limit describing free-surface waves. However, interfacial waves are physically different because the leading-order viscous boundary layers form above and below the interface (the viscous boundary layer below a free surface is of higher order \citep{Joseph2006}), and Lamb's dissipation integral must be treated differently. However, the literature on two-layer interfacial wave damping is unfortunately rather limited. Therefore, we cross-validated the analytical results from Eqs.\,(\ref{eq:visc_damp_wall}\textendash\ref{eq:visc_damp_extra}) with DNS using ARCHER. For a two-layer (cryolite–aluminium) system considering geometries with smaller lateral surface areas and equal layer heights, we initialized a standing interfacial wave profile of mode $(m,n)$ with a small amplitude of $L_z/500$ and let it decay over time. Three different cell aspect ratios (1, 2 and 3) with varying cell surface areas were simulated and compared with the theoretical values, each with a fixed length $L_x$ and layer height equal to $h_1,h_2=L_x/8$. The total surface areas were kept relatively small in order to reduce the computational cost. Due to the lack of sufficient models available to track the contact line motion of the interface, we were limited to an interfacial contact angle of $90^\circ$ and therefore, had to neglect the capillary effects on the lateral wall. The value of the interfacial tension was also set to zero. Fig.\,\ref{fig:wave_decay} shows the simulated wave decay profile in comparison with the theoretical profile, for a particular case of mode ($4,1$) in two different cell geometries, $L_x=4$ cm and $L_x=18$ cm. The damping rate of the waves were obtained from fitting an exponential curve on the envelope of the respective numerical curve. A detailed explanation regarding the post processing of the decay rates  and the mesh convergence study is provided in Appendix\,\ref{appD}. The damping rates obtained for all wave numbers pertaining to geometries $L_x=4$ and $L_x=18$ cm, are presented in Fig.\,\ref{fig:numeric_sim}. For the latter case ($L_x=18$ cm), we found good agreement between the simulated and theoretical values of the damping rates, with a net deviation of less than 10\%. This is the relevant case as as most mid-sized MPR setups have dimensions around or larger than $L_x=18$ cm \cite{Hegde2025,Pedcenko2009}. The values of the damping rate obtained from simulating smaller cell geometries with $L_x=4$ cm showed a larger disagreement with the theory, with an average error of 22\%. Deviations in the wave frequency (see Fig.\,\ref{fig:wave_decay}\hyperref[fig:wave_decay]{(a)}) contributed largely to disagreement in the damping rates. The poor agreement in the wave frequency and damping rates in the smaller cells can be attributed to the viscous sub-layer $\sqrt{\nu_i/\omega}$ having the same scale as the inviscid bulk flow. In these cases, our boundary layer correction approach that relies on inviscid irrotational bulk solutions begins to lose its applicability \cite{Huang2025}. The experiment by \citet{Borisov2010} uses cells of similar dimensions but with double the layer height, where our approach is still a good approximation [Eq.\,\eqref{eq:u_wall}]. The comparisons of the damping rates for other cell geometries $L_x=6, 12$ cm are provided in Table\,\ref{tab:table_sim}, Appendix\,\ref{appD}.
+We already verified that the viscous damping rate $\lambda$ agrees with the established linear damping rate in Eq. \,\eqref{eq:damp_1L_wall} derived by \citet{Keulegan1959} within its single-layer limit describing free-surface waves. However, interfacial waves are physically different because the leading-order viscous boundary layers form above and below the interface (the viscous boundary layer below a free surface is of higher order \citep{Joseph2006}), and Lamb's dissipation integral must be treated differently. However, the literature on two-layer interfacial wave damping is unfortunately rather limited. Therefore, we cross-validated the analytical results from Eqs.\,(\ref{eq:visc_damp_wall}\textendash\ref{eq:visc_damp_extra}) with DNS using ARCHER. For a two-layer (cryolite–aluminium) system considering geometries with smaller lateral surface areas and equal layer heights, we initialized a standing interfacial wave profile of mode $(m,n)$ with a small amplitude of $L_z/500$ and let it decay over time. Three different cell aspect ratios (1, 2 and 3) with varying cell surface areas were simulated and compared with the theoretical values, each with a fixed length $L_x$ and layer height equal to $h_1,h_2=L_x/8$. The total surface areas were kept relatively small in order to reduce the computational cost. Due to the lack of sufficient models available to track the contact line motion of the interface, we were limited to an interfacial contact angle of $90^\circ$ and therefore, had to neglect the capillary effects on the lateral wall. The value of the interfacial tension was also set to zero. Fig.\,\ref{fig:wave_decay} shows the simulated wave decay profile in comparison with the theoretical profile, for a particular case of mode ($4,1$) in two different cell geometries, $L_x=4$ cm and $L_x=18$ cm. The damping rate of the waves were obtained from fitting an exponential curve on the envelope of the respective numerical curve. A detailed explanation regarding the post processing of the decay rates  and the mesh convergence study is provided in Appendix\,\ref{appD}. The damping rates obtained for all wave numbers pertaining to geometries $L_x=4$ and $L_x=18$ cm, are presented in Fig.\,\ref{fig:numeric_sim}. For the latter case ($L_x=18$ cm), we found good agreement between the simulated and theoretical values of the damping rates, with a net deviation of less than 10\%. This is the relevant case as as most mid-sized MPR setups have dimensions around or larger than $L_x=18$ cm \cite{Hegde2025,Pedcenko2009}. The values of the damping rate obtained from simulating smaller cell geometries with $L_x=4$ cm showed a larger disagreement with the theory, with an average error of 22\%. Deviations in the wave frequency (see Fig.\,\ref{fig:wave_decay}\hyperref[fig:wave_decay]{(a)}) contributed largely to disagreement in the damping rates. The poor agreement in the wave frequency and damping rates in the smaller cells can be attributed to the viscous sub-layer $\sqrt{\nu_i/\omega}$ having the same scale as the inviscid bulk flow. In these cases, our boundary layer correction approach that relies on inviscid irrotational bulk solutions begins to lose its applicability \cite{Huang2025}. The experiment by \citet{Borisov2010} uses cells of similar dimensions but with double the layer height, where our approach is still a good approximation [Eq.\,\eqref{eq:u_wall}]. The comparisons of the damping rates for other cell geometries $L_x=6, 12$ cm are provided in Table\,\ref{tab:table_sim}, Appendix\,\ref{appD}.
 
 %%%%%%%%%%%%%%
 \begin{figure}

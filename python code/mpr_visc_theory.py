@@ -85,8 +85,12 @@ def deltaFunc(x):
     return val
 
 
-# wave number
+# wave number function
 def kmn(m, n, Lx, Ly):
+    """
+    Wave number function. Equation (12).
+    """
+    
     if m <= 0 and n <= 0:
         raise ValueError("Incorrect wave modes")
     else:
@@ -103,8 +107,21 @@ def wmn(rho1, rho2, gamma, k, h1, h2):
     return sqrt(num / den)
 
 
+# conductivity jump parameter
+def Lambda(rho1, rho2, sig1, sig2, h1, h2, k):
+    """
+    conductivity jump parameter. Equation (15).
+    """
+    num = pow(sig1, -1) + pow(sig2, -1)
+    den = pow(sig1, -1) * tanh(k * h1) + pow(sig2, -1) * coth(k * h2)
+    return num / den
+
+
 # viscous dissipation due to the bounding walls
 def visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
+    """
+    damping rate due to viscous dissipation due to the bounding walls. Equation (36).
+    """
     k = kmn(m, n, Lx, Ly)
     w = wmn(rho1, rho2, gamma, k, h1, h2)
 
@@ -143,6 +160,10 @@ def visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 
 # viscous dissipation due to the liquid-liquid interface
 def visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
+    """
+    damping rate due to viscous dissipation due to the liquid-liquid interface. Equation (37).
+    """
+    
     k = kmn(m, n, Lx, Ly)
     w = wmn(rho1, rho2, gamma, k, h1, h2)
 
@@ -156,6 +177,10 @@ def visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 
 # viscous dissipation due to bulk irrotational stresses
 def visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
+    """
+    damping rate due to viscous dissipation due to irrotational stresses. Equation (38).
+    """
+    
     k = kmn(m, n, Lx, Ly)
 
     fac = (
@@ -173,21 +198,22 @@ def visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 
 
 def visc_damp_total(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
+    """
+    total damping rate. Equation (35).
+    """
+    
     wall = visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     sidewall = visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     bulk = visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
     return wall + sidewall + bulk
 
 
-# conductivity jump parameter
-def Lambda(rho1, rho2, sig1, sig2, h1, h2, k):
-    num = pow(sig1, -1) + pow(sig2, -1)
-    den = pow(sig1, -1) * tanh(k * h1) + pow(sig2, -1) * coth(k * h2)
-    return num / den
-
-
 # form function for the wave modes
 def ThetaFunc(m1, n1, m2, n2):
+    """
+    Theta = f(m,n, m',n'). Equation (23a).
+    """
+    
     fac = sqrt(deltaFunc(m1 * m2) * deltaFunc(n1 * n2))
     num = (
         (pow(-1, m1 + m2) - 1)
@@ -200,6 +226,10 @@ def ThetaFunc(m1, n1, m2, n2):
 
 # Terms which arise when we remove the shallow water approximation
 def T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2):
+    """
+    non-shallow layer height dependencies. Equation (23d, 23e).
+    """
+    
     Lambda1 = Lambda(rho1, rho2, sig1, sig2, h1, h2, k1)
     Lambda2 = Lambda(rho1, rho2, sig1, sig2, h1, h2, k2)
 
@@ -241,7 +271,11 @@ def growth_rate(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
     m1, n1, m2, n2,
     Lx, Ly, h1, h2,
     I0, Bz, damp1, damp2,
-):
+    ):
+    """
+    viscous growth rate. Equation (41).
+    """
+    
     k1 = kmn(m1, n1, Lx, Ly)
     w1 = wmn(rho1, rho2, gamma, k1, h1, h2)
     k2 = kmn(m2, n2, Lx, Ly)
@@ -275,7 +309,11 @@ def betaCrit_func(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
     m1, n1, m2, n2,
     Lx, Ly, h1, h2,
     damp1, damp2,
-):
+    ):
+    """
+    stability criterion for the MPR instability. Equation (42).
+    """
+    
     k1 = kmn(m1, n1, Lx, Ly)
     w1 = wmn(rho1, rho2, gamma, k1, h1, h2)
     k2 = kmn(m2, n2, Lx, Ly)
@@ -314,9 +352,22 @@ def parameter_check(electrolyte, metal, geometry):
     sig1 = electrolyte.electric_conductivity
     sig2 = metal.electric_conductivity
 
+    gamma = surface_tension.gamma
+
+    m1, n1 = wavemode1.m, wavemode1.n
+    m2, n2 = wavemode2.m, wavemode2.n
     Lx, Ly = geometry.length, geometry.width
     h1, h2 = geometry.electrolyte_height, geometry.metal_height
-
+    
+    k1, k2 = kmn(m1, n1, Lx, Ly), kmn(m2, n2, Lx, Ly)
+    w1 = wmn(rho1, rho2, gamma, k1, h1, h2)
+    w2 = wmn(rho1, rho2, gamma, k2, h1, h2)
+    
+    #calculating the thickness of the viscous sub layer
+    vsl1 = np.sqrt(nu1/w1)
+    vsl2 = np.sqrt(nu2/w2)
+    
+        
     if rho1 <= 0 or rho2 <= 0:
         raise ValueError("Incorrect density values")
     elif nu1 <= 0 or nu2 <= 0:
@@ -329,7 +380,11 @@ def parameter_check(electrolyte, metal, geometry):
         raise ValueError("Incorrect layer heights")
     if max(Lx, Ly) < min(h1, h2):
         print("WARING: Lx and Ly should be layer than the layer height to account.")
-
+    if vsl1/h1 > 0.1:
+        print("Warning: viscous sub-layer too thick compared to the layer height. Adjust h1")
+    elif vsl2/h2 > 0.1:
+        print("Warning: viscous sub-layer too thick compared to the layer height. Adjust h2")
+    
     print("parameter check: OK \n")
 
 
