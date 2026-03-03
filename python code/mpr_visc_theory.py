@@ -88,7 +88,7 @@ def deltaFunc(x):
 # wave number function
 def kmn(m, n, Lx, Ly):
     """
-    Wave number function. Equation (12).
+    Wave number function. Equation (11).
     """
     
     if m <= 0 and n <= 0:
@@ -100,7 +100,7 @@ def kmn(m, n, Lx, Ly):
 # wave frequency
 def wmn(rho1, rho2, gamma, k, h1, h2):
     """
-    Gravity-capillary wave frequency. Equation (13).
+    Gravity-capillary wave frequency. Equation (12).
     """
     num = (rho2 - rho1) * g * k + gamma * k**3
     den = rho1 * coth(k * h1) + rho2 * coth(k * h2)
@@ -110,7 +110,7 @@ def wmn(rho1, rho2, gamma, k, h1, h2):
 # conductivity jump parameter
 def Lambda(rho1, rho2, sig1, sig2, h1, h2, k):
     """
-    conductivity jump parameter. Equation (15).
+    conductivity jump parameter. Equation (14).
     """
     num = pow(sig1, -1) + pow(sig2, -1)
     den = pow(sig1, -1) * tanh(k * h1) + pow(sig2, -1) * coth(k * h2)
@@ -120,7 +120,7 @@ def Lambda(rho1, rho2, sig1, sig2, h1, h2, k):
 # viscous dissipation due to the bounding walls
 def visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     """
-    damping rate due to viscous dissipation due to the bounding walls. Equation (36).
+    damping rate due to viscous dissipation due to the bounding walls. Equation (35).
     """
     k = kmn(m, n, Lx, Ly)
     w = wmn(rho1, rho2, gamma, k, h1, h2)
@@ -161,7 +161,7 @@ def visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 # viscous dissipation due to the liquid-liquid interface
 def visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     """
-    damping rate due to viscous dissipation due to the liquid-liquid interface. Equation (37).
+    damping rate due to viscous dissipation due to the liquid-liquid interface. Equation (36).
     """
     
     k = kmn(m, n, Lx, Ly)
@@ -178,7 +178,7 @@ def visc_damp_interface(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 # viscous dissipation due to bulk irrotational stresses
 def visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     """
-    damping rate due to viscous dissipation due to irrotational stresses. Equation (38).
+    damping rate due to viscous dissipation due to irrotational stresses. Equation (37).
     """
     
     k = kmn(m, n, Lx, Ly)
@@ -199,7 +199,7 @@ def visc_damp_irrotational(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 
 def visc_damp_total(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
     """
-    total damping rate. Equation (35).
+    total damping rate. Equation (34).
     """
     
     wall = visc_damp_wall(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2)
@@ -211,7 +211,7 @@ def visc_damp_total(rho1, rho2, nu1, nu2, gamma, m, n, Lx, Ly, h1, h2):
 # form function for the wave modes
 def ThetaFunc(m1, n1, m2, n2):
     """
-    Theta = f(m,n, m',n'). Equation (23a).
+    Theta = f(m,n, m',n'). Equation (22a).
     """
     
     fac = sqrt(deltaFunc(m1 * m2) * deltaFunc(n1 * n2))
@@ -227,7 +227,7 @@ def ThetaFunc(m1, n1, m2, n2):
 # Terms which arise when we remove the shallow water approximation
 def T_func(rho1, rho2, sig1, sig2, h1, h2, k1, k2):
     """
-    non-shallow layer height dependencies. Equation (23d, 23e).
+    non-shallow layer height dependencies. Equation (22d, 22e).
     """
     
     Lambda1 = Lambda(rho1, rho2, sig1, sig2, h1, h2, k1)
@@ -273,7 +273,7 @@ def growth_rate(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
     I0, Bz, damp1, damp2,
     ):
     """
-    viscous growth rate. Equation (41).
+    viscous growth rate. Equation (40).
     """
     
     k1 = kmn(m1, n1, Lx, Ly)
@@ -311,7 +311,7 @@ def betaCrit_func(rho1, rho2, nu1, nu2, sig1, sig2, gamma,
     damp1, damp2,
     ):
     """
-    stability criterion for the MPR instability. Equation (42).
+    stability criterion for the MPR instability. Equation (41).
     """
     
     k1 = kmn(m1, n1, Lx, Ly)

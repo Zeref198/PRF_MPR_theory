@@ -338,24 +338,7 @@ Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} represent the classic kinematic 
 
 \subsection{Interfacial waves}
 \label{sec:waves}
-We intend to solve the linear stability problem using perturbation theory, supposing the Lorentz force and the viscous forces are small. At lowest order, in the unperturbed problem for $B_z=0$ and $\nu_i=0$, the hydrodynamical problem is decoupled from the electrical problem. We then have free gravity-capillary waves and each different wave creates a deviation of electric current. The solutions for the classical gravity-capillary waves can be obtained by expressing the bulk velocities as gradients of scalar potentials ${\h u}_i = \bm\nabla \phi_i$ and solving the Laplace equation $\bm\nabla^2\phi_i = 0$ together with the no outflow boundary condition [Eq.\,\eqref{eq:no-outflow_bc}] and the interface conditions given in Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} \cite{Lamb1945}:
-%%%%%%%%%%%%%%%%%%%%
-\begin{equation}
-	\begin{bmatrix}
-		{\h u}_i \\[5pt]
-		{p}_i \\[5pt]
-		{\eta}
-	\end{bmatrix}
-	=
-	\begin{bmatrix}
-		\bm{\nabla}{\phi}_i \\[5pt]
-		-\rho_i(\ii i\omega){\phi}_i\\[5pt]
-		\partial_z {\phi}_i/(\ii i\omega )
-	\end{bmatrix}.
-	\label{eq:pot_wave_soln}
-\end{equation}
-%%%%%%%%%%%%%%%%%%%%
-Here, the flow potential in both layers are given by
+We intend to solve the linear stability problem using perturbation theory, supposing the Lorentz force and the viscous forces are small. At lowest order, in the unperturbed problem for $B_z=0$ and $\nu_i=0$, the hydrodynamical problem is decoupled from the electrical problem. We then have free gravity-capillary waves and each different wave creates a deviation of electric current. The solutions for the classical gravity-capillary waves can be obtained by expressing the bulk velocities as gradients of scalar potentials ${\h u}_i = \bm\nabla \phi_i$ and solving the Laplace equation $\bm\nabla^2\phi_i = 0$ together with the no outflow boundary condition [Eq.\,\eqref{eq:no-outflow_bc}] and the interface conditions given in Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} \cite{Lamb1945}. The flow potential in both layers are given by
 %%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{bmatrix}
@@ -380,11 +363,11 @@ along with the interface elevation function reading
 \begin{equation}
 	\eta = \ii{i}\,A_{mn} \cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
 	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right] 
-	\ii e^{\ii i \omega t} .
+	\ii e^{\ii i \omega t} ,
 	\label{eq:eta_eq}
 \end{equation} 
 %%%%%%%%%%%%%%%
-Here, $A_{mn}$ is a mode-dependent wave amplitude and $k$, a function of the wave numbers $(m,n)$ that count the number of half wavelengths along $x$ and $y$ is 
+and the pressure $p_i = -\rho_i(\ii i\omega){\phi}_i$. Here, $A_{mn}$ is a mode-dependent wave amplitude. The wavenumber $k$ is 
 %%%%%%%%%%%%%%%
 \begin{equation}
 	k =  \pi\sqrt{\frac{m^2}{L_x^2} + \frac{n^2}{L_y^2} } .
@@ -434,7 +417,9 @@ We introduce  $\Lambda$, the conductivity jump parameter
 \subsection{Perturbative calculation of the inviscid growth rate of the MPR instability}
 \label{sec:growth_rate_gen}
 
-The perturbative approach is based on the (inviscid) potential flow solutions of free gravity-capillary interfacial waves that form a set of orthogonal functions in the absence of MHD effects ($\bm{B}= \bm 0$) and without viscosity ($\nu = 0$). Viscosity only affects the flow in the close vicinity of the Stokes boundary layers forming at the container walls, and below and above the interface. In Sec.\,\ref{sec:visc_damp}, we calculate Stokes boundary layers corrections to the potential flow solutions to predict viscous damping rates associated with interfacial wave motions. In our formulation, however, only perturbations of the inviscid bulk flow are considered and all dissipative effects are integrated into a global damping factor $\lambda$. In contrast to most previous studies, which examine the interaction of infinitely many wave numbers and truncate the system \textit{a posteriori} \cite{Sneyd1994,Bojarevics1994}, we calculate the two-wave interaction directly allowing us to derive exact analytical solutions for the growth rates and stability onsets. The disadvantage of this method is that the MPR instability can sometimes arise from three (or more)-wave interactions \cite{Bojarevics1994,Bojarevics2006}. Accordingly, these cases are not represented in our model. A standard two-wave ansatz is given as follows:
+The perturbative approach is based on the (inviscid) potential flow solutions of free gravity-capillary interfacial waves that form a set of orthogonal functions in the absence of MHD effects ($\bm{B}= \bm 0$) and without viscosity ($\nu = 0$). In this section, we calculate the inviscid growth rate. The effect of viscous dissipation due to the Stokes boundary layers forming at the container walls, and below and above the interface are presented in Sec.\,\ref{sec:visc_damp}.
+\\
+\indent In contrast to most previous studies, which examine the interaction of infinitely many wave numbers and truncate the system \textit{a posteriori} \cite{Sneyd1994,Bojarevics1994}, we calculate the two-wave interaction directly allowing us to derive exact analytical solutions for the growth rates and stability onsets. The disadvantage of this method is that the MPR instability can sometimes arise from three (or more)-wave interactions \cite{Bojarevics1994,Bojarevics2006}, and these cases are not represented in our model. A standard two-wave ansatz is given as follows:
 %%%%%%%%%%%%%%%%
 \begin{equation}
 	\fontsize{10.5pt}{10.5pt}
@@ -457,9 +442,9 @@ The perturbative approach is based on the (inviscid) potential flow solutions of
 	\label{eq:perturb_method_ansatz}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
-In this notation, the tilded variables are small perturbations with respect to the hatted variables representing the time-independent form of the basic two-wave state. The bare and the dashed($'$) hatted variables denote the variables corresponding to the two wave number ($m,n$) and $(m',n')$ accordingly. The terms $C$ and $C'$ are to be determined and $\alpha$ is the potentially destabilizing contribution to the inviscid growth rate that we seek to derive. We assume that both waves are magnetohydrodynamically coupled and therefore, both oscillate with the same mean frequency. We represent the average natural frequency of the wave as $\bar{\omega} = (\omega + \omega')/2$ and the average frequency difference as $\delta\omega = (\omega - \omega')/2$.  Considering the wave pair to be in a coupled motion $\omega = \omega' = \bar{\omega}$ is justified by the fact that the wave frequencies are shifted by Lorentz forces ($\bar{\omega} = \omega - \delta \omega$ and $\bar{\omega} = \omega' + \delta \omega$) in such a way that they coincide exactly at the point of marginal stability \cite{Davidson1998}. In the absence of any Lorentz forces, precisely the classic gravity-capillary wave numbers given in Eq.\,(\ref{eq:perturb_method_ansatz}) result as two independent solutions of our system. This rigorously justifies our approach, and our theory is capable of describing the complete transition from purely hydrodynamic waves passing through magnetohydrodynamically modified waves regimes up to the (linear) self-amplifying MPR wave.
+In this notation, the tilded variables are small perturbations with respect to the hatted variables representing the spatial structure of the free waves. The bare and the dashed($'$) hatted variables denote the variables corresponding to the two wave number ($m,n$) and $(m',n')$ accordingly. The terms $C$ and $C'$ are to be determined and $\alpha$ is the inviscid growth rate that we seek to derive. We assume that both waves are resonantly coupled by the Lorentz force $\h j_i \times B_z\h e_z$ and this requires that they both oscillate with the same mean frequency. We represent the average natural frequency of the wave as $\bar{\omega} = (\omega + \omega')/2$ and the average frequency difference as $\delta\omega = (\omega - \omega')/2$. We suppose the frequency detuning $\delta\omega$ to be small. At perfect resonance $\delta\omega = 0$. 
 \\
-\indent All the preparations have now been made to calculate the inviscid growth rate $\alpha$. By inserting the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont}, and considering only the leading order terms, we can obtain the next order in the perturbation problem through the equations:
+\indent We insert the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont}, ignoring viscosity. After using the equations for the free gravity wave problem, we find
 %%%%%%%%%%%%%%%%%%%%
 \begin{subequations}
 	\begin{align}
@@ -497,11 +482,11 @@ To find an equation for $\alpha$, we have to state a solvability condition. For 
 		\\
 		C'
 	\end{bmatrix}
-	= 0 ,
+	= 0 .
 	\label{eq:alpha_matrix_initial}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
-with,
+The terms
 %%%%%%%%%%%%%%%%%%%%
 \begin{subequations}
 	\begin{align}
@@ -518,7 +503,7 @@ with,
 	\end{align}
 \end{subequations}
 %%%%%%%%%%%%%%%%%%%%
-The terms given above are associated with the power transfers between waves mediated by Lorentz forces. The terms $K_{\eta\eta}$ is associated with the potential (or equivalently kinetic) energy of the respective wave number $(m,n)$ and is given by
+are associated with power transfers between waves mediated by Lorentz forces. The terms $K_{\eta\eta}$ and $K_{\eta'\eta'}$ are associated with the potential (or equivalently kinetic) energy of the respective wave number $(m,n)$ and is given by
 %%%%%%%%%%%%%%%%%%%%
 \begin{align}
 	\nn
@@ -529,7 +514,7 @@ The terms given above are associated with the power transfers between waves medi
 	\label{eq:K_11}
 \end{align}
 %%%%%%%%%%%%%%%
-Similarly, $K_{\eta\eta}$ is a function of $(m',n')$ and $k'$. For the sake of simplicity, we introduced an auxiliary function $\xi_r$ that is defined as follows
+and similarly for $K_{\eta'\eta'}$ with $m'$, $n'$ and $k'$. For the sake of simplicity, we introduced an auxiliary function $\xi_r$ that is defined as follows
 \[
 \xi_r = \biggl\{
 \begin{array}{c}
@@ -541,7 +526,7 @@ Similarly, $K_{\eta\eta}$ is a function of $(m',n')$ and $k'$. For the sake of s
 Finally, the secular equation of the matrix [Eq.\,\eqref{eq:alpha_matrix_initial}] yields the solutions for the inviscid $\alpha$, one of the central result of our study given by
 %%%%%%%%%%
 \begin{equation}
-	\alpha = \pm \; \sqrt{\dfrac{I_{\eta\eta'}I_{\eta'\!\eta}}{4K_{\eta\eta}K_{\eta'\!\eta'}} + \bigl[ \ii i{\delta \omega} \bigr]^2 }.
+	\alpha = \pm \; \sqrt{\dfrac{I_{\eta\eta'}I_{\eta'\!\eta}}{4K_{\eta\eta}K_{\eta'\!\eta'}} - {\delta \omega}^2 }.
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%
 On solving the integrals in Eqs.\,\eqref{eq:A_12} and \eqref{eq:A_21}, we obtain the explicit formulation
