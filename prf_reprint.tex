@@ -1,0 +1,1418 @@
+%% ****** Start of file apstemplate.tex ****** %
+%%
+%%
+%%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%%   Version 4.2a of REVTeX, January, 2015
+%%
+%%
+%%   Copyright (c) 2015 The American Physical Society.
+%%
+%%   See the REVTeX 4 README file for restrictions and more information.
+%%
+%
+% This is a template for producing manuscripts for use with REVTEX 4.2
+% Copy this file to another name and then work on that file.
+% That way, you always have this original template file to use.
+%
+% Group addresses by affiliation; use superscriptaddress for long
+% author lists, or if there are many overlapping affiliations.
+% For Phys. Rev. appearance, change preprint to twocolumn.
+% Choose pra, prb, prc, prd, pre, prl, prstab, prstper, or rmp for journal
+%  Add 'draft' option to mark overfull boxes with black boxes
+%  Add 'showkeys' option to make keywords appear
+%\documentclass[aps,prfluids,preprint,superscriptaddress]{revtex4-2}
+%\documentclass[aps,prl,preprint,superscriptaddress]{revtex4-2}
+\documentclass[aps,prfluids,reprint,superscriptaddress]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage[hypertexnames=false,
+pdfstartview=FitH,
+breaklinks=true,
+bookmarks=true,
+bookmarksopen=true,
+bookmarksnumbered=true]{hyperref}
+\urlstyle{same}
+\hypersetup{
+	colorlinks = true,
+	linkcolor  = blue,
+	urlcolor   = blue,
+	citecolor  = blue,
+}
+\setlength{\parskip}{0cm plus4mm minus2mm}
+\setlength{\bibsep}{-1.45pt}
+
+\usepackage{natbib}
+\usepackage{float}
+
+%user defined commands
+\newcommand{\h}[1]{\textbf{\textit{#1}}}
+\newcommand{\ii}[1]{\text{#1}}
+\newcommand{\noi}{\noindent}
+\newcommand{\nn}{\nonumber}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-2mu#1\mkern-2mu}\mkern 1.5mu}
+%for roman numeral
+\newcommand{\RN}[1]{%
+	\textup{\uppercase\expandafter{\romannumeral#1}}%
+}
+\newcommand{\Rn}[1]{%
+	\textup{\expandafter{\romannumeral#1}}%
+}
+\renewcommand{\textrm}{\rm}
+\usepackage{siunitx} % JCBdM: I add this to avoid incompatibility
+\usepackage{bm} % Bold in math mode
+\usepackage{amsmath} %extra math packages
+\usepackage{amssymb} %for math symbols
+\usepackage{physics} %for partial differential equations
+\DeclareDocumentCommand\dpdv{}{\displaystyle\partialderivative}
+\usepackage{multirow}
+\usepackage{cancel}
+\usepackage{scalerel} %change size of subscripts
+\usepackage{soul,color}
+%\usepackage{ulem}
+\usepackage{xcolor}
+
+\newcommand{\Wietze}[1]{\textcolor{teal}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\DeclareRobustCommand{\hly}[1]{{\sethlcolor{yellow}\hl{#1}}}
+\DeclareRobustCommand{\hlr}[1]{{\sethlcolor{pink}\hl{#1}}}
+
+%tikz
+\usepackage{pgfplots, tikz}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+\pgfplotsset{compat=newest} 
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+\usepgfplotslibrary{external}
+%\tikzexternalize[prefix=cache/]
+
+\usepackage{mdframed}
+
+\begin{document}
+
+% Use the \preprint command to place your local institutional report
+% number in the upper righthand corner of the title page in preprint mode.
+% Multiple \preprint commands are allowed.
+% Use the 'preprintnumbers' class option to override journal defaults
+% to display numbers if necessary
+%\preprint{}
+
+%Title of paper
+\title{Metal-pad-roll instability theory for small-scale models of reduction cells}
+
+\author{Pranav Hegde}
+\affiliation{Helmholtz-Zentrum Dresden-Rossendorf, Bautzner Landstr. 400, 01328 Dresden, Germany}
+\author{Wietze Herreman}
+\affiliation{Universit\'e Paris Saclay, CNRS, FAST, Orsay, F-91405, France}
+\author{Jorge C\'esar Br\"andle de Motta}
+\affiliation{Universit\'e Rouen Normandie, CNRS, INSA Rouen Normandie, Normandie Universit\'e, C.O.R.I.A UMR 6614, F-76000 Rouen, France}
+\author{Romain Canu}
+\affiliation{Universit\'e Rouen Normandie, CNRS, INSA Rouen Normandie, Normandie Universit\'e, C.O.R.I.A UMR 6614, F-76000 Rouen, France}
+\author{Marie-Charlotte Renoult}
+\affiliation{Universit\'e Rouen Normandie, CNRS, INSA Rouen Normandie, Normandie Universit\'e, C.O.R.I.A UMR 6614, F-76000 Rouen, France}
+\author{Gerrit Maik Horstmann}
+\email{g.horstmann@hzdr.de}
+\affiliation{Helmholtz-Zentrum Dresden-Rossendorf, Bautzner Landstr. 400, 01328 Dresden, Germany}
+
+
+\date{\today}
+
+\begin{abstract}
+	We present a theoretical model for the metal pad roll instability in laboratory-scale reduction cell experimental models consisting of two stably stratified liquid layers subjected to a vertical electric current and a likewise vertical magnetic field. In contrast to most previous studies, we do not rely on the shallow-water approximation and can account for viscous and capillary effects that are prevalent in small-scale experiments. In small cells, dissipation effects are largely attributable to laminar viscous damping, which we calculate analytically using a perturbative formulation of the Stokes boundary layers forming at all container walls and on both sides of the liquid interface. The derived damping rates, which are also useful for modeling liquid-liquid sloshing in rectangular containers, are validated against direct numerical simulations conducted with the coupled level set and volume-of-fluid solver ARCHER. On this basis, we derive analytical solutions for the growth rates and stability onsets of the metal pad roll instability, which we compare with different theoretical descriptions and existing experiments. The presented solutions are intended to serve as a foundation for future benchmarking of multiphase solvers.
+\end{abstract}
+
+% insert suggested keywords - APS authors don't need to do this
+%\keywords{}
+
+%\maketitle must follow title, authors, abstract, and keywords
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+
+Over the past 50 years, the modeling of the metal pad roll (MPR) instability has emerged as a flagship application in the discipline of magnetohydrodynamics, and it can be found in textbooks today \cite{Davidson2001,gerbeau2006a}. The high level of interest is attributable  to the practical significance for aluminum production. Aluminum reduction cells (ARCs) are known to be vulnerable to the MPR instability, and physical modeling can lead to strategies that help in keeping the instability under control.
+%%%%%%%%%%%%%%%
+\begin{figure}
+\begin{tikzpicture}
+\centering
+
+\begin{scope}[xshift=-4cm]
+	\node (pic1) at (0,0) {\includegraphics[height=3.5cm]{figures/intro_a.pdf}};
+	\node (txt1) at (-1.5,0.5) {cryolite};
+	\node (txt2) [below of=txt1, yshift=-0.1cm] {aluminum};
+	\node (txt3) at (1.3,-0.7) {electrical};
+	\node [below of=txt3, yshift=0.7cm] {current};
+	\draw (-1.5,1.3) -- (-1,1.7) node [right] {carbon anodes} (1.27,1.7) -- (1.77,1.3);
+	\node at (2.2,0.5) {risk};
+\end{scope}
+\begin{scope}[xshift=4cm]
+	\node (pic1) at (0,0) {\includegraphics[height=3.5cm]{figures/intro_b.pdf}};
+	\node at (2.7,1.3) {$I_0$};
+	\node at (1,-0.05) {$B_z$};
+\end{scope}
+\node (a) at (-7.3,2) {$(a)$};
+\node (b) at (1,2) {$(b$)};
+\end{tikzpicture}
+\caption{(a) Sideview of an aluminum reduction cell (ARC) with two superposed liquid layers. Metal pad roll instability destabilizes waves on the interface and can cause short-circuits. (b) ARC's are typically arranged around a central current loop in an industrial smelter and this creates an ambient magnetic field $B_z$ of typically a few mT. \label{fig:intro_fig}}
+\end{figure}
+%%%%%%%%%%%%%%%
+In terms of hydrodynamics, ARCs can be regarded as stably stratified systems of two liquid layers carrying a strong vertical electric current, see Fig.\,\ref{fig:intro_fig}\hyperref[fig:intro_fig]{(a)}. The alumina is dissolved in molten cryolite (${\rm Na}_3{\rm Al}{\rm F}_6$) and floats  on top of a layer of reduced pure aluminum. The interface between both layers can be destabilized and set in motion by Lorentz forces, interactions between the electrical currents in the cell, and induced or external magnetic fields. Many studies have shown that the most critical instability results from the interaction of horizontal electrical  currents in the aluminum layer and the vertical component of an external magnetic field \cite[chapter~6.1]{gerbeau2006a}. As illustrated in Fig.\,\ref{fig:intro_fig}\hyperref[fig:intro_fig]{(b)}, external  magnetic fields are induced  by the power supply lines in the aluminum factory and cannot be avoided during operation. In this paper, we use the term MPR instability to refer to this particular scenario, in line with the majority of the literature. The MPR instability causes a rotating sloshing motion in the aluminum (metal pad) that must be strictly controlled throughout the electrolysis. As indicated in Fig.\,\ref{fig:intro_fig}\hyperref[fig:intro_fig]{(a)}, the cells can be short-circuited if the liquid aluminum layer makes contact with the upper carbon anodes. For ARCs to remain stable with respect to the MPR-instability, the cryolite layer must not be thinner than about $3.5$\textendash$4.5\,{\rm cm}$ \cite{seetharaman2024}. This is, however, very unfavorable energetically as important Ohmic losses occur in the poorly conducting cryolite. About $40\,\%$ of a cell’s electrical energy reduces no aluminum, but is converted into waste heat. Keeping in mind that aluminum production consumes around $8\,\%$ of the global industrial electricity \cite{Kermeli2015}, the importance of understanding and controlling MPR instability is evident. Recently, there has also been interest regarding the fundamental aspects of the instability in context to liquid metal batteries (LMBs): a promising technology for grid-scale energy storage applications, intended to accommodate fluctuations in the supply of energy from renewable sources. Flow instabilities occurring inside this molten metal-salt system can have a crucial impact on the cell’s efficiency and operational safety \cite{Kelley2018,Horstmann2018,Duczek2024}. 
+\\
+\indent The first successful attempts to explain the MPR instability mechanism go back to the studies of \citet{Urata1985} and \citet{Sele1977}. On the basis of some heuristic arguments, Sele succeeded in deducing an essential non-dimensional parameter that controls the stability
+\begin{align}
+	\beta_{\rm S} = \frac{I_0 B_z}{(\rho_{\rm a} - \rho_{\rm c})gh_{\rm a}h_{\rm c}},
+\end{align}
+today referred to as the Sele parameter. In this parameter, $I_0$ and $B_z$ denote the total cell current and the vertical magnetic field, $g$ is gravity and $\rho_{\rm a}, \rho_{\rm c}$ and $h_{\rm a},h_{\rm c}$ refer to the densities and heights of the aluminum and cryolite layers. According to Sele, ARCs are MPR unstable when $\beta_{\rm S}$ exceeds a critical value, $\beta_{\rm crit}$, which depends on the lateral cell geometry, but also on the viscous or turbulent damping. The scaling behavior $\beta_{\rm S} \sim 1/h_{\rm c}$ explains why we need a thick enough cryolite layer.
+\\
+\indent Much progress in the theoretical modelling of the MPR instability was made in the 1990s \cite{Sneyd1994, Bojarevics1994, Davidson1998}. Perturbation techniques were applied to study the linear stability in the framework of the shallow-water approximation. It was revealed that the Lorentz force can couple different standing gravity wave numbers and destabilize them by pairs, much like in a parametric resonance of waves. The MPR instability  is triggered when the natural frequencies $\omega$ and $\omega'$ of at least two transverse gravity wave numbers are sufficiently close to one another. The effect of the magnetohydrodynamic coupling is that $\omega$ and $\omega'$ are shifted towards each other for increasing $I_0 B_z$ until they coincide at $\beta_{\rm S} = \beta_{\rm crit}$. If $I_0 B_z$ is further increased ($\beta_{\rm S} > \beta_{\rm crit}$), the wave-pair becomes unstable and grows exponentially to become a rotating metal pad wave. The stability threshold $\beta_{\rm crit}$ scales with the difference between the squared eigenfrequencies $\beta_{\rm crit} \sim |\omega^2 - \omega'^{2}|$ \cite{Davidson1998}. Cells in which pairs of gravity waves with identical natural frequencies $\omega = \omega'$ exist (e.g., this is the case for square and cylindrical cell geometries) are always unstable in the inviscid limit; the stability threshold in such cells only depends on the viscous or turbulent damping. An alternative view on the origin of the MPR instability was given by \citet{Lukyanov2001}, who argued that the instability is the result of multiple self-amplifying wave reflections on the sidewalls. According to \citet{Lukyanov2001}, the MHD coupling mechanism is inherently connected to the lateral walls, explaining the vocabulary of \textit{wall modes} introduced by \citet{Molokov2011}. \citet{Jha2023} studied the effect of horizontal and vertical magnetic fields on the destabilization of the metal pad, leading to the creation of standing waves.  In the decade that followed, most attention went to the development of nonlinear numerical models \cite{Zikanov2000,Zikanov2004,Bojarevics2006,gerbeau2006a} that can describe wave dynamics well beyond the stability threshold, e.g., for estimating saturation amplitudes. This has allowed ARC modeling to reach a certain level of maturity, and a great deal of effort has gone into the optimization of magnetic field and electric current distributions \cite{bojarevics2015} to maximally avoid the MPR-instability. 
+\\
+\indent Conducting well-controlled experiments on MPR instability in ARCs and LMBs is difficult due to the high temperature ($\sim 1000^o$C) and chemical aggressiveness. For this reason, several attempts have been made to develop downscaled model experiments that can synthesize or imitate MPR waves under ambient conditions. The pioneering experiment was devised by \citet{Pedcenko2009,Pedcenko2017}, who replaced the cryolite layer with a grid of vertical thin rods imitating its electrical role. The aluminum layer was replaced by the eutectic alloy GaInSn that is liquid at room temperature. The experiment succeeded in demonstrating the MPR instability under a high imposed magnetic field, but also suffered some limitations. The steel rods were quite intrusive, and the instability was artificially intensified when the GaInSn detached from them  under wave motion. This experiment can also not be employed as a benchmark for MPR theories that suppose two fluid layers. At this point, we would like to take the opportunity to highlight that  another very sophisticated MPR experiment has been done using two immiscible transparent solutions of nitric acid ($\rm{HNO}_{\rm{3(aq)}}$ at the bottom and $\rm{HNO}_{3}$ + ${\rm C}_5\rm{H}_{12}\rm{O}$ at the top). Unfortunately, this work of \citet{Borisov2010} has only been published in a Russian-language journal, and therefore it has been overlooked.  In this set-up, both liquids with very similar densities were used to destabilize the interface with small currents in the presence of strong magnetic fields. This is the only study that has ever reported experimental stability onsets, including the associated unstable wave pairs as a function of the lateral aspect ratio of the cell. A more realistic MPR experiment setup using liquid Gallium and aqueous electrolyte was conducted by \citet{Grants2021}, who observed a sustained rotating surface wave instead of a growing interfacial wave. The authors demonstrated that the horizontal rotation of the liquids significantly delayed the onset of the MPR instability. A similar two-layer setup using Ga-Hg liquid metal pairs was proposed \cite{Nore2021}, but no experiment has been done yet.  
+\\
+\indent Recently, \citet{Hegde2025} have proposed a new small-scale MPR experiment that works with one liquid layer of GaInSn. The MPR instability is synthesized through a feedback loop control that injects horizontal electrical currents  in the GaInSn-layer, proportional to the measured slope. This imitates the physics of the Sele-mechanism, but the feedback mechanism still needs to be carefully calibrated to imitate the MPR physics of two-layer cells. Another recent experiment is that of \citet{Eltishchev2022,Eltishchev2024}, who destabilized rotating surface waves through a MHD forcing mechanism that is quite similar to that of the MPR instability.
+\\
+\indent Spurred on by these recent experimental advances and the rediscovery of Borisov's experiment, we present here a linear stability theory that is specially dedicated to MPR instability in small-scale experimental models. In small-scale set-ups, we must account for physical ingredients that are usually neglected in ARCs, and this requires a specific theory. We can have non-shallow layers, significant viscous damping, possibly magnetic damping (for high $B_z$), and low differences in electrical conductivity between the two liquid layers. \citet{Herreman2019} proposed a linear stability theory for small cylindrical cells, whereas we present here a similar theory for small, rectangular cells. A perturbative approach was also used in \citet{Politis2021}, but wave-damping there was modeled in a phenomenological way. In this study, we propose a laminar viscous damping model that has no adjustable parameters and can also be compared to previous work on viscous damping of waves in two-layer systems \cite{Keulegan1959,LaRocca2002}. A linear stability model consisting of equations for the growth rate and the viscous damping rate will be essential in benchmarking numerical solvers and existing MPR experiments, as well as for developing new ones. 
+\\
+\indent The manuscript is organized as follows: In Sec.\,\ref{sec:lsa} we calculate the growth rate of the MPR instability in small cells using  perturbation methods and including a model for viscous dissipation. In Sec.\,\ref{sec:results}, we  validate our new two-layer damping formula numerically with the multiphase DNS code ARCHER, and we also compare our damping rates to the experimental and numerical results of \citet{LaRocca2002}. We then calculate the theoretical onsets of stability as a function of cell geometry and compare with the theory of \citet{Politis2021}. We also apply our stability theory to the two-layer experimental set-up of \citet{Borisov2010}. In Sec.\,\ref{sec:discuss} we collate our results and discuss open questions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\tdplotsetmaincoords{83}{-75}
+	\begin{tikzpicture}[tdplot_main_coords, scale=1]
+		\filldraw[
+		fill=gray!15, line width=0.05pt,
+		]      (-6,-4,0)
+		-- (6,-4,0)
+		-- (6,4,0)
+		-- (-6,4,0)
+		-- cycle;
+		
+		\draw [very thick] (-6,-4,-2) -- (6,-4,-2);
+		\draw [very thick] (-6,4,-2) -- (6,4,-2);
+		\draw [very thick] (-6,-4,-2) -- (-6,4,-2);
+		\draw [very thick] (6,-4,-2) -- (6,4,-2);
+		
+		\draw [very thick] (-6,-4,2) -- (6,-4,2);
+		\draw [very thick] (-6,4,2) -- (6,4,2);
+		\draw [very thick] (-6,-4,2) -- (-6,4,2);
+		\draw [very thick] (6,-4,2) -- (6,4,2);
+		
+		\draw [very thick, dashed] (-6,-4,0) -- (6,-4,0);
+		\draw [very thick, dashed] (-6,4,0) -- (6,4,0);
+		\draw [very thick, dashed] (-6,-4,0) -- (-6,4,0);
+		\draw [very thick, dashed] (6,-4,0) -- (6,4,0);    
+		
+		
+		
+		\draw [very thick] (-6,-4,-2) -- (-6,-4,2);
+		\draw [very thick] (-6,4,-2) -- (-6,4,2);
+		\draw [very thick] (6,-4,-2) -- (6,-4,2);
+		\draw [very thick] (6,4,-2) -- (6,4,2);
+		
+		%		\begin{scope}[canvas is xy plane at z=0]
+			%			\pgflowlevelsynccm
+			%			\draw [-Latex, thick] (0,0,) -- (1,0);
+			%		\end{scope}
+		\begin{scope}[canvas is zy plane at x=0]
+			\pgflowlevelsynccm
+			\draw [-Latex, thick] (0,0,) -- (1.05,0) node [left, xshift=-0.7mm, rotate=-90] {\large$z$};
+			\draw [-Latex, thick] (0,0) -- (0,-1,) node [right, rotate=-90] {\large$x$};
+			\draw [-Latex, thick] (0,0) -- (0.4,-0.7) node [above, xshift=-2mm, yshift=-1mm, rotate=-90] {\large $y$};
+			
+			\draw [-Stealth, very thick] (1.05,1) -- (0,1) node [below,rotate=-90] {\large $J_0$};
+		\end{scope}
+		
+		\begin{scope}[canvas is zy plane at x=-6]
+			%			\pgflowlevelsynccm %transforms arrows (alternative to transform shape as well)
+			\draw [thick, |-|] (0,4.3) -- (2,4.3) node [left, xshift=-1cm, rotate=-90, transform shape] {\large $h_1$};
+			\draw [thick, |-|] (0,4.3) -- (-2,4.3) node [left, xshift=1cm, rotate=-90, transform shape] {\large $h_2$};
+			\draw [thick, |-|] (-2.3,-4) -- (-2.3,4) node [below, yshift=-4cm, rotate=-90, transform shape] {\large $L_x$};
+			\node at (0,0) [right, xshift=-1.9cm, yshift=-5.5cm, rotate=-90, transform shape]{\large $L_y$};
+		\end{scope}
+		
+		\begin{scope}[canvas is xz plane at y=-4]
+			\pgflowlevelsynccm 
+			\draw [thick, |-|] (-6,-2.3) -- (6,-2.3);
+		\end{scope}
+		
+		\node (t1) at (0,0,2) {\large $\Omega_1(\rho_1, \nu_1, \sigma_1)$};
+		\node (t2) at (0,0,-2) {\large $\Omega_2(\rho_2, \nu_2, \sigma_2)$};
+		\node (t3) at (0,-4.65,-0.1) {\large $\mathcal{S}$};
+		
+		\node (t4) at (0,4,-1.1) {\large $\gamma_{\ii{int}}$};
+		\node (t5) at (-4,-4.65,1.7) {\large $\Sigma_1$}; 
+		\node [below of=t5, yshift=-25] {\large $\Sigma_2$};
+		
+		\draw [-Stealth, very thick] (0,-6.1,-0.4) -- (0,-6.1,1.6) node [above] {\large $B_z$};
+		\draw [-Stealth, very thick] (0,-6.7,1.6) -- (0,-6.7,-0.4) node [below] {\large $g$};
+	\end{tikzpicture}
+	\caption{Schematic of the cell at equilibrium consisting of two fluid mediums $\Omega_1$ (upper), $\Omega_2$(lower) characterized by their densities $\rho_1,\rho_2$, kinematic viscosities $\nu_1,\nu_2$\textcolor{green}{,} electrical conductivity $\sigma_1,\sigma_2$,  thicknesses $h_1$,$h_2$ and bounded by rigid boundaries (container walls) $\Sigma_1$,$\Sigma_2$ respectively. Gravity $g$ acts in the negative $z$ direction, stratifying the two media with an interface $\mathcal{S}$ located at $z=0$ and characterized by interfacial tension $\gamma_{\ii{int}}$. Both layers are traversed by a homogeneous vertical electrical current density $J_0$ and submitted to a homogeneous vertical magnetic field $B_z$.}
+	\label{fig:cell_schematic}
+\end{figure}
+%%%%%%%%%%%%%%%%%%
+
+\section{Linear stability analysis}
+\label{sec:lsa}
+\subsection{Formulation of the problem}
+
+We consider a system of two superposed immiscible, incompressible and Newtonian liquid layers ($\Omega_1$ and $\Omega_2$) at equilibrium in a rectangular domain ($x$, $y$, $z$) of dimensions $L_x$, $L_y$ and $H=h_1+h_2$, as shown in Fig.\,\ref{fig:cell_schematic}. For both layers, the density $\rho_i$, kinematic viscosity $\nu_i$ and electrical conductivity $\sigma_i$ are taken into account. The subscripts $i=1,2$ refer to the upper and lower layers respectively. The origin of the coordinate system $\mathcal{O}$ is located at the center of the interface. The rigid boundaries of each layer are denoted by $\Sigma_i$. We include interfacial tension $\gamma_{\ii{int}}$ to our model, which acts in addition to gravity $g$ as a restoring force, but neglect capillary effects at the side walls, i.e., we assume that the contact line slides freely along the side walls while maintaining a static contact angle of $90^{\circ}$. The entire cell is exposed to an external homogeneous magnetic field oriented vertically $B_z$, and gravity acts in the negative $z$ direction $\h g = -g \h e_z$. At equilibrium, both layers carry a homogeneous vertical electrical current density $J_0 = -I_0/(L_xL_y)$, where $I_0$ denotes the total cell current. The equilibrium configuration  is fully characterized by the hydrodynamic pressure $P_i = P_0 - \rho_i g z$, and the electrical potential $\Phi_i = \Phi_0 - J_0z/\sigma_i$, where $P_0$ and $\Phi_0$ are constants. In the perturbed state, the total current density $\h J (x,y,z,t)= J_0\h e_z + \h j_i (x,y,z,t)$ takes into account the excess currents $\h j_i$ and the total magnetic field strength $\h B (x,y,z,t)= B_z\h e_z + \h b_i(x,y,z,t)$ takes into account the induced magnetic fields $\h b_i$. The perturbed interface $\mathcal{S}$ is located at $z=\eta(x,y,t)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Governing equations and boundary conditions}
+The quantities $(\h u_i, p_i, \h j_i, \varphi_i, \h b_i)$, for the perturbations of velocity, pressure, current density, electrical potential, and induced magnetic field which modify the equilibrium state \cite{Dyke1975,Herreman2019}, are governed by the following equations
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{align}
+		\rho_i \partial_t{\h u}_i + {\nabla}p_i
+		&= \h j_i \times \h B + \rho_i\nu_i\nabla^2\h u_i, \label{eq:gov_momentum}
+		\\
+		\bm{\nabla} \cdot \h{u}_i &= 0, \label{eq:gov_cont}
+		\\
+		\bm\nabla \cdot \h j_i &= 0,  \label{eq:charge_cont}
+		\\
+		\h j_i &= -\sigma_i (\bm\nabla\varphi_i + \h u_i \times \h B),
+		\label{eq:gen_ohms_law}
+		\\
+		\bm\nabla \times \h j_i &= -\pdv{\h b_i}{t},
+		\label{eq:faraday}
+		\\
+		\bm \nabla \times \h b_i &= \mu_0\h j_i, \qquad \bm \nabla \cdot \h b_i = 0.
+		\label{eq:gauss+amp_max_law}
+	\end{align} \label{eq:all_gov}
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+Eq.\,\eqref{eq:gov_momentum} is the linearized conservation of momentum relation; Eq.\,\eqref{eq:gov_cont} expresses the continuity of velocity and \eqref{eq:charge_cont} the excess current. Eq.\,\eqref{eq:gen_ohms_law} refers to the quasi-magnetostatic approximation of Ohm's law \cite{Davidson2001}. Eq.\,\eqref{eq:gen_ohms_law}, Eq.\,\eqref{eq:faraday} (Faraday's law) and Eq.\,\eqref{eq:gauss+amp_max_law}(Gauss's law) together give the following induction equation:
+\begin{equation}
+	\pdv{\h b_i}{t} - \bm\nabla \times (\h u_i \times \h B) - \frac{\Delta \h b_i}{\mu_0 \sigma_i},
+	\label{eq:magnetic_indcution_diffusion}
+\end{equation}
+where $1/(\mu_0\sigma_i)$ is the magnetic diffusivity for a given material ($\mu_0$ is the permeability of free space). Eq.\,\eqref{eq:magnetic_indcution_diffusion} describes the advective and diffusive processes of the magnetic field in a given medium. To ascertain the limits of our theoretical model under the magnetostatic approximation, we introduce dimensionless quantities to characterize the system, mainly the Reynolds number Re, and the magnetic Reynolds number R\textsubscript{m},  
+%%%%%%%%%%%%%%%
+\begin{equation}
+\ii{Re} = \omega L^2/\nu, \quad
+\ii{R}_{\ii m} = \mu_0\sigma \omega L^2.
+\end{equation} 
+%%%%%%%%%%%%%%
+
+The characteristic velocity can be written as a product of the interfacial wave frequency $\omega$ and the characteristic length of the geometry $L = \sqrt{L_xL_y}$. The Reynolds number Re is assumed to be within the limits $100 \leq \ii{Re} < 10^4$, where irrotational waves are known to be linear and laminar. The magnetic Reynolds number R\textsubscript{m} can be expressed as the ratio of the magnetic diffusion time $\tau_{\ii m} = \mu_0\sigma L^2$, and the flow time $\tau_{\ii f} = \omega^{-1}$. At low $\ii{R}_{\ii m} \ll 1$, magnetic diffusion is much faster than fluid advection, so the field achieves equilibrium instantaneously relative to the global time scale. Therefore, we can neglect the terms $\partial\h b_i/\partial t$ in Eq.\,\ref{eq:magnetic_indcution_diffusion}. As $\h b_i$ scales with R\textsubscript{m}, they ensure that the induced fields are comparatively small, thereby reducing $\h u \times \h B \approx 0$. Previous studies based on shallow water theories have largely ignored the contribution of the induced magnetic field on the perturbed Lorentz force \citep{Bojarevics1994, Davidson1998}. In a cylindrical system, it was shown that $\h J \times \h b_i$ does not contribute to the amplitude of the wave but rather to the frequency shift \citep{Herreman2019}. This is because the Lorentz force due to the horizontal component of the induced magnetic field $\h J \times \h b_i$ is out of phase with $\h j_i \times B_z\h e_z$ (the dominant contribution) and therefore, cannot inject power into the wave. These assumptions effectively reduce the magnetic problem to a static case in both the liquid layers. Therefore, the following conditions: $\partial\h b_i/\partial t \approx 0$, $\h u\times \h B\approx0$ and $\h J \times \h b_i\approx0$ allow us to impose the magnetostatic approximation on the system where the electric field only depends on the electric potential. 
+\\
+\indent For the formulation of the boundary conditions at the tank walls, we account for the fact that the upper carbon anode in ARCs is a much better electrical conductor than the cryolite, and the bottom steel cathode often a much poorer conductor than aluminum. This is a standard assumption in MPR theories \cite{gerbeau2006a,Sneyd1992} and we then obtain the following linearized boundary conditions:
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{align}
+		\bm{j}_1\cdot \h e_x\bigl|_{x=-L_x/2} &= \bm{j}_2\cdot \h e_x\bigl|_{x=L_x/2} = 0,  \label{eq:bc1}
+		\\
+		\h j_1\cdot \h e_y\bigl|_{y=-L_y/2} &= \h j_2\cdot \h e_y\bigl|_{y=L_y/2} = 0,  \label{eq:bc2}
+		\\
+		\varphi_1 &= 0 \,\bigl|_{z=h_1}, \label{eq:bc3}
+		\\
+		\h j_2\cdot \h e_z &= 0\,\bigl|_{z=-h_2} . \label{eq:bc4}
+	\end{align} 
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+Eqs.\,\eqref{eq:bc1} and \eqref{eq:bc2} ensure that no current can escape through the insulating side walls. The anode is modeled as an iso-potential surface [Eq.\,\eqref{eq:bc3}] and the weakly conducting cathode is treated as a perfect insulator [Eq.\,\eqref{eq:bc4}] for the excess current component $\h j$. In Sec.\,\ref{sec:Borisov}, we further consider a case where the cathode is modeled as a perfect conductor, in that respect, condition [Eq.\,\eqref{eq:bc4}] is not valid for all reduction cells and MPR model experiments. As for the kinematic boundary conditions, we simply apply  impermeability at all walls
+\begin{equation}
+	\h u_i \cdot \h n_i|_{\Sigma_i} = 0,
+	\label{eq:no-outflow_bc}
+\end{equation}
+for the inviscid formulation (no slip condition) in Sec.\,\ref{sec:growth_rate_gen} to which we must add
+\begin{equation}
+	\h u_i \times \h n_i|_{\Sigma_i} = 0.
+\end{equation}
+to account for viscous effects, we address in Sec.\,\ref{sec:visc_damp}. At the interface $\mathcal{S}$, we have to take into account the following linearized  hydrodynamic and electrical boundary conditions:
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{align}
+		\partial_t \eta &= u_{1,z} \,\bigl|_{z = 0} = u_{2,z} \bigl|_{z = 0},  \label{eq:int_bc1}
+		\\
+		-\gamma_{\ii{int}} \nabla^2\eta + (\rho_2-\rho_1)g\eta &= p_2 \,\bigl|_{z=0} - p_1 \,\bigl|_{z=0},  \label{eq:int_bc2}
+		\\
+		\h	j_1 \cdot \h e_z &= \h j_2\cdot \h e_z \,\bigl|_{z = 0}, \label{eq:int_bc3}
+		\\
+		J_0(\sigma_1 - \sigma_2)\eta &= \varphi_2 \,\bigl|_{z=0} -\varphi_1 \,\bigl|_{z=0}. \label{eq:int_bc4}
+	\end{align}
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} represent the classic kinematic and dynamic boundary conditions for gravity-capillary waves. In Sec.\,\ref{sec:visc_damp}, we state the corrections to Eq.\eqref{eq:int_bc2} which incorporate the continuity of the tangential velocities and viscous stresses in order to solve the Stokes velocities (for viscous damping). The electrical boundary conditions are derived from the basic principle that both the normal of the total current density $\h n \cdot \h J$ and the total electric potential $(\Phi_i+\varphi_i)$ must remain continuous. This results in the linearized interfacial conditions [Eq.\,\eqref{eq:int_bc3}] and [Eq.\,\eqref{eq:int_bc4}] for the perturbed quantities \citep{Munger2006}. This jump condition is essential for the MPR instability as it describes how the current density redistributes in both layers as a response to an arbitrary (small) interface elevation $\eta$. 
+
+
+\subsection{Interfacial waves}
+\label{sec:waves}
+We intend to solve the linear stability problem using perturbation theory, supposing the Lorentz and viscous forces are small. At lowest order, in the unperturbed problem for $B_z=0$ and $\nu_i=0$, the hydrodynamical problem is decoupled from the electrical problem. We then have free gravity-capillary waves and each different wave creates a deviation of electric current. The solutions for the classical gravity-capillary waves can be obtained by expressing the bulk velocities as gradients of scalar potentials ${\h u}_i = \bm\nabla \phi_i$ and solving the Laplace equation $\bm\nabla^2\phi_i = 0$ together with the no outflow boundary condition [Eq.\,\eqref{eq:no-outflow_bc}] and the interface conditions given in Eqs.\,\eqref{eq:int_bc1} and \eqref{eq:int_bc2} \cite{Lamb1945}. The flow potential in both layers are given by
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\begin{bmatrix}
+		{\phi}_{1} \\[12pt]
+		{\phi}_{2} 
+	\end{bmatrix} = 
+	A_{mn}
+	\left[
+	\begin{array}{cc}
+		\dfrac{\omega}{k} \dfrac{\cosh[k(z-h_1)]}{\sinh[k h_1]} & 
+		\\[10pt]
+		-\dfrac{\omega}{k} \dfrac{\cosh[k(z+h_2)]}{\sinh[k h_2]} &
+	\end{array} 
+	\right] 
+	\cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
+	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right]
+	\ii e^{\ii i \omega t},
+	\label{eq:vel_potential}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+along with the interface elevation function reading
+\begin{equation}
+	\eta = \ii{i}\,A_{mn} \cos\left[\dfrac{m\pi}{L_x}\left( x + \dfrac{L_x}{2} \right)\right]
+	\cos\left[\dfrac{n\pi}{L_y}\left( y + \dfrac{L_y}{2} \right)\right] 
+	\ii e^{\ii i \omega t} ,
+	\label{eq:eta_eq}
+\end{equation} 
+%%%%%%%%%%%%%%%
+and the pressure $p_i = -\rho_i(\ii i\omega){\phi}_i$. Here, $A_{mn}$ is a mode-dependent wave amplitude. The wavenumber $k$ is a function of the wave numbers $(m, n)$ that count the number
+of half wavelengths along $x$ and $y$ given by
+%%%%%%%%%%%%%%%
+\begin{equation}
+	k =  \pi\sqrt{\frac{m^2}{L_x^2} + \frac{n^2}{L_y^2} } .
+\end{equation}
+%%%%%%%%%%%%%
+The natural frequencies of the gravity-capillary waves are
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\omega = \pm \sqrt{
+		\dfrac{(\rho_2-\rho_1)gk + \gamma_{\scaleto{\ii{int}}{5pt}}{k}^3}
+		{\rho_1 \coth[k\: h_1]
+			+ \rho_2 \coth[k\: h_2]}
+	} \,.
+	\label{eq:omega}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+\\
+\indent The wave perturbs the interface and causes deviation of the electrical current. We calculate the current perturbations through Ohm's law ${\h j}_i = -\sigma_i\bm\nabla \varphi_i$. The electric potentials must also fulfill the Laplace equation $\bm{\nabla}^2{\varphi}_i = 0$ with boundary conditions given in Eqs.\,(\ref{eq:bc1} -- \ref{eq:bc4}), \eqref{eq:int_bc3} and \eqref{eq:int_bc4}. We find the solutions to the electrical potential to be
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\begin{bmatrix}
+		{\varphi}_1 \\[12pt]
+		{\varphi}_2 
+	\end{bmatrix} = 
+	J_0\,\Lambda\,{\eta}
+	\left[
+	\begin{array}{cc}
+		-\dfrac{\sinh[k (z-h_1)]}{\sigma_1 \cosh[kh_1]} &
+		\\[10pt]
+		-\dfrac{\cosh[k (z+h_2)]}{\sigma_2 \sinh[kh_2]} & 
+	\end{array} 
+	\right] .
+	\label{eq:elec_potential}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+Here, we have introduced  $\Lambda$, which can be interpreted as the conductivity jump parameter
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\Lambda = \frac{(\sigma_1^{-1} - \sigma_2^{-1})}{\sigma_1^{-1} \:\tanh[kh_1] + \sigma_2^{-1} \:\coth[kh_2]} .
+	\label{eq:conductivity_jump}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+ The parameter does not appear in most MPR models that assume $\sigma_2 \gg \sigma_1$ which gives $\Lambda \approx (kh_1)^{-1}$. This assumption is not always guaranteed in model MPR experiments \cite{Nore2021}, which is why we need to include the conductivity jump parameter in our calculations.
+
+
+
+\subsection{Perturbative calculation of the inviscid growth rate of the MPR instability}
+\label{sec:growth_rate_gen}
+
+This perturbative approach is based on the (inviscid) potential flow solutions of free gravity-capillary interfacial waves that form a set of orthogonal functions in the absence of MHD effects ($\bm{B}= \bm 0$) and without viscosity ($\nu = 0$). In this section, we calculate the inviscid growth rate. The effect of viscous dissipation due to the Stokes boundary layers forming at the container walls, and below and above the interface are presented in Sec.\,\ref{sec:visc_damp}.
+\\
+\indent In contrast to most previous studies, which examine the interaction of infinitely many wave numbers and truncate the system \textit{a posteriori} \cite{Sneyd1994,Bojarevics1994}, we calculate the two-wave interaction directly allowing us to derive exact analytical solutions for the growth rates and stability onsets. The disadvantage of this method is that the MPR instability can sometimes arise from three (or more)-wave interactions \cite{Bojarevics1994,Bojarevics2006}, and these cases are not represented in our model. A standard two-wave ansatz is given as follows:
+%%%%%%%%%%%%%%%%
+\begin{equation}
+	\fontsize{10.5pt}{10.5pt}
+	[\textbf{\textit{u}}_i, p_i, \eta, \textbf{\textit{j}}_i ]= 
+	\biggl( 
+	C 
+	\left[ 
+	\widehat{\h{u}}_{i}, \widehat{p}_{i}, \widehat{\eta}, \widehat{\h{j}}_{i} \right] 
+	+ 
+	C' 
+	\left[ 
+	\widehat{\h{u}}'_{i}, \widehat{p}'_{i}, \widehat{\eta}', \widehat{\h{j}}'_{i} \right] 
+	+\left[
+	\widetilde{\h{u}}_i, \widetilde{p}_{i}, \widetilde{\eta}, \widetilde{\h{j}}_{i} \right] 
+	\biggr) 
+	\;
+	\ii e^{ \bigl(\alpha 
+		\,+\, \ii{i}\overbar{\omega}
+		\bigr)t} .
+	\label{eq:perturb_method_ansatz}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+In this notation, the tilded variables are small perturbations with respect to the hatted variables representing the spatial structure of the free waves. The bare and the dashed($'$) hatted variables denote the variables corresponding to the two wave number ($m,n$) and $(m',n')$ accordingly. The values $C$ and $C'$ are to be determined and $\alpha$ is the inviscid growth rate that we seek to derive. We assume that both waves are resonantly coupled by the Lorentz force $\h j_i \times B_z\h e_z$ and this requires that they both oscillate with the same mean frequency. We represent the average natural frequency of the wave as
+%%%%%%%%%
+\begin{subequations}
+\begin{align}
+	\overbar{\omega} &= (\omega + \omega')/2,
+	\label{eq:avg_freq}
+\intertext{and the average frequency difference as}
+	\delta\omega &= (\omega - \omega')/2.
+	\label{eq:avg_freq_diff}
+\end{align}
+\end{subequations}
+%%%%%%%%%%%
+We suppose the frequency detuning $\delta\omega$ to be small. At perfect resonance, we have the average frequency difference $\delta\omega = 0$. 
+\\
+\indent We insert the ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] in the governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont}, ignoring viscosity. After using the equations for the free gravity wave problem, we find
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{align}
+		\nn
+			C&(\ii{i}\overbar\omega + \alpha)\rho \widehat{\h{u}} + C\bm{\nabla}\widehat{p} 
+			+ C'(\ii{i}\overbar\omega + \alpha)\rho\widehat{\h{u}}' 
+			+ C'\bm{\nabla}\widehat{p}'
+			+ (\ii{i}\overbar\omega) \rho\widetilde{\h{u}} 
+			+ \bm{\nabla}\widetilde{p}
+			\\
+			+ &(\ii{i}\overbar\omega) \rho\widetilde{\h{u}}' 
+			+ \bm{\nabla}\widetilde{p}'
+			= C \left( \; \widehat{\h{j}} \times B_z\bm{e}_z\right) 
+			+ 
+			C' \left( \; \widehat{\h{j}}' \times B_z\bm{e}_z\right)
+		 ,
+		\label{eq:momentum_fredholm}
+	\end{align}
+	\begin{equation}
+		\bm\nabla \cdot \widetilde{\h u}_i = 0 .
+		\label{eq:cont_fredholm}
+	\end{equation}
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+To find an equation for $\alpha$, we have to state a solvability condition. For that we apply the Fredholm alternative in an analogue manner to \citet{Herreman2019}. All technical calculations are provided in the supplementary material. The solvability condition results in an eigenvalue problem in form of a $2\times 2$ interaction matrix that can be expressed in the following form:
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\begin{bmatrix}
+		\ii{i}\delta\omega -\alpha & \dfrac{I_{\eta\eta'}}{2K_{\eta\eta}} \\
+		\\
+		\dfrac{I_{\eta'\!\eta}}{2K_{\eta'\!\eta'}} & - \ii{i}\delta\omega -\alpha
+	\end{bmatrix}
+	\begin{bmatrix}
+		C \\
+		\\
+		C'
+	\end{bmatrix}
+	= 0 .
+	\label{eq:alpha_matrix_initial}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+The terms
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{align}
+		I_{\eta\eta'} &= \sum_{i=1,2}\int_{V_i} \widehat{\h u}_i^{*} \cdot 
+		\Bigl( \; \widehat{\h{j}}'_i \times B_z\bm{e}_z \Bigr) 
+		= \sum_{i=1,2}\int_{V_i} \bm\nabla\widehat{\phi}_i^{*} \cdot 
+		\Bigl( \; -\sigma_i\bm\nabla\widehat{\varphi}'_i \times B_z\bm{e}_z \Bigr) ,
+		\label{eq:A_12}\\
+		I_{\eta'\!\eta} &= \sum_{i=1,2}\int_{V_i} \widehat{\h u}'^{*}_i \cdot 
+		\Bigl( \; \widehat{\h{j}}_i \times B_z\bm{e}_z \Bigr) 
+		= \sum_{i=1,2}\int_{V_i} \bm\nabla\widehat{\phi}'^{*}_i \cdot 
+		\Bigl( \; -\sigma_i\bm\nabla\widehat{\varphi_i} \times B_z\bm{e}_z \Bigr) ,
+		\label{eq:A_21}
+	\end{align}
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+are associated with power transfers between waves mediated by Lorentz forces. The terms $K_{\eta\eta}$ and $K_{\eta'\eta'}$ are associated with the potential (or equivalently kinetic) energy of the respective wave number $(m,n)$ and is given by
+%%%%%%%%%%%%%%%%%%%%
+\begin{align}
+	\nn
+	K_{\eta\eta} &= \int_{\mathcal{S}} \Bigl( -\gamma_{\ii{int}} |\bm{\nabla}\widehat{\eta}|^2 
+	+ (\rho_2 - \rho_1)g |\widehat{\eta}|^2 \Bigr)\Bigl|_{z=0} \ii{d}S  ,
+	\\
+	& = \xi_{m\times n} \: L_xL_y \: \Bigl[\gamma_{\ii{int}}k^2 + (\rho_2 - \rho_1)g \Bigr] ,
+	\label{eq:K_11}
+\end{align}
+%%%%%%%%%%%%%%%
+and similarly for $K_{\eta'\eta'}$ with $m'$, $n'$ and $k'$. For the sake of simplicity, we introduced an auxiliary function $\xi_r$ that is defined as follows
+\[
+\xi_r = \biggl\{
+\begin{array}{c}
+	1/2 , \quad r = 0  \\
+	1/4 , \quad r \neq 0
+\end{array} .
+\]
+%%%%%%%%%%%%%%%%%%%%
+Finally, the secular equation of the matrix [Eq.\,\eqref{eq:alpha_matrix_initial}] yields the solutions for the inviscid $\alpha$, one of the central result of our study given by
+%%%%%%%%%%
+\begin{equation}
+	\alpha = \pm \; \sqrt{\dfrac{I_{\eta\eta'}I_{\eta'\!\eta}}{4K_{\eta\eta}K_{\eta'\!\eta'}} - {\delta \omega}^2 }.
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+On solving the integrals in Eqs.\,\eqref{eq:A_12} and \eqref{eq:A_21}, we obtain the explicit formulation
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\alpha 
+	= \pm \; 
+	\sqrt{ J^2{B_z}^2{\Theta}^2
+		\; (\overbar\omega^2 - \delta\omega^2)
+		\;\frac{\mathcal{T}\mathcal{T}'}{\mathcal{U}\mathcal{U}'}
+		- \delta \omega^2
+	} \;,
+	\label{eq:main_gr}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+where 
+%%%%%%%%%%%%%%%%%%%%
+\begin{subequations}
+	\begin{gather}
+		\Theta = \pm \; \sqrt{\delta_{m \times m'}\;\delta_{n \times n'}} \; 
+		\frac{((-1)^{m+m'}-1)((-1)^{n+n'}-1)(m^2{n'}^2 - {m'}^2n^2)}
+		{(m^2 - {m'}^2)(n^2 - {n'}^2) },
+		\label{eq:form_function}
+		\\
+		\delta_r = \left\{ \begin{array}{cc}
+			1, & r=0\\
+			2, & r>0
+		\end{array} \right. \!\!.
+		\label{eq:delta_func}
+		\intertext{The term $\Theta$ is nonzero only if $m+m'$ and $n+n'$ are both odd, and}
+		\mathcal{U} = \gamma_{\ii{int}} \: k^2 + (\rho_2 - \rho_1)g , \qquad
+		\mathcal{U}' = \gamma_{\ii{int}}\: {k'}^2 + (\rho_2 - \rho_1)g ,
+		%%%%%%%%%%%%
+		\intertext{are representations of the potential energy of the standing waves and}
+		%%%%%%%%%%%%
+		\mathcal{T} = \frac{\Lambda}{k(k^2 - k'^2)L_xL_y}
+		\Biggl( 
+		\frac{k}{\tanh[k'h_2]} - \frac{k'}{\tanh[kh_2]}
+		+ \frac{k'\:\sech[k'h_1]}{\sinh[kh_1]}
+		-\frac{k'}{\tanh[kh_1]}
+		+ k\tanh[k'h_1] \Biggr) ,
+		\label{eq:T_11}
+		\\
+		\mathcal{T}' = \frac{\Lambda'}{k'({k'}^2-k^2)L_xL_y}
+		\Biggl( 
+		\frac{k'}{\tanh[kh_2]} - \frac{k}{\tanh[k'h_2]}
+		+ \frac{k\: \sech[kh_1]}{\sinh[k'h_1]}
+		-\frac{k}{\tanh[k'h_1]}
+		+ k'\tanh[kh_1] \Biggr) , 
+		\label{eq:T_22}
+		%%%%%%%%%%%%
+		\intertext{root from the power injected by the Lorentz force and contain the complex non-shallow layer height dependencies of the cell currents redistributed by interface elevations. When $k' \rightarrow k$, these terms simplify to}
+		%%%%%%%%%%%%
+		\mathcal{T} = \mathcal{T}' = \frac{\Lambda}{4k^2\:\sinh^2[kh_2]L_xL_y}
+		\biggl( \frac{\sinh[k(h_1+2h_2)]}{\cosh[kh_1]} +2kh_2 - \tanh[kh_1] \biggr) .
+	\end{gather}
+\end{subequations}
+%%%%%%%%%%%%%%%%%%%%
+\\
+\indent The perturbation analysis results in two distinct solutions for the growth rate $\alpha$. The two solutions correspond to MPR waves that rotate either clockwise or anti-clockwise (when looking at the cell from above), or equivalently, to the superposition of two standing wave pairs ($\eta + \eta'$) with a phase shift, as shown in Fig.\,\ref{fig:wave_superposed}. One of the two wave solutions in Eq.\,\eqref{eq:main_gr} is always suppressed by the Lorentz force (when the induced Lorentz force $\h j\times B_z\h e_z$ opposes the rotating wave motion $\h u$) and the other one is amplified in the unstable situations (when $\h j\times B_z\h e_z$ aligns with $\h u$). In our configuration shown in Fig.\,\ref{fig:cell_schematic}, anti-clockwise rotating waves are destabilized. From the growth rate {Eq.\,\eqref{eq:main_gr}} one can readily derive the inviscid stability onset $\beta_{\ii{crit}}$, which can be represented compactly in a dimensionless form as follows
+%%%%%%%%%%%%%%%%
+\begin{equation}
+	 \beta_{\ii{crit}} =  \frac{L_x L_y}{h_1h_2\Theta}
+	\sqrt{ \frac{\delta \omega^2} {(\overbar\omega^2 - {\delta\omega}^2) \mathcal{T}\mathcal{T}'} },
+	\label{eq:beta_crit-onset}
+\end{equation}
+%%%%%%%%%%%%%%
+ In square cells, the critical onset $\beta_{\ii{crit}}=0$ at the inviscid limit owing to $\delta\omega=0$. 
+%%%%%%%%%%%%%%%%%%
+\begin{figure}
+	\begin{tikzpicture}
+		\node (pic1) at (-4,0) {\includegraphics[width=0.275\linewidth]{figures/3-wave_0.png}};
+		\node (plus) [right of=pic1,xshift=2cm] {\huge$+$};
+		\node (pic2) [right of=plus, xshift=2cm] {\includegraphics[width=0.275\linewidth]{figures/3-wave_1.png}};
+		\node (eq) [right of=pic2,xshift=2cm] {\huge$=$};
+		\node (pic3) [right of=eq, xshift=2cm] {\includegraphics[width=0.275\linewidth]{figures/3-wave_2.png}};
+		
+		
+		
+		\node [above of=pic1, yshift=0.7cm] {(2,0)};
+		\node [above of=pic2, yshift=0.7cm] {(1,1)};
+		\node [above of=pic3, yshift=0.7cm] {(2,0)+(1,1)};
+		
+		\begin{scope}[xshift=-1cm, yshift=1.25cm]
+			\draw[-Stealth] (0,0) -- (0,0.5) node [above] {$z$};
+			\draw[-Stealth] (0,0) -- (0.5,-0.11) node [right] {$x$};
+			\draw[-Stealth] (0,0) -- (-0.375, -0.225) node [left] {$y$};
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{An illustration of a linear interfacial wave in a rectangular system of lateral aspect ratio equal to 2. For example, the superposition of a two standing waves of modes $(2,0)$ and $(1,1)$ to produce of a rotating interfacial wave of mode $(2,0)+(1,1)$.}
+	\label{fig:wave_superposed}
+\end{figure}
+%%%%%%%%%%%%%%%
+
+
+
+\subsection{The viscous correction of the growth rate}
+\label{sec:visc_damp}
+
+Up to this point, we have been looking at the MPR instability at the inviscid limit. In real cells, viscosity plays a crucial role in dissipating some of the energy injected in the system. To evaluate the stability of industrial ARCs, in which turbulent flows usually prevail, the damping rate due to viscous dissipation must be estimated or determined experimentally. In small-scale models, where flows remain largely laminar (at least in the boundaries or around the point of marginal instability), viscous damping rates can be calculated analytically. Here, viscosity is treated as a perturbation independent of the Lorentz force and the now viscous growth rate $\alpha$ in the two-wave ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}], is solved accordingly. This is a key ingredient for our model to serve as a benchmark. 
+\\
+\indent We start with the viscous damping rate. In the leading order, magnetohydrodynamics effects can be neglected (no consideration of Hartmann layers) and it remains to calculate the total dissipation produced in the Stokes boundary layers, which are created solely by wave motions. We follow the approach by \citet{Keulegan1959}, who has calculated damping rates of free-surface gravity waves in rectangular containers. We extend his formulation to two liquid layers, which is not straightforward as viscous boundary layers are formed above and below the interface in two-liquid systems that do not develop on free surfaces and must be calculated separately. In absence of MHD effects, the linear governing Eqs.\,\eqref{eq:gov_momentum} and \eqref{eq:gov_cont} reduce to
+%%%%%%%%%%%%
+\begin{equation}
+	\left.
+	\begin{array}{c}
+		\rho_i \partial_t \h{u}_i + \bm{\nabla}p_i = \rho_i\nu_i\nabla^2\h u_i 
+		\\[5pt]
+		\bm{\nabla} \cdot \h{u}_i = 0 
+	\end{array}
+	\right\} .
+	\label{eq:visc_gov1}
+\end{equation}
+%%%%%%%%%%%%
+For the upper and lower layer ($i=1,2$), the no slip condition at the side wall (represented as rigid boundary $\Sigma_i$) is  
+%%%%%%%%%%%%
+\begin{subequations}
+	\begin{equation}
+		\h u_i \big|_{\Sigma_i} = 0,
+	\end{equation}
+	%%%%%%%%%%%%%%
+	and the tangential velocities (denoted by $\perp$) must be equal at the interface:
+	%%%%%%%%%%%%%%%%
+	\begin{equation}
+		\h u_{1, \perp}\big|_\mathcal{S} = \h u_{2, \perp}\big|_\mathcal{S}.
+		\label{eq:visc_bc1}
+	\end{equation}
+	%%%%%%%%%%%%%%
+	The dynamic boundary condition [Eq.\,\eqref{eq:int_bc2}] under the consideration of viscous effects now changes to
+	%%%%%%%%%%%%%%%%
+	\begin{equation}
+		p_2|_\mathcal{S} - p_1|_\mathcal{S} = 
+		(\rho_2 -\rho_1)g\eta -\gamma_{\ii{int}}\nabla^2\eta 
+		+ 2( \rho_2\nu_2\partial_z u_{2,z}  - \rho_1\nu_1\partial_z u_{2,z}), 
+		\label{eq:visc_bc2}
+	\end{equation}
+	%%%%%%%%%%%%%%
+	while the continuity of the tangential stresses are
+	%%%%%%%%%%%%%%
+	\begin{equation}
+		\rho_1\nu_1 \Bigl( \partial_z u_{1,x} + \partial_x u_{1,z} \Bigr)\Bigl|_\mathcal{S}
+		=
+		\rho_2\nu_2 \Bigl( \partial_z u_{2,x} + \partial_x u_{2,z} \Bigr)\Bigl|_\mathcal{S},
+		\label{eq:visc_bc3}
+	\end{equation}
+	\begin{equation}
+		\rho_1\nu_1 \Bigl( \partial_z u_{1,y} + \partial_y u_{1,z} \Bigr)\Bigl|_\mathcal{S}
+		=
+		\rho_2\nu_2 \Bigl( \partial_z u_{2,y} + \partial_y u_{2,z} \Bigr)\Bigl|_\mathcal{S} .
+		\label{eq:visc_bc4}
+	\end{equation}
+\end{subequations}
+%%%%%%%%%%%%
+\\
+\indent In a stratified two-layer system, consider an interfacial gravity wave number of $(m,n)$ of amplitude $A_{mn}$ oscillating at angular frequency $\omega$ undergoes viscous decay over time at a rate of $\lambda$. The fluid velocity taking into account the Stokes boundary layer corrections can be formulated as
+%%%%%%%%%%%%
+\begin{equation}
+	\h u_i = C \Bigl[  \widehat{\h u}_i + \widehat{\bar{\h u}}_i
+	\Bigr] e^{(\ii{i}\omega - \lambda) t} .
+	\label{eq:visc_ansatz}
+\end{equation}
+%%%%%%%%%%%%
+where the $\widehat{\h u}_i$ are the potential flow velocities and the barred term $\widehat{\bar{\h u}}_i$ are the viscous corrections to be calculated. We introduce wall-normal coordinates $\zeta$ that tend to decay the viscous boundary layer corrections to zero as they traverse inwards in the bulk. We define $\zeta$ as follows:
+%%%%%%%%%%%%
+\begin{equation}
+	\zeta = \begin{cases}
+		z - h_1, \qquad &\text{near } z=h_1 \\
+		\dfrac{L_x}{2} - x, \qquad &\text{near } x = L_x/2 \\[7pt]
+		\dfrac{L_y}{2} - y, \qquad &\text{near } y = L_y/2 \\
+		z, \qquad &\text{near } z=0
+	\end{cases}, 
+	\qquad
+	\zeta = \begin{cases}
+		z + h_2, \qquad &\text{near } z=-h_2 \\
+		x + \dfrac{L_x}{2}, \qquad &\text{near } x = -L_x/2 \\[7pt]
+		y + \dfrac{L_y}{2}, \qquad &\text{near } y = -L_y/2 \\
+		-z, \qquad &\text{near } z=0
+	\end{cases} .
+\end{equation}
+%%%%%%%%%%%%%%%%
+The effect of the diffusive boundary layer tends to diminish in the bulk region. Inserting the ansatz [Eq.\,\eqref{eq:visc_ansatz}] into Eq.\,\eqref{eq:visc_gov1}, we obtain $\widehat{\bar{\h u}}_i  \cdot \h n_i = 0$ and $\widehat{\overbar{p}}_i= 0$; the wall-normal boundary layer correction for velocity and leading-order boundary layer correction for pressure, both equal to zero. We compute the Stokes boundary layer at the domain walls (with no-slip condition) as
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\ii{i}\omega 
+	\widehat{\overbar{\h u}}_{i,\perp}
+	\approx 
+	\nu_i \partial^2_{\zeta\zeta}
+	\widehat{\overbar{\h u}}_{i,\perp} .
+\end{equation}
+%%%%%%%%%%%%%%%
+The mode-dependent velocity at the solid walls are
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\widehat{\bar{\h u}}_{i,\perp}
+	=
+	- \widehat{\h u}_{i,\perp}|_{\Sigma_i}
+	\ii{e}^{-\Gamma \sqrt{|\omega|/\nu_i}\zeta -\lambda t},
+	\qquad
+	\Bigl\{ \Gamma = \bigl(1 + \ii{i}\omega\bigr)/\sqrt{2} .
+	\label{eq:u_wall}
+\end{equation}
+%%%%%%%%%%%%%%%
+From Eq.\,\eqref{eq:u_wall} we can obtain the characteristic length of the viscous boundary layer of each medium as $\sqrt{\nu_i/|\omega|}$. At the interface, from Eqs.\,(\ref{eq:visc_bc3}) and (\ref{eq:visc_bc4}) we deduce
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\widehat{\h u}_{1,\perp} +  \widehat{\bar{\h u}}_{1,\perp}|_\mathcal{S} 
+	\approx
+	\widehat{\h u}_{2,\perp} +  \widehat{\bar{\h u}}_{2,\perp}|_\mathcal{S} 
+	\qquad
+	\begin{cases}
+		\rho_1\nu_1\partial_z\widehat{\bar{u}}_{1,x}|_\mathcal{S} 
+		\approx
+		\rho_2\nu_2\partial_z\widehat{\bar{u}}_{2,x}|_\mathcal{S} \\[5pt]
+		\rho_1\nu_1\partial_z\widehat{\bar{u}}_{1,y}|_\mathcal{S} 
+		\approx
+		\rho_2\nu_2\partial_z\widehat{\bar{u}}_{2,y}|_\mathcal{S}
+	\end{cases}\hspace{-3mm},
+\end{equation}
+\begin{align}
+	\left. \widehat{\bar{\h u}}_{1,\perp}\right\vert_{m,n}
+	&=
+	\frac{\Lambda_{\ii v}}{\rho_1\sqrt{\nu_1}}
+	\: \frac{\omega}{k}
+	\begin{bmatrix}
+		\frac{m\pi}{L_x}
+		\;\sin\left[\frac{m\pi}{L_x}\left( x + \frac{L_x}{2} \right)\right]
+		\cos\left[\frac{n\pi}{L_y}\left( y + \frac{L_y}{2} \right)\right]
+		\h e_x 
+		\\+\\
+		\frac{n\pi}{L_y}
+		\;\cos\left[\frac{m\pi}{L_x}\left( x + \frac{L_x}{2} \right)\right]
+		\sin\left[\frac{n\pi}{L_y}\left( y + \frac{L_y}{2} \right)\right]
+		\h e_y
+	\end{bmatrix} \ii{e}^{-\Gamma \sqrt{\frac{|\omega|}{\nu_1}z} -\lambda t},
+	\label{eq:u_int1}
+	\\[5pt]
+	\left. \widehat{\bar{\h u}}_{2,\perp}\right\vert_{m,n}
+	&=
+	\frac{-\Lambda_{\ii v}}{\rho_2\sqrt{\nu_2}}
+	\: \frac{\omega}{k}
+	\begin{bmatrix}
+		\frac{m\pi}{L_x}
+		\;\sin\left[\frac{m\pi}{L_x}\left( x + \frac{L_x}{2} \right)\right]
+		\cos\left[\frac{n\pi}{L_y}\left( y + \frac{L_y}{2} \right)\right]
+		\h e_x 
+		\\+\\
+		\frac{n\pi}{L_y}
+		\;\cos\left[\frac{m\pi}{L_x}\left( x + \frac{L_x}{2} \right)\right]
+		\sin\left[\frac{n\pi}{L_y}\left( y + \frac{L_y}{2} \right)\right]
+		\h e_y
+	\end{bmatrix} \ii{e}^{\Gamma \sqrt{\frac{|\omega|}{\nu_2}z} -\lambda t},
+	\label{eq:u_int2}
+\end{align}
+\begin{flalign*}
+	\ii{with,} \qquad
+	\Lambda_{\ii v} = \frac{(\coth[kh_1] + \coth[kh_2]) }
+	{1/\bigl(\rho_1\sqrt{\nu_1}\bigr) + 1/\bigl(\rho_2\sqrt{\nu_2}\bigr)} . &&
+\end{flalign*}
+%%%%%%%%%%%%%%%
+The energy balance [Eq.\,\eqref{eq:visc_energy_bal}] for viscous dissipation can be equated to the rate of change of kinetic and potential energy. It is given as
+%%%%%%%%%%%%%%%
+\begin{align}
+	\nonumber
+	\dv{}{t}
+	\underbrace{	
+		\Biggl( \sum_{i=1,2} \frac{1}{2} \int_{V_i} \rho_i |\h u_i|^2 \ii{d}V ]\Biggr)}_{E_{\ii{kin}}}
+	+
+	\dv{}{t}
+	\underbrace{
+		\Biggl( \int_S \biggl[ \frac{1}{2} (\rho_2 -\rho_1)g\eta^2 + \gamma_{\ii{int}}\sqrt{1+|\nabla\eta|^2}
+		\biggr]
+		\ii{d}S}_{E_{\ii{pot}}}
+	\\
+	= -\underbrace{
+		\sum_{i=1,2} 2\rho_i\nu_i \int_{V_i} \bm{\varepsilon}_i \bm{:} \bm{\varepsilon}_i \; \ii{d}V
+	}_{\mathcal{D}} .
+	\label{eq:visc_energy_bal}
+\end{align}
+%%%%%%%%%%%%%
+We adapt the dissipation function $\mathcal{D}$ from \citet{Lamb1945}, in which the strain tensor is denoted by $\bm{\varepsilon}_i$. The solution to the balance Eq.\,\eqref{eq:visc_energy_bal} provides the damping rates due to the side wall ($\lambda_{\ii{wall}}$), interface ($\lambda_{\ii{int}}$), and irrotational viscous stresses ($\lambda_{\ii{irr}}$). The total damping rate for a wave of mode $(m,n)$ is composed as
+\begin{equation}
+	\lambda = \lambda_{\ii{wall}}+\lambda_{\ii{int}}+\lambda_{\ii{irr}},
+	\label{eq:visc_damp_sum}
+\end{equation}
+and is assumed to have a much larger time scale than the natural frequency of the rotating wave. All calculations are given in detail in the supplementary material. The solutions of $\lambda_{\ii{wall}}$, $\lambda_{\ii{int}}$ and $\lambda_{\ii{irr}}$ are
+%%%%%%%%%%%%%
+\begin{align}
+	\nn 
+	\lambda_{\ii{wall}} (m,n)  
+	&=\sum_{i=1,2}
+	\frac{ \dfrac{1}{\sqrt{2}}
+		\dfrac{\rho_i \sqrt{\omega\nu_i}}{ kL_xL_y }
+	}
+	{ 
+		\left[
+		\dfrac{\rho_1}{\tanh[kh_1]} + \dfrac{\rho_2}{\tanh[kh_2]}
+		\right]}
+	\Biggl( \biggl[
+	\dfrac{L_xL_y \; k^2}{2\sinh^2[kh_i]}
+	+
+	\dfrac{ \delta_{m} h_i(n^2\pi^2  - k^2L_y^2)}{ 2 L_y\:\sinh^2[kh_i]}
+	\\[5pt]
+	& + \dfrac{ \delta_m (n^2\pi^2 + k^2L_y^2)}{ 2 L_y \: k\:\tanh[kh_i]}
+	+
+	\dfrac{\delta_n h_i(m^2\pi^2  - k^2L_x^2)}{ 2 L_x\:\sinh^2[kh_i]}
+	+
+	\dfrac{ \delta_n (m^2\pi^2 + k^2L_x^2)}{ 2 L_x \: k\:\tanh[kh_i]}
+	\biggr] \Biggr) , &&
+	\label{eq:visc_damp_wall}
+	\\
+	\lambda_{\ii{int}} (m,n)
+	&=\frac{k\sqrt{\omega}}{2\sqrt{2}}
+	\:\frac{\bigl( \coth[kh_1] + \coth[kh_2] \bigr)^2}
+	{ \biggl( \dfrac{1}{\rho_1\sqrt{\nu_1}} + \dfrac{1}{\rho_2\sqrt{\nu_2}} \biggr)
+		\biggl[ \dfrac{\rho_1}{\tanh[kh_1]} + \dfrac{\rho_2}{\tanh[kh_2]} \biggr]
+	} , &&
+	\label{eq:visc_damp_interface}
+	\\
+	\nn \lambda_{\ii{irr}} (m,n) &= \frac{2k^2 \left( \dfrac{1}{\rho_1\sqrt{\nu_1}} + \dfrac{1}{\rho_2\sqrt{\nu_2}} \right)^{-1}}{\rho_1\coth{[kh_1]} +
+		\rho_2\coth{[kh_2]}} \Biggl(\biggl[ 
+	\dfrac{\rho_2\sqrt{\nu_1\nu_2} + \rho_1\nu_1}{\rho_2\sqrt{\nu_2} \tanh{[kh_1]}} +
+	\dfrac{\rho_1\sqrt{\nu_1\nu_2} + \rho_2\nu_2}{\rho_1\sqrt{\nu_1} \tanh{[kh_2]}} &&
+	\\[2.5pt]
+	&  -\bigl(\coth{[kh_1]}+\coth{[kh_2]}\bigr)\bigl(\sqrt{\nu_1} + \sqrt{\nu_2}\bigr) 
+	\biggr]\Biggr) . &&
+	\label{eq:visc_damp_extra}
+\end{align}
+%%%%%%%%%%%%%
+\\
+\indent The Eq.\,\eqref{eq:visc_damp_wall} is the mode-dependent damping rate originating from the bounding walls. The first term of the five-part sum corresponds to the damping at the top and bottom walls. The remaining terms stem from viscous dissipation in the lateral walls (see Eq.\,\eqref{eq:delta_func} for $\delta_m$ and $\delta_n$ functions). In model ARCs, which have smaller lateral and longitudinal surface areas than the upper and lower ones, dissipation at the top and bottom  surfaces tend to outweigh the contribution from the sidewalls. This is contrary to LMBs which, in general, have a larger sidewall surface area than the upper/lower surface area. The damping at the interface [Eq.\,\eqref{eq:visc_damp_interface}] is the same as in cylindrical cells \citep{Herreman2019}. Classically, when considering free-surface waves, the irrotational term in Eq.\,\eqref{eq:visc_damp_extra} considers the dissipation in the irrotational bulk flow. In our formulation, it also involves some leading-order contributions at the interface, which do not appear in gas-liquid free surface systems. It should be noted that the presented contributions are only applicable when we assume no contact angle hysteresis and no-slip boundary condition at the bounding walls.   
+\\
+\indent In the single layer limit $\rho_1=0$, interface damping $\lambda_{\ii{int}}$ reduces to zero. Considering unidirectional wave numbers $(m,0)$, Eqs.\,(\ref{eq:visc_damp_wall}) and (\ref{eq:visc_damp_extra}) simplify to 
+%%%%%%%%%%%%%
+\begin{align}
+	\lambda = \sqrt{\frac{\omega\nu_2}{2}}
+	\frac{1}{L_y} \Biggl[ 1 + \frac{L_y}{L_x} \biggl( 1 + 
+	m\pi \frac{L_x-2h_2}{L_x\sinh{[2m\pi h_2/L_x]}}
+	\biggr)
+	\Biggr]  +2\nu_2k^2 . 
+	\label{eq:damp_1L_wall}
+\end{align}   
+%%%%%%%%%%%%%
+\\
+\indent This single-layer wave limit is fully equivalent to the well-known free-surface damping rate derived by \citet{Keulegan1959} as presented in \cite[chapter~6]{Faltinsen2009}. Now that the mode-dependent viscous damping rate has been established, we solve the two-wave ansatz [Eq.\,\eqref{eq:perturb_method_ansatz}] considering viscous terms which appear through the boundary conditions of small perturbative quantities. The $2\times 2$ interaction matrix [Eq.\,\eqref{eq:alpha_matrix_initial}] changes to
+%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+	\begin{bmatrix}
+		\ii{i}\delta\omega -\alpha -\lambda & \dfrac{I_{\eta\eta'}}{2K_{\eta\eta}} \\
+		\\
+		\dfrac{I_{\eta'\!\eta}}{2K_{\eta'\!\eta'}} & - \ii{i}\delta\omega -\alpha -\lambda'
+	\end{bmatrix}
+	\begin{bmatrix}
+		C \\
+		\\
+		C'
+	\end{bmatrix}
+	= 0 ,
+	\label{eq:alpha_matrix_visc}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%
+and the viscous growth rate $\alpha$ is
+%%%%%%%%%%%%%%%
+\begin{equation}
+\alpha
+= \pm \; 
+\sqrt{ J^2{B_z}^2{\Theta}^2
+	\; (\overbar\omega^2 - \delta\omega^2)
+	\;\frac{\mathcal{T}\mathcal{T}'}{\mathcal{U}\mathcal{U}'}
+	+ \bigl[ \ii i{\delta \omega} -\delta\lambda \bigr]^2
+} \;-\; \overbar\lambda .
+\label{eq:main_gr_visc}
+\end{equation}
+%%%%%%%%%%%%%%
+Note the presence of the term $\delta\lambda$: the average difference between the two mode-dependent damping rates (similar to Eq.\,\eqref{eq:avg_freq_diff}), arises from the Fredholm alternative which wasn't present in Eq.\eqref{eq:main_gr}. The wave pair is MPR unstable if and only if $\alpha$ is both a real number and exceeding the mean damping rate $\alpha$ is greater than the average damping rate $\overbar\lambda$ (similar to Eq.\,\eqref{eq:avg_freq}). From Eq.\,\eqref{eq:main_gr_visc} we can now modify the stability criterion [Eq.\,\ref{eq:beta_crit-onset}] to incorporate damping. To find a preferably simple expression, we introduce a modified Sele parameter $\beta_{\gamma_{\ii{int}}}$, similar to \citet{Horstmann2018}, which takes into account interfacial tension in addition to gravity. The new stability criterion is
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\beta_{\gamma_{\ii{int}}} > \beta_{\ii{crit}} =  \frac{L_x L_y}{h_1h_2 \Theta}
+	\sqrt{ \frac{\overbar\lambda^2 - \bigl[ \ii i{\delta \omega} -\delta\lambda \bigr]^2} {(\overbar\omega^2 - {\delta\omega}^2) \mathcal{T}\mathcal{T}'} },
+	\quad \ii{where}\;\,
+	\beta_{\gamma_{\ii{int}}} = \frac{I_0B_z}{\left[ (\rho_2-\rho_1)g + \gamma_{\ii{int}}kk' \right] h_1h_2} .
+	\label{eq:beta_crit-onset_visc}
+\end{equation}
+%%%%%%%%%%%%%%
+
+\subsection{MPR instability in the shallow water limit}
+\label{sec:shallow_section}
+
+In order to analyze the stability of large-scale aluminum reduction cells, the criterion can be further simplified. We reformulate Eq.\,\eqref{eq:beta_crit-onset_visc} in the shallow-water limit and neglect interfacial tension. Then the interfacial waves become non-dispersive: we have $\omega = ck$ and $\omega' = ck'$, with wavespeed
+%%%%%%%%%%%%%%%
+\begin{equation}
+	c = \sqrt{ \frac{(\rho_2 - \rho_1)g}{\rho_1/h_1 + \rho_2/h_2 } } .
+	\label{eq:wave-speed}
+\end{equation}
+%%%%%%%%%%%%%%%
+Moreover, the non-shallow height dependencies $\mathcal{T}\mathcal{T'}$ reduce to 
+%%%%%%%%%%%%%%
+\begin{equation}
+	\mathcal{T}\mathcal{T'} = \frac{1}{k^4k'^4h_1^2h_2^2L_x^2L_y^2}.
+\end{equation}
+%%%%%%%%%%%%%%
+First, we consider the dissipationless inviscid limit. For resonantly coupled waves ($\delta\omega=0$), we have a wave number equality in the shallow water limit:
+%%%%%%%%%%%%
+\begin{equation}
+	k = \pi\sqrt{\frac{m^2}{L_x^2} + \frac{n^2}{L_y^2}} = \pi\sqrt{\frac{m'^2}{L_x^2} + \frac{n'^2}{L_y^2}} = k' 
+	\; \Longrightarrow \;  \frac{L_x^2}{L_y^2} = \frac{m'^2 - m^2}{n^2 - n'^2} = \frac{(m'-m)(m'+m)}{(n-n')(n+n')}.
+	\label{eq:wave_number_equality}
+\end{equation}
+%%%%%%%%%%%%
+From Eq.\,\eqref{eq:form_function}, the function $\Theta$, which can only be non-zero if both wave numbers $(m,m')$ and $(n,n')$ are of opposite parity. This implies that $(m\pm m')$ and $(n\pm n')$ are both odd functions and it also implies that
+%%%%%%%%%%%
+\begin{equation}
+	\frac{(m'-m)(m'+m)}{(n-n')(n+n')} = \frac{M}{N}, \label{eq:fractal}
+\end{equation} 
+%%%%%%%%%%%%
+where $M$ and $N$ are arbitrary odd numbers. As a result, resonant wave coupling occurs for aspect ratios $L_x/L_y = \sqrt{M/N}$. This condition was previously found by \citet{Politis2021} and implies a fractality in the distribution of resonant aspect ratios: for any choice of $L_x/L_y$ we can find a ratio of odd numbers $M/N$ that is arbitrarily close to $L_x^2 /L_y^2$. Following \cite{Politis2021}, we focus on the most unstable wave pairs that have $(m-m')= (n-n') = 1$. From Eq.\,\eqref{eq:fractal}, we then derive that the wave numbers have to be
+%%%%%%%%%%%%%%%
+\begin{equation}
+	m = \frac{M-1}{2}, \quad m' = \frac{M + 1}{2}, \qquad
+	n = \frac{N +1}{2}, \quad n' = \frac{N - 1}{2}	.
+	\label{eq:mn_odd}
+\end{equation}
+%%%%%%%%%%%%%%%
+By inserting these wave numbers into the inviscid growth rate formula of Eq.\,\eqref{eq:main_gr} and applying all the mentioned limits we obtain
+\begin{equation}
+	\alpha = \pm \, \beta_{\rm S} \: \frac{c}{\sqrt{L_xL_y}} \frac{8}{\pi^3}
+	\sqrt{\frac{\delta_{M-1}\delta_{N-1}}
+		{(M + N)(MN+1)\sqrt{MN}}}.
+	\label{eq:priede_dimension}
+\end{equation}
+%%%%%%%%%%%%%%%
+In shallow cells with resonant aspect ratios $\bigl(L_x/ L_y = \sqrt{M/N} \bigr)$, the inviscid growth rate is proportional to the Sele number $\beta_S$ and the ratio $\dfrac{c}{\sqrt{L_xL_y}}$. This is the dimensional form of the growth rate solution [Eq.\,(3.28)] of \citet{Politis2021}, which shows that our model is fully compatible. At resonance ($\delta\omega=0$), the criterion is 
+%%%%%%%%%%%%%
+\begin{equation}
+	\beta_{\rm crit} = \frac{\pi^3 \sqrt[4]{M}(M+1)}{16\sqrt{\delta_{M-1}}}
+	\label{eq:beta-resonant_priede}
+\end{equation}
+%%%%%%%%%%%%
+Now, when we consider viscous effects in the shallow limit, the terms in the viscous damping rate pertaining to sidewall damping and bulk irrotational damping disappear. That leaves us with,
+%%%%%%%%%%%%%
+\begin{equation}
+\lambda_{\ii{wall}} (m,n) = \frac{\sqrt{ck}\;
+	(\rho_1h_2^2\sqrt{\nu_1} + \rho_2h_1^2\sqrt{\nu_2})
+	}{2\sqrt{2}\;h_1h_2(\rho_1h_2 + \rho_2h_1)},
+	\label{eq:visc_damp_wall_shallow}
+\end{equation}
+%%%%%%%%%%%%%%%
+the wall damping due to the top and bottom walls and 
+%%%%%%%%%%%%%%%
+\begin{equation}
+\lambda_{\ii{int}} (m,n) = \frac{
+\sqrt{ck}\; \rho_1\rho_2\sqrt{\nu_1\nu_2}\; (h_1+h_2)^2}
+{2\sqrt{2}\; h_1h_2 (\rho_1h_2 + \rho_2h_1) (\rho_1\sqrt{\nu_1} + \rho_2\sqrt{\nu_2})},
+\label{eq:visc_damp_int_shallow}
+\end{equation}
+%%%%%%%%%%%%%%%
+which is the interfacial damping. These formulas are valid as long as $\sqrt{\nu k/c} \ll kh \ll 1$. This completes the stability criterion to be
+\begin{equation}
+	\beta_{\ii{crit}} = \frac{L_x^2 L_y^2}{c \,\Theta}
+	\sqrt{k^3k'^3 \, \left( \overbar\lambda^2 - \bigl[ \ii i{\delta \omega} -\delta\lambda \bigr]^2 \right) } ,
+	\label{eq:beta_crit_shallow}
+\end{equation}
+%%%%%%%%%%%%%%
+This stability threshold criterion coincides with the solution of linear MPR instability presented in \citet{Politis2021}, see Sec.\,\ref{sec:fractal}. In square cells, pertaining to some MPR model experiments \cite{Pedcenko2009,Borisov2010,Grants2021,Hegde2025}, the instability threshold is no longer zero but dictated by the viscous damping rate $\lambda=\lambda'=\overbar\lambda$, yielding
+%%%%%%%%%%%%%%%
+\begin{equation}
+	\beta_{\ii{crit}} = \frac{\pi^3L}{4\, c}\,\lambda .
+	\label{eq:beta_crit_square-shallow}
+\end{equation} 
+%%%%%%%%%%%%%%%  
+As expected, the critical Sele parameter in this case is not dictated by the difference in natural frequencies anymore but solely by the damping parameter $\lambda$, as is true for all infinitely many inherently unstable aspect ratios [Eq.\,\eqref{eq:fractal}].
+
+\section{Comparison and validation}
+\label{sec:results}
+
+
+%%%%%%%%%%%%%%%
+\begin{table}
+	\caption{Cell parameters and material properties from the different studies, for comparison with the theoretical results.}
+	\label{tab:table_properties}
+	\begin{ruledtabular}
+		\begin{tabular}{lll}
+			Parameters from \citet{LaRocca2002} & & \\[3pt]
+			Dimensions of cell ($L_x = L_y$) & \SI{0.5}{\meter} & \\[3pt]
+			& $\Omega_1$ & $\Omega_2$ \\
+			Density ($\rho_1,\, \rho_2$) & \SI{850}{\kilogram\per\meter\tothe{3}}
+			& \SI{1000}{\kilogram\per\meter\tothe{3}} \\
+			Kinematic viscosity ($\nu_1, \, \nu_2$) 
+			& \SI{3.6e-5}{\meter\tothe{2}\per\second}
+			& \SI{1.0e-6}{\meter\tothe{2}\per\second} \\
+			Layer thickness ($h_1,\, h_2$) & \SI{0.06}{\meter} & \SI{0.08}{\meter}
+			\\[3pt]
+			\hline
+			Parameters from \citet{Politis2021} & & \\[3pt]
+			Length of cell ($L_x$) & \SI{6.325}{\meter} & \\
+			Width of cell ($L_y$) 	& $6.325,\dots, 2.108$ m & \\[3pt]
+			& Cryolite ($\Omega_1$) & Aluminum ($\Omega_2$) \\
+			Density ($\rho_1,\, \rho_2$) & \SI{2130}{\kilogram\per\meter\tothe{3}}
+			& \SI{2330}{\kilogram\per\meter\tothe{3}} \\
+			Kinematic viscosity ($\nu_1, \, \nu_2$) 
+			& \SI{4.4e-7}{\meter\tothe{2}\per\second}
+			& \SI{8.8e-7}{\meter\tothe{2}\per\second}
+			\\
+			Electrical conductivity ($\sigma_1, \, \sigma_2$)
+			& \SI{210}{\siemens\per\meter}
+			& \SI{3.3e6}{\siemens\per\meter}
+			\\
+			Layer thickness ($h_1,\, h_2$) & \SI{0.05}{\meter} & \SI{0.25}{\meter}
+			\\[3pt]
+			\hline
+			Parameters from \citet{Borisov2010} & & \\[3pt]
+			Cross-section area of cell ($S$) & \SI{0.002}{\meter\tothe{2}} & \\[3pt]
+			& Nitric acid (alky) ($\Omega_1$) & Nitric acid (aq) ($\Omega_2$) \\
+			Density ($\rho_1,\, \rho_2$) at $35^{\circ}$C
+			& \SI{859}{\kilogram\per\meter\tothe{3}}
+			& \SI{1050}{\kilogram\per\meter\tothe{3}} \\
+			\hspace{2.125cm} at $45^{\circ}$C
+			& \SI{847}{\kilogram\per\meter\tothe{3}}
+			& \SI{1046}{\kilogram\per\meter\tothe{3}} \\
+			\hspace{2.125cm} at $55^{\circ}$C
+			& \SI{834}{\kilogram\per\meter\tothe{3}}
+			& \SI{1041}{\kilogram\per\meter\tothe{3}} \\
+			Kinematic viscosity ($\nu_1, \, \nu_2$) at $35^{\circ}$C
+			& \SI{2.9e-6}{\meter\tothe{2}\per\second}
+			& \SI{7.4e-7}{\meter\tothe{2}\per\second} \\
+			\hspace{3.61cm} at $45^{\circ}$C
+			& \SI{2.2e-6}{\meter\tothe{2}\per\second}
+			& \SI{6.1e-7}{\meter\tothe{2}\per\second} \\
+			\hspace{3.61cm} at $55^{\circ}$C
+			& \SI{1.8e-6}{\meter\tothe{2}\per\second}
+			& \SI{5.2e-7}{\meter\tothe{2}\per\second} 
+			\\
+			Electrical conductivity ($\sigma_1, \, \sigma_2$)
+			& \SI{0.67}{\siemens\per\meter}
+			& \SI{47.5}{\siemens\per\meter}
+			\\
+			Layer thickness ($h_1 = h_2$) & \SI{0.014}{\meter} &
+		\end{tabular}
+	\end{ruledtabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+In this section, we compare our theory for the viscous damping rate of MPR instability to existing results. Table\,\ref{tab:table_properties} summarizes all of the physical parameters and material properties taken from the respective studies that are required to reproduce all the results presented in this section.
+
+
+\subsection{Viscous damping: comparison with direct numerical simulations}
+\label{sec:visc_simulation}
+
+We have verified that the viscous damping rate $\lambda$ agrees with the damping rate of Eq. \,\eqref{eq:damp_1L_wall} derived by \citet{Keulegan1959} in the single-layer limit for free-surface waves. However, interfacial waves in two-layer systems are physically different because sharp viscous boundary layers form above and below the interface. The literature on two-layer interfacial wave damping is limited. Therefore, as a first test, we start by comparing our analytical damping rate formulas of Eqs.\,(\ref{eq:visc_damp_wall}\textendash\ref{eq:visc_damp_extra}) to damping rates that are measured in direct numerical simulations of decaying waves. We use ARCHER, a multiphase numerical solver that applies the coupled level-set and volume of fluid method on Cartesian grids \cite{Menard2007, Vaudor2017}. 
+\\
+\indent In our numerical simulations, we consider the cryolite-aluminum system in small centimeter-scale cells. We initialized a standing wave of mode $(m,n)$ with a small amplitude of $L_z/500$ and simulated its decay over time. Three different cell aspect ratios ($L_x/L_y=1$, 2, and 3) with $L_x$= 4 and $18$ cm were simulated. We fix the layer heights to $h_1,h_2=L_x/8$. Capillary effects are ignored in the simulations, i.e. we set the $\gamma_{\ii{int}}=0$. 
+\\
+\indent Fig.\,\ref{fig:wave_decay} shows the simulated amplitude in comparison with the theoretical profile, for the particular case of a decaying wave mode ($4,1$). The damping rates of the waves were obtained from fitting an exponential curve to the envelope of the numerical curve. A detailed explanation regarding the post-processing of the decay rates  and the mesh convergence study is provided in Appendix\,\ref{appD}. The damping rates obtained for all wave numbers pertaining to geometries $L_x=4$ and $L_x=18$ cm are presented in Fig.\,\ref{fig:numeric_sim}. For the latter case ($L_x=18$ cm), we found good agreement between the simulated and theoretical values of the damping rates, with a net deviation of less than 10\%. The values of the damping rate in the cell with $L_x=4$ cm showed a larger disagreement with the theory, with an average error of 22\%, and we also notice a visible deviation in wave frequency as shown in Fig.\,\ref{fig:wave_decay}\hyperref[fig:wave_decay]{(a)}, for smaller cells. The discrepancy in wave frequency and damping rates in the smaller cells can be attributed to the fact that the width of the viscous boundary layer $\sqrt{\nu_i/\omega}$ is no longer very small compared to the layer heights. Here, our boundary layer approach begins to lose its applicability \cite{Huang2025}. Similar comparisons of the damping rates for other cell geometries $L_x=6, 12$ cm are provided in Table\,\ref{tab:table_sim}, Appendix\,\ref{appD}.
+
+%%%%%%%%%%%%%
+\begin{figure}
+	\begin{tikzpicture}
+		\node (pic1) at (-4,0) 
+		{\includegraphics[height=5.3cm]{figures/wave_decay_4.eps} };
+		\node (pic2) at (4,0)
+		{\includegraphics[height=5.3cm]{figures/wave_decay_18.eps} };
+		\node [above of=pic1, xshift=-3.5cm, yshift=1.9cm] {$(a)$};
+		\node [above of=pic2, xshift=-3.5cm, yshift=1.9cm] {$(b)$};
+	\end{tikzpicture}
+	\caption{The theoretical and simulated wave amplitude decay for mode $(4,1)$ in a cell of length ($a$) $L_x=4$ cm and ($b$) $L_x=18$ cm and aspect ratio $L_x/L_y=3$. The initial amplitude specified as $L_z/500$. The two-layer viscous damping equation succeeds in capturing the wave frequency and decay rate in the larger cell with a larger bulk flow domain.}
+	\label{fig:wave_decay}
+\end{figure}
+%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{figure}
+	\includegraphics[width=0.9\linewidth]{figures/vDamp_coria_4cm_tot.eps}
+	\caption{The comparison of the viscous damping rates for a two-layer cryolite-aluminum system in a rectangular geometry with the analytical viscous decay rates. The respective dimensions of these systems are: length $L_x=4$ cm and layer heights $h_1, h_2= 0.5$ cm and length $L_x=18$ cm and layer heights $h_1, h_2= 2.25$ cm. The simulations were conducted in the most refined meshes obtained from grid dependency tests (see Appendix\,\ref{appD}).}
+	\label{fig:numeric_sim}
+\end{figure}
+%%%%%%%%%%%%%%
+
+\subsection{Viscous damping: comparison with \citet{LaRocca2002}}
+\label{sec:visc_LaRocca}
+
+\citet{LaRocca2002} conducted interfacial sloshing experiments in an enclosed square tank filled with two liquid layers. The authors measured decay rates of different waves. A theoretical model for viscous dissipation was also developed using the Rayleigh dissipation method using Lagrange equations, but no analytical expression for the damping rates was given. We compare our viscous damping rates to their results.
+\\
+\indent In Fig.\,\ref{fig:rocca_comparison} we compare Eq.\,\eqref{eq:visc_damp_sum} with La Rocca's results limited to cases where the authors provide both numerical and experimental data. Fig.\,\ref{fig:rocca_comparison}\hyperref[fig:rocca_comparison]{(a)} shows the non-dimensionalized viscous damping rate as a function of the non-dimensionalized kinematic viscosity for three different wave numbers ($m,0$), $m=1,2,3$. Our linear damping theory slightly overshoots La Rocca's predictions, but globally, we observe the same trends. Our model agrees better with the three experimental measurements carried out at $\nu_1/(gL_y^3)^{1/2} = \SI{3.25e-5}{}$ and $\rho_1/\rho_2 = 0.85$. We conclude from this comparison that our viscous damping theory is compatible with the model and the experiments of \citet{LaRocca2002}. We suspect that the differences between the damping rate profiles are contributed by the higher order terms of the rotational stresses at the boundary and irrotational stresses in the bulk, which are not considered by \citet{LaRocca2002}.
+ 
+%%%%%%%%%%%%%%
+\begin{figure}
+	\begin{tikzpicture}
+		\node (pic1) at (0,0) 
+		{\includegraphics[width=0.9\linewidth]{figures/rocca_viscosity.eps} };
+	\end{tikzpicture}
+	\caption{Non-dimensionalized viscous damping rate as a function of the non-dimensionalized kinematic viscosity for three different unidirectional wave number ($m,0$), $m=1,2,3$ at a constant density ratio of $\rho_1/\rho_2 = 0.85$. Additional measurement points are included for the first three modes $m=1,2,3$.}
+	\label{fig:rocca_comparison}
+\end{figure}
+%%%%%%%%%%%%%%
+
+\subsection{MPR instability in shallow cells: comparison with \citet{Politis2021}}
+\label{sec:fractal}
+We now consider the MPR instability and show that MPR growth rate and stability onset predictions by \citet{Politis2021} are fully contained in our model in the shallow limit for $h_1 ,h_2 \ll L_x, L_y$, supposing high conductivity jumps ($\sigma_1 \ll \sigma_2$), and ignoring surface tension ($\gamma_{\ii{int}} = 0$). The authors derive the analytical MPR growth rate and the stability criterion by solving a linear eigenvalue problem for two shallow layers at the inviscid limit. While they do not explicitly derive a viscous correction to the growth rate, they solve the eigenvalue problem using two different spectral methods: the Galerkin expansion in gravity-wave modes and the Chebyshev collocation scheme, where they model viscous damping using a dimensionless phenomenological friction coefficient $\gamma$. The relation between the non-dimensionless friction coefficient and viscous damping rates $\lambda$ and $\lambda'$ is given by
+%%%%%%%%%%%%%%
+\begin{equation}
+	\lambda = \frac{\gamma c}{2L_x}, \quad \lambda'=\frac{\gamma c}{2L_y},
+	\label{eq:fricton_coeff}
+\end{equation}
+%%%%%%%%%%%%%%
+where $c$ is the wave speed [Eq.\,\eqref{eq:wave-speed}]. These damping rates based on the friction coefficient are mode-independent and different from the mode-dependent damping rates that we have calculated [see Eqs.\,\eqref{eq:visc_damp_wall_shallow} and \eqref{eq:visc_damp_int_shallow}].
+\\
+\indent Although we have derived an explicit analytical solution for $\beta_{\rm crit}$, for each given mode pair $(m,n)$ and $(m',n')$ [see Eq.\,\eqref{eq:beta_crit-onset_visc}], it is not evident \textit{a priori} which mode pair is first to destabilize the metal pad, has the minimal $\beta_{\rm crit}$. Outside the shallow approximation, the first unstable mode pair cannot be determined analytically. Our strategy for handling this difficulty is to calculate $\beta_{\rm crit}$ for all possible combinations of wave pairs and then to find the minimal $\beta_{\rm crit}$. In practice, we see that large wave numbers are less unstable, so that only wave numbers up to about $m,n \lesssim 10$ must be examined.
+%%%%%%%%%%%%%
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node (pic1) at (0,0)  {\includegraphics[width=0.9\linewidth]{figures/priede_fractal.eps} };
+		\node (pic2) [below of=pic1, yshift=-5.8cm]
+		{\includegraphics[width=0.9\linewidth]{figures/priede_ph_fractal.eps} };
+		\node (a) at (-7.1,3.6) {$(a)$};
+		\node (b) [below of=a, yshift=-5.9cm] {$(b)$};
+	\end{tikzpicture}
+	\caption{ Critical Sele parameters $\beta_{\ii{crit}}$ from \citet{Politis2021} and our analytical prediction [Eq.\,\eqref{eq:beta_crit-onset_visc}] as a function of the aspect ratio squared $(L_x/L_y)^2$, with and without considering the effects of damping here modeled by (a) arbitrary constant damping coefficients $\gamma$. The non-dimensional coefficients $\gamma$ were re-dimensionalized as $\lambda=0.5\gamma \, c/L_x$ and $\lambda'=0.5\gamma\, c/L_y$. The red curves show the approximate solution [Eq.\,\eqref{eq:beta_approx}] for $\gamma=0.2$ around $L_x/L_y = \sqrt{3}$ and $L_x/L_y = \sqrt{5}$. In (b) the instability onsets are plotted for mode-dependent friction coefficients calculated from damping rates in Eq.\,\eqref{eq:visc_damp_sum} for aspect ratios squared extending till 21. The solutions obtained from fixed coefficients are plotted as reference.}
+	\label{fig:priede_fractal}
+\end{figure}
+%%%%%%%%%%%%%
+\\
+\indent  Fig.\,\ref{fig:priede_fractal}\hyperref[fig:priede_fractal]{(a)} shows the minimal onset values $\beta_{\rm crit}$ [Eq.\,\eqref{eq:beta_crit-onset_visc}] as a function of the squared lateral aspect ratio $(L_x/L_y)^2$. In this graph, we use the same damping rate model as \citet{Politis2021}, meaning that Eq.\,\eqref{eq:fricton_coeff} is used to determine $\lambda$ and $\lambda'$. We compare our results with the numerical solutions of \citet{Politis2021} for different friction coefficients $\gamma$. All geometrical parameters and material properties of the considered cell are given in Table\,\ref{tab:table_properties}. The pattern of the green fractal curve ($\gamma = 0$) is determined solely by the chosen resolution and hence, not physical. For all other values of friction coefficients $\gamma=0.1, 0.2$ and $0.5$, we find that our analytical model is in quasi-perfect agreement with the curves of \citet{Politis2021}. 
+\\
+\indent Fig.\,\ref{fig:priede_fractal}\hyperref[fig:priede_fractal]{(b)} provides the analytical prediction from Eq.\,\eqref{eq:beta_crit-onset_visc} taking into account wave number-dependent viscous damping from Eq.\,\eqref{eq:visc_damp_sum}, highlighting all the unstable wave numbers between the inflection points. It also shows that modeling viscous damping to calculate the stability criterion provides more realistic onsets in the linear regime compared to the arbitrary coefficients. Moreover, extending the graph until the aspect ratio square of 21 shows us why most industrial ARCs operate at $(L_x/L_y)^2=17$\textendash$18$, due to the presence of a larger stability buffer \cite{Zhang2011}. Using Fig.\,\ref{fig:priede_fractal}\hyperref[fig:priede_fractal]{(b)}, it is possible to explain the small deviation emerging between our respective theories at $\gamma = 0.2$ for $(L_x/L_y)^2 > 8.45$. The curve from \citet{Politis2021} shows here $\beta_{\ii{crit}}$ for the mode pair $(5,0)+(4,1)$. However, our solution predicts that the pair $(3,0)+(0,1)$ becomes unstable first, and accordingly, our calculated curve is slightly lower. Apart from this point, however, the first unstable wave mode pair is always correctly predicted by the wave number tuples [Eq.\,\ref{eq:mn_odd}]. It is important to note that the absolute values of the critical beta are not very significant in large cells. However, by using the mode-dependent viscous damping formulas, the change in the critical beta between different wave numbers can be more accurately described. 
+\\
+\indent In the previous discussion, we have focused on the first destabilized mode, but it is important to remember that many other modes	are also destabilized above the threshold. The first unstable wave pair (smallest $\beta_{\rm crit}$) is not always the wave pair that is most unstable (highest $\alpha$). Beyond the threshold, i.e. $\beta_{\rm S} > \beta_{\rm crit}$, the exact pattern of MPR waves can be difficult to predict from linear theory.
+At some point $\beta_{\rm S} > \beta_{\ii{crit}}$, we always find the primary rotating mode pair $(1,0)+(0,1)$ as the most unstable mode in all cell configurations, as already noted by \citet{Munger2008}.
+
+\subsection{MPR instability in non-shallow cells: comparison with \citet{Borisov2010}}
+\label{sec:Borisov}
+
+
+We apply our theory to the ill-known model experiment of \citet{Borisov2010}, who succeeded in destabilizing MPR waves in a two-layer experimental cell (nitric acid ($\rm{HNO}_{\rm{3(aq)}}$ at the bottom and $\rm{HNO}_{3}$ + ${\rm C}_5\rm{H}_{12}\rm{O}$ at the top). Both liquids have small and sufficiently contrasting electrical conductivities ($\sigma_1 = 0.67\,{\rm S}\,{\rm m}^{-1}$ and $\sigma_2 = 47.5\,{\rm S}\,{\rm m}^{-1}$). Due to the small difference in density of the two liquids, small cell currents  $I \sim 2$ \textendash \ $4\,{\rm A}$, in combination with a strong external magnetic field  $B_z = 0.25\,{\rm T}$, allowed to reach large enough Sele parameters $\beta_{\rm S} \sim 2$ to destabilize MPR waves. 
+
+%%%%%%%%%%%%%%%%
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\node (pic1) at (0,0)  {\includegraphics[width=0.9\linewidth]{figures/theory_vs_Borisov_calculated.eps} };  
+		\node (pic2) [below of=pic1, yshift=-6cm] {\includegraphics[width=0.9\linewidth]{figures/theory_vs_Borisov_lines.eps} }; 
+		\node (a) at (-7.1,3.4) {$(a)$};
+		\node (b) [below of=a, yshift=-6cm] {$(b)$};
+	\end{tikzpicture}
+	\caption{(a) Comparison with the experimentally observed stability onsets at nine different cell geometries. The error bars cover a temperature range of $35^{\circ}$C to $55^{\circ}$C. (b) shows the analytical stability onset comparisons along with the critical wave numbers observed at different cell aspect ratios.}
+	\label{fig:borisov_comparison}
+\end{figure}
+%%%%%%%%%%%%%%%%%
+
+\indent In this experiment, \citet{Borisov2010} could also change the electrical boundary conditions at the bottom electrode, using a removable insert made of porous material that was impregnated with an aqueous nitric acid. This is done to mimic the boundary conditions of an ARC, i.e. that the lower liquid be a worse electrical conductor than the bottom electrode. Unfortunately, the authors have only published measurements without the insert, for which the ground electrode can be regarded as a perfect electrical conductor. To cover this case of a perfectly conducting bottom plate, replace the boundary condition of Eq.\,\eqref{eq:bc4} with $\varphi_2=0|_{z=-h_2}$. On deriving the stability onset once again, we find it has the same form as before:
+%%%%%%%%%%%%%%%%
+\begin{equation}
+	\beta_{\ii{crit}} = \frac{L_x L_y}{h_1h_2 \Theta}
+	\sqrt{ \frac{\overbar\lambda^2 - \bigl[ \ii i{\delta \omega} -\delta\lambda \bigr]^2} {(\overbar\omega^2 - {\delta\omega}^2) \mathcal{T}_c\mathcal{T}'_c} } ,
+	\label{eq:beta_crit_cond}
+\end{equation}
+%%%%%%%%%%%%%%%%
+but with other terms. Mainly,
+\fontsize{11pt}{11pt}
+\begin{align*}
+	\mathcal{T}_c &= \dfrac{\Lambda_c}{k(k^2 - k'^2) L_xL_y}
+	\Biggl[ 
+	\dfrac{-k'}{\text{tanh}[kh_1]} 
+	+ \dfrac{k'\:\text{sech}[k'h_1]}{\text{sinh}[kh_1]}
+	+ \dfrac{k}{\text{coth}[k'h_1]}
+	+ \dfrac{-k'}{\text{tanh}[kh_2]} 
+	+ \dfrac{k'\:\text{sech}[k'h_2]}{\text{sinh}[kh_2]}
+	+ \dfrac{k}{\text{coth}[k'h_2]}
+	\Biggr] ,
+	\\[5pt]
+	\mathcal{T}'_c &= \dfrac{\Lambda_c'}{k'({k'}^2-k^2)L_xL_y}
+	\Biggl[ 
+	\dfrac{-k}{\text{tanh}[k'h_1]} 
+	+ \dfrac{k\: \text{sech}[kh_1]}{\text{sinh}[k'h_1]}
+	+ \dfrac{k'}{\text{coth}[kh_1]}
+	+\dfrac{-k}{\text{tanh}[k'h_2]} 
+	+ \dfrac{k\: \text{sech}[kh_2]}{\text{sinh}[k'h_2]}
+	+ \dfrac{k'}{\text{coth}[kh_2]}
+	\Biggr] ,
+\end{align*}
+\normalsize
+and a different conductivity jump parameter is
+\[
+\Lambda_c = \dfrac{\sigma^{-1}_1-\sigma^{-1}_2}{\sigma^{-1}_1\ii{tanh}[kh_1] + \sigma^{-1}_2\ii{tanh}[k h_2]}	.
+\]
+%%%%%%%%%%%
+We use the subscript $c$ to clearly differentiate from the other theory. \citet{Borisov2010} measured the critical onsets using a different dimensionless parameter $W = I_0 B_z /[(\rho_2 - \rho_1)gL_x L_y]$ that is related to $\beta_{\rm S}$ through $\beta_{\rm S} = W\:L_xL_yh_1^{-1}h_2^{-1}$. In Fig.\,\ref{fig:borisov_comparison}\hyperref[fig:borisov_comparison]{(a)}, the measured critical Sele parameters are shown together with the first unstable wave pairs $(m,n) + (m',n')$ in 9 different cells of different aspect ratios $L_x/L_y$ in Fig.\,\ref{fig:borisov_comparison}\hyperref[fig:borisov_comparison]{(a)}. For a better understanding, Fig.\,\ref{fig:borisov_comparison}\hyperref[fig:borisov_comparison]{(b)} further shows our continuous solution [Eq.\,\eqref{eq:beta_crit_cond}] compared with the linear stability prediction of \citet{Borisov2008} (Galerkin method solved numerically). We see good agreement between our model and \citet{Borisov2010}'s results. 
+\\
+\indent During their experiments, \citet{Borisov2010} measured strong temperature fluctuations (between $35^{\circ}-55^{\circ}$C) due to Joule heating occurring in both liquids. This creates an uncertainty in the material parameters which is quantified using error bars in Fig.\,\ref{fig:borisov_comparison}\hyperref[fig:borisov_comparison]{(a)}. At all examined aspect ratios, the unstable wave pairs reported by \citet{Borisov2010} coincide with the unstable pairs predicted by our model. Quantitatively, we also find fair agreement, but there are some considerable deviations, especially for the mode pair $(2,2) + (1,3)$. The measurement point that corresponds to $(1,2) + (0,3)$ lies very close to a region where two other the unstable pairs $(1,2) + (0,3)$ and $(1,3) + (0,4)$. The neighbouring pair $(1,3) + (0,4)$ (green measuring point) agrees well with the experimental observation. Comparison of both linear stability theories reveal that our model always yields larger $\beta_{\rm crit}$. The reason for this discrepancy is difficult to identify, but we noticed that \citet{Borisov2010} have neglected sidewall damping. From our damping rates in Eqs.\,\eqref{eq:visc_damp_wall}, \eqref{eq:visc_damp_interface} and \eqref{eq:visc_damp_extra}, we find that sidewall damping accounts for more than a third of the total damping, resulting in a higher $\beta_{\rm crit}$ in our theory. 
+
+
+\section{Concluding remarks}
+\label{sec:discuss}
+
+We have presented a perturbative formulation of the linear MPR instability in small-scale rectangular cells. The theory is motivated by the existence of several lab-scale experiments \cite{Borisov2010,Pedcenko2009,LaRocca2002,Hegde2025}. Unlike previous models, it is not limited to shallow cells, and it also includes a laminar, viscous damping model for waves in two-layer systems. Using this theory, we can predict the onsets of MPR instability or find the most unstable modes, without adjustable, phenomenological parameters. We have shown that our formulations contain the results of \citet{Politis2021} based on a phenomenological friction coefficient. We have also applied our theory to the experiment of \citet{Borisov2010} and found good agreement. To simplify the calculations for the reader, we have gathered all the essential equations with explanations in the supplementary material, along with a Python module.
+\\
+\indent Our formulas for the viscous damping rate of waves in two-layer systems can be of use in other problems (e.g., two-layer sloshing). We have shown that they correctly capture damping rates found in 3D numerical simulations, using the hydrodynamical, multiphase solver ARCHER. Our damping rates are in perfect agreement with the one-layer limit of \citet{Keulegan1959}, and they also compare well to the experiments and the model of \citet{LaRocca2002}.
+\\
+\indent The theory developed here can be adapted to the case of the single-layer MPR experiment [24]. In this experiment, an electrical current proportional to the wave slope is injected at the sidewalls, and this imitates the MPR instability mechanism. Using this set-up, we intend to study the MPR instability in its nonlinear regime, but the set-up needs to be calibrated to be representative of this two-layer set-up. Moreover, our theory is well-positioned for augmenting the cell current (or external magnetic field) with alternating components, with a view to studying active MPR suppression techniques that have recently proved promising \cite{Mohammad2022}. In \citet{Horstmann2025} it was shown that the alternating current MPR suppression rests in a special form of parametric anti-resonance. However, the analysis relied on a highly idealized pendulum model with only two degrees of freedom. The ideal AC frequencies for a minimally invasive MPR suppression predicted in \cite{Horstmann2025} still need to be confirmed by continuous MPR theories.
+
+
+
+
+
+
+
+
+
+
+
+% Specify following sections are appendices. Use \appendix* if there
+% only one appendix.
+\appendix
+\section{Additional details regarding the numerical analysis}
+\label{appD}
+
+%%%%%%%%%%%%%%
+\begin{table}%[H] add [H] placement to break table across pages
+	\caption{Grid sizes adopted for different simulation cases in ARCHER. Cell sizes were kept uniform throughout the domain.}
+	\label{tab:grid_info}
+	\begin{ruledtabular}
+		\begin{tabular}{ccccc} %{p{3cm}p{3.5cm}}   %AAAAAAAA WH 
+%			\hline\hline
+	Aspect ratio & Length of cell $L_x$ (cm) & Width of cell $L_y$ (cm) & Layer height $h_1=h_2$ (cm) & Grid size ($n_x \times n_y \times n_z$) \\
+		\hline
+		\multirow{3}{*}{1} 
+		& \multirow{6}{*}{4,6,12 \& 18}
+		& \multirow{3}{*}{4,6,12 \& 18}
+		& \multirow{3}{*}{$L_x/8$}
+		& $64\times 64 \times 16$ 
+		\\
+		&  & &
+		&  $128\times 128 \times 32$ 
+		\\
+		&  & &
+		&  $256\times 256 \times 64$ 
+		\\ \cline{1--1}\cline{3-5}
+		\multirow{2}{*}{2}  
+		&
+		& \multirow{2}{*}{2,3,6 \& 9}
+		& \multirow{2}{*}{$L_x/8$} 
+		& $64\times 32 \times 16$ 
+		\\
+		&  &  & 
+		& $128\times 64 \times 32$ 
+		\\ \cline{1--1}\cline{3-5}
+		3 
+		&
+		& \multirow{1}{*}{1.33,1,2 \& 6}
+		& \multirow{1}{*}{$L_x/8$}
+		& $192\times 64 \times 48$ 
+%		\\
+%		\hline\hline
+		\end{tabular}
+	\end{ruledtabular}
+\end{table}
+%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+\begin{figure}
+	\begin{tikzpicture}
+		\node (pic1) at (-4,0) 
+		{\includegraphics[height=5.5cm]{figures/AR_damp1_10.eps} };
+		\node (pic2) at (4,0)
+		{\includegraphics[height=5.5cm]{figures/AR_omega1_10.eps} };
+		\node [above of=pic1, xshift=-3.5cm, yshift=1.9cm] {$(a)$};
+		\node [above of=pic2, xshift=-3.2cm, yshift=1.9cm] {$(b)$};
+		
+		\node (pic3) at (-4,-5.7) 
+		{\includegraphics[height=5.5cm]{figures/AR_damp1_10_LyOA.eps} };
+		\node (pic4) at (4,-5.7)
+		{\includegraphics[height=5.5cm]{figures/AR1_10_Lx12cm_LyOA500_EE_ny64.eps} };
+		\node [above of=pic1, xshift=-3.5cm, yshift=-3.8cm] {$(c)$};
+		\node [above of=pic2, xshift=-3.2cm, yshift=-3.8cm] {$(d)$};
+	\end{tikzpicture}
+	\caption{The grid independence test observing the (a) viscous damping rate and (b) wave frequency for different cell sizes for aspect ratio 1 and wave number ($1,0$). (c) The same case was simulated with different initial wave amplitudes to certify the independence of initial wave amplitude on the damping rate. (d) The post-processing performed with a cell size of $12\times 12\times 3$ cm and the exponentially decaying oscillatory fit of the amplitude signal at the local point $-L_x/2, -L_y/2$ used to determine the wave frequency and damping rate.}
+	\label{fig:addn_detail}
+\end{figure}
+%%%%%%%%%%%%%%   
+
+Table\,\ref{tab:grid_info} provides the mesh sizes adopted for all the cases simulated. The grid sizes were taken as a multiple of $2^n$ for grid independence tests. The mesh behaviour regarding damping rates and resonant frequency for different cell sizes of aspect ratio 1 is shown in Fig.\,\ref{fig:addn_detail}\hyperref[fig:addn_detail]{(a)} and \ref{fig:addn_detail}\hyperref[fig:addn_detail]{(b)}. The values for all cases were found to converge at $n_z$=64, 32, and 48 for aspect ratios 1,2 and 3, respectively. Moreover, the same cases were repeated for different initial wave amplitudes as shown in Fig.\,\ref{fig:addn_detail}\hyperref[fig:addn_detail]{(c)}, to verify that the amplitude was in no way influencing the resultant damping rates, similar to the theoretical values. The simulations were carried out with an initial amplitude of $L_z/500$.  The damping rates remained unchanged when the cases were simulated with and without the advection term $\bm\nabla \cdot \rho \h u \otimes \h u$, confirming that the wave motion was within the scope of Stokes's flow. The total time of the simulation was at least 20 times the theoretical period of the oscillations. The wave frequencies and decay rates were extracted as shown in Fig.\,\ref{fig:addn_detail}\hyperref[fig:addn_detail]{(d)}: by tracking the elevation of the interface at a specific point $(-L_x/2, -L_y/2)$, giving the local amplitude profile. After removing the first period, the resulting profile was fitted to an exponentially decaying oscillation function. It can also be obtained by taking the volume integral of the kinetic energy $\int_{V_i}0.5\rho_i U^2$, which decays twice as fast as the amplitude. The complete list of the frequencies and damping rates obtained from the simulations, in comparison with their respective theoretical values are given in Table\,\ref{tab:table_sim}. Overall, we found good agreement with the theoretical values, especially in larger cells ($L_x=12, 18$ cm). 
+
+
+\begin{table}%[H] add [H] placement to break table across pages
+	\caption{The detailed comparison of theoretical values of two-layer wave frequency and viscous damping with the numerical simulations of ARCHER code, for different cell dimensions and resultant wave numbers. The two layers considered are cryolite and aluminum (see Table\,\ref{tab:table_properties}). The heights of the respective layers are equal i.e. $h_1=h_2$.}
+	\label{tab:table_sim}
+	\begin{ruledtabular}
+		\begin{tabular}{lllllll}
+			\multirow{2}{*}{Aspect ratio} &
+			Cell dimensions, & \multirow{2}{*}{Wave number (m,n)} &
+			\multicolumn{2}{c}{Wave frequency $\omega$ (s\textsuperscript{-1})}
+			& \multicolumn{2}{c}{Viscous damping rate $\lambda$ (s\textsuperscript{-1})} \\
+			& $L_x \times L_y \times [h_1+h_2]$  (cm)	&   & Theory  & ARCHER & Theory  & ARCHER   \\
+			\hline
+			\multirow{4}{*}{1.0} & 4$\times$4$\times$1  & \multirow{4}{*}{(1,0)}           & 3.593 & 3.372 & 0.236   & $0.282$        \\
+			&	6$\times$6$\times$1.5 &   & 
+			2.934 & 2.801  & 0.142   & $0.166$        \\
+			&	12$\times$12$\times$3 &   & 
+			2.075 & 2.022  & 0.060    & $0.070$          \\
+			&	18$\times$18$\times$4.5 &   & 
+			1.694 & 1.666  & 0.036   & $0.043$       \\
+			\hline
+			\multirow{8}{*}{2.0} & \multirow{2}{*}{4$\times$2$\times$1} & (2,0) & 
+			6.732 & 6.453 & 0.359   & 0.437          \\
+			& & (1,1) & 
+			7.383 & 7.078 & 0.403   & 0.504        \\
+			\cline{2-7} 
+			& \multirow{2}{*}{6$\times$3$\times$1.5}  & (2,0) & 
+			5.496 & 5.357 & 0.216   & 0.260         \\
+			& & (1,1) & 
+			6.028 & 5.879 & 0.243   & 0.296         \\
+			\cline{2-7} 
+			& \multirow{2}{*}{12$\times$6$\times$3} & (2,0) & 
+			3.887 & 3.858 & 0.090    & 0.095        \\
+			& & (1,1) & 
+			4.262 & 4.233 & 0.102   & 0.104      \\
+			\cline{2-7} 
+			& \multirow{2}{*}{18$\times$9$\times$4.5} & (2,0)  & 
+			3.173 & 3.164 & 0.054   & 0.047         \\
+			& & (1,1) & 
+			3.480 & 3.471 & 0.061   & 0.051          \\
+			\hline
+			\multirow{16}{*}{3.0} & \multirow{4}{*}{4$\times$1.34$\times$1} & (3,0) &
+			9.258 & 8.875 & 0.474   & 0.585         \\
+			& & (0,1) & 
+			9.258 & 8.929 & 0.435   & 0.527         \\
+			& & (5,0) & 
+			12.89 & 12.44 &0.644   & 0.819          \\
+			& & (4,1) & 
+			12.89 & 12.33 & 0.755   & 0.901         \\
+			\cline{2-7} 
+			& \multirow{4}{*}{6$\times$2$\times$1.5} & (3,0) & 
+			7.559 & 7.347 & 0.285   & 0.347         \\
+			& & (0,1) & 
+			7.559 & 7.379 & 0.261   & 0.315         \\
+			& & (5,0) & 
+			10.52 & 10.28 & 0.385   & 0.485          \\
+			& & (4,1) & 
+			10.52 & 10.23 & 0.452   & 0.548        \\
+			\cline{2-7} 
+			& \multirow{4}{*}{12$\times$4$\times$3} & (3,0) & 
+			5.345 & 5.288 & 0.119   & 0.137         \\
+			& & (0,1) & 
+			5.345 & 5.296 & 0.109   & 0.126         \\
+			& & (5,0) & 
+			7.440 & 7.384 & 0.161   & 0.177          \\
+			& & (4,1) & 
+			7.440 & 7.373 & 0.189   & 0.207         \\
+			\cline{2-7} 
+			& \multirow{4}{*}{18$\times$6$\times$4.5} & (3,0) & 
+			4.364 & 4.343 & 0.072   & 0.073         \\
+			& & (0,1) & 
+			4.364 & 4.346 & 0.066   & 0.067         \\
+			& & (5,0) & 
+			6.075 & 6.054 & 0.097   & 0.089        \\
+			& & (4,1) & 
+			6.075 & 6.051 & 0.114   & 0.104          
+		\end{tabular}
+	\end{ruledtabular}
+\end{table}
+
+
+% If you have acknowledgments, this puts in the proper section head.
+\begin{acknowledgments}
+This study was supported by Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) by Award No. 512131026. The authors report no conflict of interest. The author, Marie-Charlotte Renoult acknowledges the financial support provided by the French Agence Nationale de la Recherche (ANR) LaBEx EMC3 through the HILIMBA project (Grant No. 10-LABX-0009) for initiating the collaboration between HZDR and CORIA. The numerical work was granted access to the HPC resources of IDRIS, TGCC and CINES under the allocation A0132B1010 made by GENCI (Grand Equipement National de Calcul Intensif) and the CRIANN (Centre Régional Informatique et d’Applications Numériques de Normandie) under the scientific project N. 201 704. Lastly, the authors would like to thank William Nash for proofreading the manuscript.
+\end{acknowledgments}
+
+% Create the reference section using BibTeX:
+
+\bibliography{prf}
+
+\end{document}
+%
+% ****** End of file apstemplate.tex ******
+
